@@ -16,6 +16,18 @@
 
 촬영 영상에서 저장소 소개용 프레임만 추출했으며 위치·시간 메타데이터는 제거했습니다.
 
+## 인지 및 추종 검증
+
+| 최종 YOLO 체크포인트 출력 | YOLO ROI의 OpenCV 후처리 |
+|:---:|:---:|
+| ![Lane and scene YOLO detections](media/perception/yolo_lane_scene.jpg) | ![OpenCV lane ROI processing](media/perception/opencv_lane_roi.jpg) |
+
+![S-curve replay tracking plot](media/validation/s_curve_tracking.png)
+
+실차 카메라 기록에 최종 Lane YOLO(320)와 Scene YOLO(640)를 다시 실행해 중앙선 후보 4개와 녹색 신호 1개를 기록했습니다. Lane YOLO가 잡은 영역에는 실제 중앙선 추적과 같은 Adaptive Threshold → Canny → Hough 단계를 적용했습니다.
+
+S자 리플레이 2회에서는 10/12/16 속도 정책의 목표와 출력 명령을 비교했습니다. 곡선 이탈 hold를 적용한 정책은 기존 정책에서 각각 7회, 3회 발생하던 검증되지 않은 10→16 직접 가속을 두 기록 모두 0회로 줄였습니다. 왼쪽의 `cte_px`는 영상에서 본 차선 중심 오차이며 실제 차량 pose 오차는 아닙니다. 입력 체크섬, 수치와 해석 범위는 [인지 및 추종 검증 자료](docs/VALIDATION_EVIDENCE.md)에 있습니다.
+
 ## 시스템 구성
 
 ```mermaid
