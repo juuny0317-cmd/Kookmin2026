@@ -16,6 +16,20 @@
 
 촬영 영상에서 저장소 소개용 프레임만 추출했으며 위치·시간 메타데이터는 제거했습니다.
 
+## 실차 주행 영상
+
+<p align="center">
+  <a href="media/video/cone_course_run.mp4">
+    <img src="media/real/cone_course_vehicle.jpg" width="820" alt="Play the cone-course vehicle test">
+  </a>
+</p>
+
+<p align="center">
+  <strong><a href="media/video/cone_course_run.mp4">▶ 콘 구간 실차 주행 16초 영상 재생</a></strong>
+</p>
+
+HEVC 원본을 GitHub와 브라우저에서 확인하기 쉬운 H.264 960×540 영상으로 변환했습니다. 음성과 메타데이터를 제거했으며 인코딩 정보와 SHA-256은 [영상 기록](media/video/README.md)에 남겼습니다.
+
 ## 인지 및 추종 검증
 
 | 최종 YOLO 체크포인트 출력 | YOLO ROI의 OpenCV 후처리 |
