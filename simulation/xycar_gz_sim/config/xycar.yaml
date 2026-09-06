@@ -1,0 +1,102 @@
+command_adapter:
+  ros__parameters:
+    use_sim: true
+    publish_rate_hz: 10.0  # rosbag /xycar_motor 평균 약 10 Hz
+    command_timeout_sec: 0.5
+    topic_speed_command: /cmd/speed
+    topic_steer_command: /cmd/steer
+    topic_motor: /xycar_motor
+    topic_cmd_vel: /model/xycar/cmd_vel
+    topic_calibration_state: /xycar/calibration_state
+    topic_physical_raw_steer: /xycar/physical_raw_steer
+    topic_motor_raw_steer: /xycar/motor_topic_raw_steer
+
+    wheelbase: 0.355
+    front_track: 0.250
+
+    # 논리 조향은 ROS 관례(+좌회전, -우회전)의 자전거 모델 중앙 조향각 [rad].
+    # raw +는 우회전, raw -는 좌회전이며 logical 0 -> physical raw +7.
+    logical_steer_rad_lut: [-0.571108752, -0.427110352, -0.299415242, 0.0, 0.145952652, 0.263676395, 0.408565539]
+    raw_steer_lut_by_logical: [40.0, 30.0, 20.0, 7.0, -20.0, -30.0, -40.0]
+
+    # 뒷바퀴 축 중앙의 실측 반경으로 계산한 signed curvature [1/m].
+    raw_steer_lut: [-40.0, -30.0, -20.0, 7.0, 20.0, 30.0, 40.0]
+    curvature_lut: [1.219512195, 0.760456274, 0.414078675, 0.0, -0.869565217, -1.282051282, -1.809954751]
+
+    speed_command_lut: [4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 12.0, 15.0, 20.0, 25.0]
+    speed_mps_lut: [0.399, 0.508, 0.605, 0.694, 0.761, 0.986, 1.020, 1.247, 1.511, 1.938, 2.222]
+
+    # bag의 직진 메시지는 [-7, speed]였으므로 physical raw에 -1을 곱해 토픽에 기록한다.
+    # 하드웨어 드라이버 소스가 추가되면 이 경계 부호를 재확인해야 한다.
+    motor_topic_steer_sign: -1.0
+
+    # 미측정값 — 실측 후 조정 필요. 논리 조향 명령에 적용되는 속도와 지연이다.
+    steering_rate_limit_rad_s: 1.2
+    steering_delay_sec: 0.0
+    motor_delay_sec: 0.0
+
+keyboard_teleop:
+  ros__parameters:
+    topic_speed_command: /cmd/speed
+    topic_steer_command: /cmd/steer
+    topic_calibration_state: /xycar/calibration_state
+    publish_rate_hz: 20.0
+    speed_step: 1.0
+    steer_step_deg: 2.0
+    min_speed_command: -10.0  # 후진 매핑은 미측정값
+    max_speed_command: 25.0
+    min_logical_steer_rad: -0.571108752  # right, physical raw +40
+    max_logical_steer_rad: 0.408565539   # left, physical raw -40
+
+team_motor_adapter:
+  ros__parameters:
+    input_topic: /team/xycar_motor_cmd
+    speed_output_topic: /cmd/speed
+    steer_output_topic: /cmd/steer
+    state_topic: /team/adapter_state
+    publish_rate_hz: 20.0
+    command_timeout_sec: 0.5
+    min_speed_command: -10.0  # 후진 매핑은 미측정값
+    max_speed_command: 25.0
+
+    # 팀 코드는 angle=0 직진, 음수 좌회전, 양수 우회전이다.
+    # 실차 직진 physical raw +7을 기준으로 이동한 입력 knot이며,
+    # 아래 raw -> logical/curvature 비대칭 실측표와 함께 선형보간한다.
+    team_angle_lut: [-47.0, -37.0, -27.0, 0.0, 13.0, 23.0, 33.0]
+    physical_raw_lut: [-40.0, -30.0, -20.0, 7.0, 20.0, 30.0, 40.0]
+    wheelbase: 0.355
+    front_track: 0.250
+    logical_steer_rad_lut: [-0.571108752, -0.427110352, -0.299415242, 0.0, 0.145952652, 0.263676395, 0.408565539]
+    raw_steer_lut_by_logical: [40.0, 30.0, 20.0, 7.0, -20.0, -30.0, -40.0]
+    raw_steer_lut: [-40.0, -30.0, -20.0, 7.0, 20.0, 30.0, 40.0]
+    curvature_lut: [1.219512195, 0.760456274, 0.414078675, 0.0, -0.869565217, -1.282051282, -1.809954751]
+    speed_command_lut: [4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 12.0, 15.0, 20.0, 25.0]
+    speed_mps_lut: [0.399, 0.508, 0.605, 0.694, 0.761, 0.986, 1.020, 1.247, 1.511, 1.938, 2.222]
+
+sensor_adapter:
+  ros__parameters:
+    topic_image_input: /xycar_sim/image_raw
+    topic_image_output: /image_raw
+    topic_camera_info_output: /camera_info
+    topic_scan_input: /xycar_sim/scan_raw
+    topic_scan_output: /scan
+    camera_frame_id: usb_cam
+    lidar_frame_id: laser_frame
+    image_width: 640
+    image_height: 480
+    distortion_model: plumb_bob
+    d: [-0.361976, 0.11051, 0.001014, 0.000505, 0.0]
+    k: [438.783367, 0.0, 305.593336, 0.0, 437.302876, 243.738352, 0.0, 0.0, 1.0]
+    r: [0.999978, 0.002789, -0.006046, -0.002816, 0.999986, -0.004401, 0.006034, 0.004417, 0.999972]
+    p: [393.6538, 0.0, 322.797939, 0.0, 0.0, 393.6538, 241.090902, 0.0, 0.0, 0.0, 1.0, 0.0]
+
+xycar_verification:
+  ros__parameters:
+    wheelbase: 0.355
+    front_track: 0.250
+    logical_steer_rad_lut: [-0.571108752, -0.427110352, -0.299415242, 0.0, 0.145952652, 0.263676395, 0.408565539]
+    raw_steer_lut_by_logical: [40.0, 30.0, 20.0, 7.0, -20.0, -30.0, -40.0]
+    raw_steer_lut: [-40.0, -30.0, -20.0, 7.0, 20.0, 30.0, 40.0]
+    curvature_lut: [1.219512195, 0.760456274, 0.414078675, 0.0, -0.869565217, -1.282051282, -1.809954751]
+    speed_command_lut: [4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 12.0, 15.0, 20.0, 25.0]
+    speed_mps_lut: [0.399, 0.508, 0.605, 0.694, 0.761, 0.986, 1.020, 1.247, 1.511, 1.938, 2.222]

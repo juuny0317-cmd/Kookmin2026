@@ -1,0 +1,27 @@
+map_name: square_intersection_loop
+frame_id: map
+spawn_points:
+- id: south_start
+  description: south connector road, facing north
+  x: 0.0
+  y: -50.0
+  z: 0.3
+  yaw: 1.5708
+- id: north_start
+  description: north connector road, facing south
+  x: 0.0
+  y: 50.0
+  z: 0.3
+  yaw: -1.5708
+- id: east_start
+  description: east connector road, facing west
+  x: 50.0
+  y: 0.0
+  z: 0.3
+  yaw: 3.14159
+- id: west_start
+  description: west connector road, facing east
+  x: -50.0
+  y: 0.0
+  z: 0.3
+  yaw: 0.0

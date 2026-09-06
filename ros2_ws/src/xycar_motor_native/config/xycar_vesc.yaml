@@ -1,0 +1,74 @@
+/vesc_driver_node:
+  ros__parameters:
+    port: auto
+    auto_device_symlink: /dev/ttyMOTOR
+    auto_device_match: 1a86_USB_Serial
+    ready_topic: /vesc/ready
+    handshake_timeout_s: 2.0
+    reconnect_interval_s: 1.0
+    telemetry_timeout_s: 1.0
+    poll_imu: false
+    duty_cycle_min: -0.950
+    duty_cycle_max: 0.950
+    current_min: -5.0
+    current_max: 15.0
+    brake_min: 0.0
+    brake_max: 0.0
+    speed_min: -10000.0
+    speed_max: 10000.0
+    position_min: 0.0
+    position_max: 0.0
+    servo_min: 0.15
+    servo_max: 0.85
+
+/ackermann_to_vesc_node:
+  ros__parameters:
+    speed_to_erpm_gain: 4614.0
+    speed_to_erpm_offset: 0.0
+    steering_angle_to_servo_gain: -1.2135
+    steering_angle_to_servo_offset: 0.5004
+
+/xycar_motor_adapter:
+  ros__parameters:
+    input_topic: /xycar_motor
+    output_topic: /ackermann_cmd
+    # Use host-side ERPM feedback around stable VESC duty control. The VESC's
+    # own legacy sensorless-BLDC RPM loop oscillates at low speed, while fixed
+    # duty alone cannot compensate for vehicle load.
+    control_mode: duty_speed
+    duty_cycle_output_topic: /commands/motor/duty_cycle
+    servo_output_topic: /commands/servo/position
+    angle_min: -42.0
+    angle_max: 42.0
+    speed_min: -27.0
+    speed_max: 27.0
+    steering_scale_rad_per_unit: -0.0068
+    speed_scale_mps_per_unit: 0.08
+    # Calibrated on the vehicle: speed 4 -> ~1410 ERPM and speed 6 ->
+    # ~2240 ERPM at 9.4 V, matching the original 369.12 ERPM/speed-unit scale.
+    duty_cycle_per_speed_unit: 0.006
+    # Sensorless BLDC breakaway boost. Require sustained ERPM before handing
+    # off, so noisy low-speed telemetry cannot toggle boost on and off.
+    startup_duty_cycle: 0.080
+    startup_duration_s: 1.20
+    startup_exit_erpm: 1600.0
+    startup_exit_target_ratio: 0.95
+    startup_exit_confirm_s: 0.05
+    erpm_state_topic: /sensors/core
+    erpm_per_speed_unit: 369.12
+    erpm_kp_duty_per_erpm: 0.000010
+    erpm_ki_duty_per_erpm_s: 0.000010
+    erpm_integral_limit_duty: 0.10
+    # Bag startup_20260816_173409 settled near 5% duty at speed 4. Seed the
+    # missing load duty so boost hands off without a second stall.
+    erpm_startup_integral_duty: 0.026
+    erpm_max_duty: 0.25
+    erpm_filter_alpha: 0.25
+    erpm_telemetry_timeout_s: 0.25
+    duty_slew_rate_per_s: 0.30
+    steering_to_servo_gain: -1.2135
+    steering_to_servo_offset: 0.5004
+    servo_min: 0.15
+    servo_max: 0.85
+    publish_rate_hz: 20.0
+    watchdog_timeout_s: 0.30

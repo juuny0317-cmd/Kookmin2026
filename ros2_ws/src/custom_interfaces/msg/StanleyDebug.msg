@@ -1,0 +1,20 @@
+# Per-source-frame Stanley terms for tuning and rosbag analysis.
+std_msgs/Header header
+string curve_state
+string heading_source
+float32 curvature_severity
+float32 path_confidence
+float32 cte_pixels
+float32 cte_m
+float32 cte_gain
+float32 heading_weight
+float32 heading_error_rad
+float32 heading_term_rad
+float32 cte_term_rad
+float32 raw_servo_angle
+float32 final_servo_angle
+float32 target_speed
+float32 final_speed
+float32 source_dt_s
+float32 state_age_s
+bool steering_rate_limited

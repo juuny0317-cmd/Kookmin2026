@@ -1,0 +1,69 @@
+map_name: square_intersection_loop
+frame_id: map
+coordinate_convention:
+  x: east_m
+  y: north_m
+  z: up_m
+outer_loop:
+  measurement_basis: centerline overall bounding square
+  side_length_m: 100.0
+  centerline_extents:
+    x_min_m: -50.0
+    x_max_m: 50.0
+    y_min_m: -50.0
+    y_max_m: 50.0
+  corner_radius_centerline_m: 12.0
+  road_width_m: 7.0
+  lane_width_m: 3.5
+central_intersection:
+  center_x_m: 0.0
+  center_y_m: 0.0
+  cross_road_width_m: 7.0
+  pad_size_m: 14.0
+detailed_straight_sections:
+  count: 4
+  local_length_m: 48.0
+  road_width_m: 7.0
+  lane_width_m: 3.5
+  crosswalk_range_u_m:
+  - 47.0
+  - 48.0
+  diamond_u_positions_m:
+  - 13.0
+  - 40.5
+  arrow_center_u_m: 34.0
+  collision: false
+  approaches:
+  - id: south_to_center
+    origin:
+    - 0.0
+    - -55.0
+    yaw: 1.5707963267948966
+  - id: north_to_center
+    origin:
+    - 0.0
+    - 55.0
+    yaw: -1.5707963267948966
+  - id: east_to_center
+    origin:
+    - 55.0
+    - 0.0
+    yaw: 3.141592653589793
+  - id: west_to_center
+    origin:
+    - -55.0
+    - 0.0
+    yaw: 0.0
+road_surface:
+  asphalt_top_z_m: 0.04
+  asphalt_bottom_z_m: 0.0
+  collision: true
+  friction_mu: 1.0
+markings:
+  yellow_double_centerline: true
+  yellow_line_width_m: 0.075
+  yellow_double_offset_m: 0.11
+  edge_line_width_m: 0.15
+  yellow_z_m: 0.0405
+  white_z_m: 0.041
+  collision: false

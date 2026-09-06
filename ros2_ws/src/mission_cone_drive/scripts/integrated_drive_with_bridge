@@ -1,0 +1,203 @@
+#!/usr/bin/env bash
+
+set -Eeo pipefail
+
+ROS_DISTRO_SETUP="${ROS_DISTRO_SETUP:-/opt/ros/humble/setup.bash}"
+ROS1_BRIDGE_SETUP="${ROS1_BRIDGE_SETUP:-$HOME/ros-humble-ros1-bridge/install/setup.bash}"
+XYCAR_SETUP="${XYCAR_SETUP:-$HOME/xycar_ws/install/setup.bash}"
+
+if [[ "${1:-}" == "--help" ]]; then
+  echo "Usage: ros2 run mission_cone_drive integrated_drive_with_bridge [launch_arg:=value ...]"
+  echo "Starts a selective ROS1 bridge and the integrated drive launch."
+  echo "Launch arguments override the built-in full-drive defaults."
+  exit 0
+fi
+
+for setup_file in "$ROS_DISTRO_SETUP" "$ROS1_BRIDGE_SETUP" "$XYCAR_SETUP"; do
+  if [[ ! -f "$setup_file" ]]; then
+    echo "[ERROR] Required setup file not found: $setup_file" >&2
+    exit 1
+  fi
+done
+
+# Stop both the `ros2 run` wrapper and its dynamic_bridge child from any
+# previous --bridge-all-topics invocation. The bracketed expression prevents
+# pgrep from matching its own command line.
+mapfile -t old_bridge_pids < <(
+  pgrep -f '[r]os1_bridge.*[d]ynamic_bridge' || true
+)
+if (( ${#old_bridge_pids[@]} > 0 )); then
+  echo "[INFO] Stopping existing ROS1 bridge: ${old_bridge_pids[*]}"
+  kill -INT "${old_bridge_pids[@]}" 2>/dev/null || true
+  for _ in {1..20}; do
+    bridge_still_running=false
+    for pid in "${old_bridge_pids[@]}"; do
+      if kill -0 "$pid" 2>/dev/null; then
+        bridge_still_running=true
+        break
+      fi
+    done
+    if [[ "$bridge_still_running" == false ]]; then
+      break
+    fi
+    sleep 0.1
+  done
+fi
+
+# shellcheck disable=SC1091
+source "$ROS_DISTRO_SETUP"
+# shellcheck disable=SC1091
+source "$ROS1_BRIDGE_SETUP"
+# shellcheck disable=SC1091
+source "$XYCAR_SETUP"
+
+# ROS-generated setup files may intentionally inspect unset variables. Enable
+# nounset only after every overlay has finished configuring the environment.
+set -u
+
+export ROS_MASTER_URI=http://127.0.0.1:11311
+unset ROS_NAMESPACE || true
+
+bridge_pid=''
+cleanup() {
+  local exit_status=$?
+  trap - EXIT INT TERM
+  if [[ -n "$bridge_pid" ]] && kill -0 "$bridge_pid" 2>/dev/null; then
+    echo "[INFO] Stopping selective ROS1 bridge (process group $bridge_pid)"
+    kill -INT -- "-$bridge_pid" 2>/dev/null || true
+  fi
+  for _ in {1..30}; do
+    if ! pgrep -g "$bridge_pid" >/dev/null 2>&1; then
+      break
+    fi
+    sleep 0.1
+  done
+  if [[ -n "$bridge_pid" ]] && pgrep -g "$bridge_pid" >/dev/null 2>&1; then
+    kill -TERM -- "-$bridge_pid" 2>/dev/null || true
+  fi
+  wait "$bridge_pid" 2>/dev/null || true
+  exit "$exit_status"
+}
+trap cleanup EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
+
+# A separate process group lets Ctrl+C stop the launch first and lets cleanup
+# reliably remove both the ros2 wrapper and the bridge executable afterward.
+setsid ros2 run ros1_bridge dynamic_bridge \
+  --ros-args -r __node:=ros_bridge &
+bridge_pid=$!
+sleep 3
+if ! kill -0 "$bridge_pid" 2>/dev/null; then
+  echo "[ERROR] Selective ROS1 bridge failed to stay running." >&2
+  wait "$bridge_pid" || true
+  exit 1
+fi
+echo "[INFO] Selective ROS1 bridge running (process group $bridge_pid)"
+
+launch_args=(
+  start_camera:=true
+  start_lidar:=true
+  start_ultrasonic:=false
+  start_yolo:=true
+  start_lane_stack:=true
+  start_rviz:=false
+  start_active:=false
+  enable_lane_pipeline:=true
+  enable_scene_pipeline:=true
+  enable_drive_control:=true
+  camera_qos_reliability:=reliable
+  lane_image_qos_reliability:=reliable
+  scene_image_qos_reliability:=reliable
+  lane_model_filename:=center_line_yolov10n_320_best.pt
+  lane_class_names:=center_line
+  lane_image_width:=320
+  lane_image_height:=240
+  lane_max_rate_hz:=12.0
+  lane_yolo_max_rate_hz:=0.0
+  lane_inference_image_size:=320
+  lane_heading_curvature_deadzone:=0.0
+  scene_model_filename:=xycar_yolov10n_5class_best.pt
+  scene_class_names:=cone,dynamic,green,left,red
+  scene_class_name_aliases:=dynamic=obstacle_vehicle
+  scene_image_width:=640
+  scene_image_height:=480
+  scene_max_rate_hz:=3.0
+  scene_inference_image_size:=640
+  scene_general_conf_threshold:=0.20
+  scene_obstacle_conf_threshold:=0.35
+  cone_conf_threshold:=0.15
+  cone_perception_mode:=lidar_dbscan
+  cone_entry_use_fusion_gate:=true
+  cone_entry_allow_lidar_fallback:=false
+  cone_entry_fusion_rotation_deg:=-125.0
+  cone_entry_min_fused_clusters:=2
+  cone_entry_require_both_sides:=true
+  cone_entry_side_min_abs_y_m:=0.10
+  cone_entry_fusion_timeout_s:=0.60
+  cone_prearm_enabled:=true
+  cone_bbox_prearm_enabled:=true
+  cone_prearm_use_fusion:=false
+  cone_prearm_min_bbox_area_px:=100.0
+  cone_prearm_min_bottom_y_px:=170.0
+  cone_bbox_prearm_min_detections:=1
+  cone_prearm_window:=3
+  cone_prearm_min_matches:=2
+  cone_bbox_prearm_clear_frames:=3
+  cone_prearm_speed_cap:=4.0
+  cone_suspect_speed_cap:=0.0
+  cone_enter_confirm_cycles:=3
+  lidar_dbscan_entry_min_clusters:=3
+  lidar_dbscan_allow_cone_reentry:=false
+  lidar_dbscan_min_range_m:=0.18
+  lidar_dbscan_max_range_m:=1.50
+  lidar_dbscan_eps_m:=0.15
+  lidar_dbscan_min_samples:=5
+  lidar_dbscan_max_cone_diameter_m:=0.30
+  lidar_dbscan_angle_bin_deg:=36.0
+  lidar_dbscan_seed_max_range_m:=0.80
+  lidar_dbscan_grow_distance_m:=0.50
+  lidar_dbscan_max_pair_distance_m:=1.30
+  lidar_dbscan_virtual_half_width_m:=0.50
+  lidar_dbscan_rear_axle_offset_m:=0.42
+  lidar_dbscan_min_lookahead_m:=0.45
+  lidar_dbscan_max_lookahead_m:=0.70
+  lidar_dbscan_lookahead_scale:=0.30
+  lane_straight_speed:=8.0
+  lane_curve_speed:=8.0
+  lane_min_speed:=8.0
+  stanley_steering_threshold_deg:=5.0
+  cone_min_speed:=4.0
+  cone_max_speed:=4.0
+  stanley_state_timeout_s:=0.60
+  show_yolo_view:=false
+  show_lane_yolo_view:=false
+  show_lane_processing_view:=false
+  show_scene_yolo_view:=false
+  show_traffic_light_view:=false
+  show_overtake_view:=false
+  publish_performance_stats:=true
+)
+
+# Replace matching defaults instead of passing duplicate launch arguments.
+for override in "$@"; do
+  if [[ "$override" != *':='* ]]; then
+    echo "[ERROR] Expected launch argument in name:=value form: $override" >&2
+    exit 2
+  fi
+  override_name=${override%%:=*}
+  replaced=false
+  for index in "${!launch_args[@]}"; do
+    if [[ "${launch_args[$index]%%:=*}" == "$override_name" ]]; then
+      launch_args[$index]=$override
+      replaced=true
+      break
+    fi
+  done
+  if [[ "$replaced" == false ]]; then
+    launch_args+=("$override")
+  fi
+done
+
+echo "[INFO] Starting integrated drive (vehicle remains inactive until service call)"
+ros2 launch mission_cone_drive integrated_drive.launch.py "${launch_args[@]}"

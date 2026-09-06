@@ -1,0 +1,11 @@
+FROM xycar-jetson:20260815-final
+
+COPY xycar_motor_native /opt/xycar_ws/src/xycar_motor_native
+COPY xycar_device/xycar_cam /opt/xycar_ws/src/xycar_device/xycar_cam
+COPY usb_cam /opt/xycar_ws/src/usb_cam
+
+RUN bash -lc \
+    'source /opt/ros/jazzy/setup.bash && \
+     cd /opt/xycar_ws && \
+     colcon build --merge-install --symlink-install --packages-select \
+       usb_cam xycar_cam xycar_motor_native'

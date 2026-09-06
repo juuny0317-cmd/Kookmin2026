@@ -1,0 +1,73 @@
+<?xml version="1.0" ?>
+<sdf version="1.9">
+  <world name="test_straight_road_world">
+
+    <light name="sun" type="directional">
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="ground_link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>120 120</size>
+            </plane>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>120 120</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.35 0.35 0.35 1</ambient>
+            <diffuse>0.35 0.35 0.35 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+<!-- 아래 세로 도로 -->
+<include>
+  <name>straight_road_01</name>
+  <uri>model://straight_road</uri>
+  <pose>0 0 0 0 0 1.5708</pose>
+</include>
+
+<!-- 위 세로 도로 -->
+<include>
+  <name>straight_road_02</name>
+  <uri>model://straight_road</uri>
+  <pose>0 48 0 0 0 1.5708</pose>
+</include>
+
+<!-- 가운데 가로 도로 -->
+<include>
+  <name>straight_road_03</name>
+  <uri>model://straight_road</uri>
+  <pose>-24 24 0 0 0 0</pose>
+</include>
+
+<!-- 오른쪽 세로 도로 -->
+<include>
+  <name>straight_road_04</name>
+  <uri>model://straight_road</uri>
+  <pose>24 24 0 0 0 1.5708</pose>
+</include>
+
+<!-- 중앙 교차로 -->
+<include>
+  <uri>model://cross_road</uri>
+  <pose>0 0 0 0 0 0</pose>
+</include>
+
+  </world>
+</sdf>

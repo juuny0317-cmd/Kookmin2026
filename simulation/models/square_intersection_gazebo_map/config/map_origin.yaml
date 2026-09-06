@@ -1,0 +1,10 @@
+map_name: square_intersection_loop
+coordinate_system:
+  type: ENU_WGS84_LOCAL_TANGENT
+  origin:
+    latitude_deg: 37.5665
+    longitude_deg: 126.978
+    elevation_m: 0.0
+  x_axis: east_m
+  y_axis: north_m
+  z_axis: up_m

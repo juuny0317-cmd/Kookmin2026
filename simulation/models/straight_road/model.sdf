@@ -1,0 +1,314 @@
+<?xml version="1.0" ?>
+<sdf version="1.9">
+
+  <model name="straight_road">
+    <static>true</static>
+
+    <link name="road_link">
+
+      <!-- 
+        도로 collision:
+        pose z = -0.01, size z = 0.02 이므로
+        도로 윗면이 정확히 z = 0.0 이 됨.
+      -->
+      <collision name="road_collision">
+        <pose>0 24 -0.01 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>7 48 0.02</size>
+          </box>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1.0</mu>
+              <mu2>1.0</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+
+      <!-- 도로 표면: visual 전용 plane -->
+      <visual name="road_surface">
+        <pose>0 24 0.000 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>7 48</size>
+          </plane>
+        </geometry>
+        <material>
+          <ambient>0.02 0.02 0.02 1</ambient>
+          <diffuse>0.02 0.02 0.02 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- 좌측 흰색 경계선 -->
+      <visual name="left_edge_line">
+        <pose>-3.35 24 0.002 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>0.12 48</size>
+          </plane>
+        </geometry>
+        <material>
+          <ambient>1 1 1 1</ambient>
+          <diffuse>1 1 1 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- 우측 흰색 경계선 -->
+      <visual name="right_edge_line">
+        <pose>3.35 24 0.002 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>0.12 48</size>
+          </plane>
+        </geometry>
+        <material>
+          <ambient>1 1 1 1</ambient>
+          <diffuse>1 1 1 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- 중앙 노란 이중 실선 -->
+      <visual name="center_yellow_line_left">
+        <pose>-0.10 24 0.002 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>0.08 48</size>
+          </plane>
+        </geometry>
+        <material>
+          <ambient>1.0 0.78 0.0 1</ambient>
+          <diffuse>1.0 0.78 0.0 1</diffuse>
+        </material>
+      </visual>
+
+      <visual name="center_yellow_line_right">
+        <pose>0.10 24 0.002 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>0.08 48</size>
+          </plane>
+        </geometry>
+        <material>
+          <ambient>1.0 0.78 0.0 1</ambient>
+          <diffuse>1.0 0.78 0.0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- 시작부 횡단보도 -->
+      <visual name="crosswalk_start_s01"><pose>-2.8 2.0 0.003 0 0 0</pose><cast_shadows>false</cast_shadows><geometry><plane><normal>0 0 1</normal><size>0.35 3.0</size></plane></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+      <visual name="crosswalk_start_s02"><pose>-2.1 2.0 0.003 0 0 0</pose><cast_shadows>false</cast_shadows><geometry><plane><normal>0 0 1</normal><size>0.35 3.0</size></plane></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+      <visual name="crosswalk_start_s03"><pose>-1.4 2.0 0.003 0 0 0</pose><cast_shadows>false</cast_shadows><geometry><plane><normal>0 0 1</normal><size>0.35 3.0</size></plane></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+      <visual name="crosswalk_start_s04"><pose>-0.7 2.0 0.003 0 0 0</pose><cast_shadows>false</cast_shadows><geometry><plane><normal>0 0 1</normal><size>0.35 3.0</size></plane></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+      <visual name="crosswalk_start_s05"><pose>0.0 2.0 0.003 0 0 0</pose><cast_shadows>false</cast_shadows><geometry><plane><normal>0 0 1</normal><size>0.35 3.0</size></plane></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+      <visual name="crosswalk_start_s06"><pose>0.7 2.0 0.003 0 0 0</pose><cast_shadows>false</cast_shadows><geometry><plane><normal>0 0 1</normal><size>0.35 3.0</size></plane></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+      <visual name="crosswalk_start_s07"><pose>1.4 2.0 0.003 0 0 0</pose><cast_shadows>false</cast_shadows><geometry><plane><normal>0 0 1</normal><size>0.35 3.0</size></plane></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+      <visual name="crosswalk_start_s08"><pose>2.1 2.0 0.003 0 0 0</pose><cast_shadows>false</cast_shadows><geometry><plane><normal>0 0 1</normal><size>0.35 3.0</size></plane></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+      <visual name="crosswalk_start_s09"><pose>2.8 2.0 0.003 0 0 0</pose><cast_shadows>false</cast_shadows><geometry><plane><normal>0 0 1</normal><size>0.35 3.0</size></plane></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+
+      <!-- 끝부분 횡단보도 -->
+      <visual name="crosswalk_end_s01"><pose>-2.8 46.0 0.003 0 0 0</pose><cast_shadows>false</cast_shadows><geometry><plane><normal>0 0 1</normal><size>0.35 3.0</size></plane></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+      <visual name="crosswalk_end_s02"><pose>-2.1 46.0 0.003 0 0 0</pose><cast_shadows>false</cast_shadows><geometry><plane><normal>0 0 1</normal><size>0.35 3.0</size></plane></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+      <visual name="crosswalk_end_s03"><pose>-1.4 46.0 0.003 0 0 0</pose><cast_shadows>false</cast_shadows><geometry><plane><normal>0 0 1</normal><size>0.35 3.0</size></plane></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+      <visual name="crosswalk_end_s04"><pose>-0.7 46.0 0.003 0 0 0</pose><cast_shadows>false</cast_shadows><geometry><plane><normal>0 0 1</normal><size>0.35 3.0</size></plane></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+      <visual name="crosswalk_end_s05"><pose>0.0 46.0 0.003 0 0 0</pose><cast_shadows>false</cast_shadows><geometry><plane><normal>0 0 1</normal><size>0.35 3.0</size></plane></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+      <visual name="crosswalk_end_s06"><pose>0.7 46.0 0.003 0 0 0</pose><cast_shadows>false</cast_shadows><geometry><plane><normal>0 0 1</normal><size>0.35 3.0</size></plane></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+      <visual name="crosswalk_end_s07"><pose>1.4 46.0 0.003 0 0 0</pose><cast_shadows>false</cast_shadows><geometry><plane><normal>0 0 1</normal><size>0.35 3.0</size></plane></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+      <visual name="crosswalk_end_s08"><pose>2.1 46.0 0.003 0 0 0</pose><cast_shadows>false</cast_shadows><geometry><plane><normal>0 0 1</normal><size>0.35 3.0</size></plane></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+      <visual name="crosswalk_end_s09"><pose>2.8 46.0 0.003 0 0 0</pose><cast_shadows>false</cast_shadows><geometry><plane><normal>0 0 1</normal><size>0.35 3.0</size></plane></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+
+      <!-- 
+        화살표 수정:
+        기존 화살표는 머리 부분 각도와 위치 때문에 Y자처럼 보였음.
+        아래는 진행 방향 기준으로 shaft + V-head가 자연스럽게 이어지도록 수정한 값.
+      -->
+
+      <!-- 왼쪽 차선 : 아래 방향 -->
+
+      <!-- shaft -->
+      <visual name="arrow_left_shaft">
+        <pose>-1.75 18.45 0.004 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>0.34 1.10</size>
+          </plane>
+        </geometry>
+
+        <material>
+          <ambient>1 1 1 1</ambient>
+          <diffuse>1 1 1 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- left wing -->
+      <visual name="arrow_left_head_left">
+        <pose>-2.05 17.72 0.004 0 0 0.92</pose>
+        <cast_shadows>false</cast_shadows>
+
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>0.26 1.00</size>
+          </plane>
+        </geometry>
+
+        <material>
+          <ambient>1 1 1 1</ambient>
+          <diffuse>1 1 1 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- right wing -->
+      <visual name="arrow_left_head_right">
+        <pose>-1.45 17.72 0.004 0 0 -0.92</pose>
+        <cast_shadows>false</cast_shadows>
+
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>0.26 1.00</size>
+          </plane>
+        </geometry>
+
+        <material>
+          <ambient>1 1 1 1</ambient>
+          <diffuse>1 1 1 1</diffuse>
+        </material>
+      </visual>
+
+
+      <!-- ===================================================== -->
+      <!-- 오른쪽 차선 : 위 방향 -->
+      <!-- ===================================================== -->
+
+      <!-- shaft -->
+      <visual name="arrow_right_shaft">
+        <pose>1.75 29.55 0.004 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>0.34 1.10</size>
+          </plane>
+        </geometry>
+
+        <material>
+          <ambient>1 1 1 1</ambient>
+          <diffuse>1 1 1 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- left wing -->
+      <visual name="arrow_right_head_left">
+        <pose>1.45 30.28 0.004 0 0 -0.92</pose>
+        <cast_shadows>false</cast_shadows>
+
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>0.26 1.00</size>
+          </plane>
+        </geometry>
+
+        <material>
+          <ambient>1 1 1 1</ambient>
+          <diffuse>1 1 1 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- right wing -->
+      <visual name="arrow_right_head_right">
+        <pose>2.05 30.28 0.004 0 0 0.92</pose>
+        <cast_shadows>false</cast_shadows>
+
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>0.26 1.00</size>
+          </plane>
+        </geometry>
+
+        <material>
+          <ambient>1 1 1 1</ambient>
+          <diffuse>1 1 1 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- 다이아몬드: 왼쪽 차선 -->
+      <visual name="diamond_left_upper_left">
+        <pose>-2.125 36.6 0.004 0 0 -0.5586</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry><plane><normal>0 0 1</normal><size>0.12 1.4</size></plane></geometry>
+        <material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material>
+      </visual>
+
+      <visual name="diamond_left_upper_right">
+        <pose>-1.375 36.6 0.004 0 0 0.5586</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry><plane><normal>0 0 1</normal><size>0.12 1.4</size></plane></geometry>
+        <material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material>
+      </visual>
+
+      <visual name="diamond_left_lower_left">
+        <pose>-2.125 35.4 0.004 0 0 0.5586</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry><plane><normal>0 0 1</normal><size>0.12 1.4</size></plane></geometry>
+        <material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material>
+      </visual>
+
+      <visual name="diamond_left_lower_right">
+        <pose>-1.375 35.4 0.004 0 0 -0.5586</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry><plane><normal>0 0 1</normal><size>0.12 1.4</size></plane></geometry>
+        <material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material>
+      </visual>
+
+      <!-- 다이아몬드: 오른쪽 차선 -->
+      <visual name="diamond_right_upper_left">
+        <pose>1.375 40.6 0.004 0 0 -0.5586</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry><plane><normal>0 0 1</normal><size>0.12 1.4</size></plane></geometry>
+        <material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material>
+      </visual>
+
+      <visual name="diamond_right_upper_right">
+        <pose>2.125 40.6 0.004 0 0 0.5586</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry><plane><normal>0 0 1</normal><size>0.12 1.4</size></plane></geometry>
+        <material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material>
+      </visual>
+
+      <visual name="diamond_right_lower_left">
+        <pose>1.375 39.4 0.004 0 0 0.5586</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry><plane><normal>0 0 1</normal><size>0.12 1.4</size></plane></geometry>
+        <material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material>
+      </visual>
+
+      <visual name="diamond_right_lower_right">
+        <pose>2.125 39.4 0.004 0 0 -0.5586</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry><plane><normal>0 0 1</normal><size>0.12 1.4</size></plane></geometry>
+        <material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material>
+      </visual>
+
+    </link>
+  </model>
+
+</sdf>

@@ -1,0 +1,459 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="xycar">
+  <!-- Measured geometry. Coordinate convention: +x forward, +y left, +z up. -->
+  <xacro:arg name="wheelbase" default="0.355"/>
+  <xacro:arg name="front_track" default="0.250"/>
+  <xacro:arg name="rear_track" default="0.266"/>
+  <xacro:arg name="front_wheel_radius" default="0.050"/>
+  <xacro:arg name="rear_wheel_radius" default="0.050"/>
+  <xacro:arg name="effective_wheel_radius" default="0.050"/>
+  <xacro:arg name="wheel_width" default="0.045"/>
+  <xacro:arg name="front_overhang" default="0.125"/>
+  <xacro:arg name="rear_overhang" default="0.140"/>
+  <xacro:arg name="vehicle_length" default="0.620"/>
+  <xacro:arg name="vehicle_height" default="0.187"/>
+  <xacro:arg name="total_mass" default="4.1"/>
+  <!-- 추정값 — 실측 필요. 전체 폭 미측정으로 독립 xacro 인자화했다. -->
+  <xacro:arg name="vehicle_width" default="0.320"/>
+
+  <!-- 미측정값 — 실측 후 조정할 동역학 파라미터. -->
+  <xacro:arg name="tire_friction_mu" default="1.0"/>
+  <xacro:arg name="tire_friction_mu2" default="1.0"/>
+  <xacro:arg name="longitudinal_slip" default="0.0"/>
+  <xacro:arg name="lateral_slip" default="0.0"/>
+  <xacro:arg name="wheel_normal_force_n" default="10.05"/>
+  <xacro:arg name="max_acceleration_mps2" default="1.5"/>
+  <xacro:arg name="max_deceleration_mps2" default="-2.0"/>
+  <xacro:arg name="max_jerk_mps3" default="10.0"/>
+  <xacro:arg name="min_jerk_mps3" default="-10.0"/>
+  <xacro:arg name="steering_joint_velocity_rad_s" default="1.2"/>
+  <xacro:arg name="gazebo_steering_limit_rad" default="0.72"/>
+
+  <!-- 센서 장착 위치도 미측정값 — 실측 필요. rosbag에서 동역학/pose를 추정하지 않았다. -->
+  <xacro:arg name="camera_xyz" default="0.400 0 0.140"/>
+  <xacro:arg name="camera_rpy" default="0 0 0"/>
+  <xacro:arg name="lidar_xyz" default="0.180 0 0.180"/>
+  <xacro:arg name="lidar_rpy" default="0 0 0"/>
+
+  <xacro:arg name="camera_update_rate_hz" default="30.0"/>
+  <xacro:arg name="camera_horizontal_fov_rad" default="1.260227895"/>
+  <xacro:arg name="lidar_update_rate_hz" default="9.66"/>
+  <xacro:arg name="lidar_samples" default="500"/>
+  <xacro:arg name="lidar_min_angle_rad" default="-3.141592654"/>
+  <xacro:arg name="lidar_max_angle_rad" default="3.141592654"/>
+  <xacro:arg name="lidar_min_range_m" default="0.1"/>
+  <xacro:arg name="lidar_max_range_m" default="16.0"/>
+  <xacro:arg name="lidar_range_resolution_m" default="0.01"/>
+
+  <xacro:property name="wheelbase" value="$(arg wheelbase)"/>
+  <xacro:property name="front_track" value="$(arg front_track)"/>
+  <xacro:property name="rear_track" value="$(arg rear_track)"/>
+  <xacro:property name="front_wheel_radius" value="$(arg front_wheel_radius)"/>
+  <xacro:property name="rear_wheel_radius" value="$(arg rear_wheel_radius)"/>
+  <xacro:property name="effective_wheel_radius" value="$(arg effective_wheel_radius)"/>
+  <xacro:property name="wheel_width" value="$(arg wheel_width)"/>
+  <xacro:property name="rear_overhang" value="$(arg rear_overhang)"/>
+  <xacro:property name="vehicle_length" value="$(arg vehicle_length)"/>
+  <xacro:property name="vehicle_height" value="$(arg vehicle_height)"/>
+  <xacro:property name="vehicle_width" value="$(arg vehicle_width)"/>
+  <xacro:property name="total_mass" value="$(arg total_mass)"/>
+  <xacro:property name="body_center_x" value="${-rear_overhang + vehicle_length * 0.5}"/>
+  <xacro:property name="body_bottom_z" value="0.050"/>
+  <xacro:property name="body_height" value="${vehicle_height - body_bottom_z}"/>
+  <xacro:property name="body_center_z" value="${body_bottom_z + body_height * 0.5}"/>
+
+  <!-- Mass allocation: chassis 3.50 + wheels 4*0.14 + knuckles 2*0.01
+       + camera 0.01 + lidar 0.01 = measured total 4.10 kg. -->
+  <xacro:property name="wheel_mass" value="0.14"/>
+  <xacro:property name="small_link_mass" value="0.01"/>
+  <xacro:property name="body_mass" value="${total_mass - 4.0 * wheel_mass - 4.0 * small_link_mass}"/>
+
+  <!-- Box inertia about its centre: Ixx=m(w^2+h^2)/12,
+       Iyy=m(l^2+h^2)/12, Izz=m(l^2+w^2)/12. -->
+  <xacro:property name="body_ixx" value="${body_mass * (vehicle_width**2 + body_height**2) / 12.0}"/>
+  <xacro:property name="body_iyy" value="${body_mass * (vehicle_length**2 + body_height**2) / 12.0}"/>
+  <xacro:property name="body_izz" value="${body_mass * (vehicle_length**2 + vehicle_width**2) / 12.0}"/>
+
+  <!-- Y2 사진을 참고한 시각 재질. CAD 형상이 아닌 measured envelope 안의
+       primitive 기반 표현이며 충돌·질량·관성 계산과 분리되어 있다. -->
+  <material name="y2_blue"><color rgba="0.015 0.16 0.78 1"/></material>
+  <material name="y2_light_blue"><color rgba="0.05 0.55 0.95 1"/></material>
+  <material name="y2_silver"><color rgba="0.72 0.76 0.82 1"/></material>
+  <material name="y2_dark"><color rgba="0.025 0.03 0.04 1"/></material>
+  <material name="y2_glass"><color rgba="0.04 0.10 0.16 0.75"/></material>
+  <material name="y2_red"><color rgba="0.85 0.02 0.02 1"/></material>
+  <material name="y2_white"><color rgba="0.95 0.95 0.78 1"/></material>
+  <material name="y2_lidar"><color rgba="0.02 0.65 0.85 1"/></material>
+
+  <!-- libsdformat does not reliably resolve a URDF global named material on
+       every visual. Expand the color inline so Gazebo keeps the Y2 palette. -->
+  <xacro:macro name="y2_material" params="name rgba">
+    <material name="${name}"><color rgba="${rgba}"/></material>
+  </xacro:macro>
+
+  <xacro:macro name="wheel_link" params="name radius">
+    <link name="${name}">
+      <!-- Solid-cylinder inertia. Cylinder axis is wheel y:
+           Iyy=m*r^2/2, Ixx=Izz=m*(3*r^2+w^2)/12. -->
+      <inertial>
+        <mass value="${wheel_mass}"/>
+        <inertia
+          ixx="${wheel_mass * (3.0 * radius**2 + wheel_width**2) / 12.0}"
+          ixy="0" ixz="0"
+          iyy="${wheel_mass * radius**2 / 2.0}"
+          iyz="0"
+          izz="${wheel_mass * (3.0 * radius**2 + wheel_width**2) / 12.0}"/>
+      </inertial>
+      <visual name="${name}_tire_visual">
+        <origin rpy="1.570796327 0 0"/>
+        <geometry><cylinder radius="${radius}" length="${wheel_width}"/></geometry>
+        <xacro:y2_material name="y2_dark" rgba="0.025 0.03 0.04 1"/>
+      </visual>
+      <visual name="${name}_hub_visual">
+        <origin rpy="1.570796327 0 0"/>
+        <geometry><cylinder radius="${radius * 0.52}" length="${wheel_width + 0.002}"/></geometry>
+        <xacro:y2_material name="y2_silver" rgba="0.72 0.76 0.82 1"/>
+      </visual>
+      <visual name="${name}_hub_cap_visual">
+        <origin rpy="1.570796327 0 0"/>
+        <geometry><cylinder radius="${radius * 0.18}" length="${wheel_width + 0.004}"/></geometry>
+        <xacro:y2_material name="y2_blue" rgba="0.015 0.16 0.78 1"/>
+      </visual>
+      <collision>
+        <origin rpy="1.570796327 0 0"/>
+        <geometry><cylinder radius="${radius}" length="${wheel_width}"/></geometry>
+      </collision>
+    </link>
+    <gazebo reference="${name}">
+      <mu1>$(arg tire_friction_mu)</mu1>
+      <mu2>$(arg tire_friction_mu2)</mu2>
+      <material>Gazebo/Black</material>
+    </gazebo>
+  </xacro:macro>
+
+  <xacro:macro name="small_inertial">
+    <!-- 20 mm cube placeholder inertia: I=m(a^2+a^2)/12. -->
+    <inertial>
+      <mass value="${small_link_mass}"/>
+      <inertia ixx="${small_link_mass * 0.02**2 / 6.0}" ixy="0" ixz="0"
+               iyy="${small_link_mass * 0.02**2 / 6.0}" iyz="0"
+               izz="${small_link_mass * 0.02**2 / 6.0}"/>
+    </inertial>
+  </xacro:macro>
+
+  <!-- base_link origin is the rear axle centre, so Gazebo odometry is measured
+       at the same point as the circle-test trajectories. -->
+  <link name="base_link">
+    <inertial>
+      <origin xyz="${body_center_x} 0 ${body_center_z}"/>
+      <mass value="${body_mass}"/>
+      <inertia ixx="${body_ixx}" ixy="0" ixz="0" iyy="${body_iyy}" iyz="0" izz="${body_izz}"/>
+    </inertial>
+    <visual name="y2_lower_chassis">
+      <origin xyz="0.170 0 0.072"/>
+      <geometry><box size="0.560 0.205 0.032"/></geometry>
+      <xacro:y2_material name="y2_dark" rgba="0.025 0.03 0.04 1"/>
+    </visual>
+    <visual name="y2_center_floor">
+      <origin xyz="0.165 0 0.093"/>
+      <geometry><box size="0.420 0.245 0.030"/></geometry>
+      <xacro:y2_material name="y2_blue" rgba="0.015 0.16 0.78 1"/>
+    </visual>
+    <visual name="y2_left_side_panel">
+      <origin xyz="0.155 0.139 0.119" rpy="0 -0.025 0"/>
+      <geometry><box size="0.390 0.025 0.068"/></geometry>
+      <xacro:y2_material name="y2_blue" rgba="0.015 0.16 0.78 1"/>
+    </visual>
+    <visual name="y2_right_side_panel">
+      <origin xyz="0.155 -0.139 0.119" rpy="0 -0.025 0"/>
+      <geometry><box size="0.390 0.025 0.068"/></geometry>
+      <xacro:y2_material name="y2_blue" rgba="0.015 0.16 0.78 1"/>
+    </visual>
+    <visual name="y2_left_silver_stripe">
+      <origin xyz="0.175 0.153 0.126" rpy="0 -0.08 0"/>
+      <geometry><box size="0.300 0.006 0.016"/></geometry>
+      <xacro:y2_material name="y2_silver" rgba="0.72 0.76 0.82 1"/>
+    </visual>
+    <visual name="y2_right_silver_stripe">
+      <origin xyz="0.175 -0.153 0.126" rpy="0 -0.08 0"/>
+      <geometry><box size="0.300 0.006 0.016"/></geometry>
+      <xacro:y2_material name="y2_silver" rgba="0.72 0.76 0.82 1"/>
+    </visual>
+    <visual name="y2_sloped_hood">
+      <origin xyz="0.380 0 0.119" rpy="0 -0.12 0"/>
+      <geometry><box size="0.180 0.245 0.048"/></geometry>
+      <xacro:y2_material name="y2_silver" rgba="0.72 0.76 0.82 1"/>
+    </visual>
+    <visual name="y2_hood_blue_insert">
+      <origin xyz="0.385 0 0.145" rpy="0 -0.12 0"/>
+      <geometry><box size="0.135 0.105 0.008"/></geometry>
+      <xacro:y2_material name="y2_light_blue" rgba="0.05 0.55 0.95 1"/>
+    </visual>
+    <visual name="y2_rear_deck">
+      <origin xyz="-0.065 0 0.112" rpy="0 0.05 0"/>
+      <geometry><box size="0.145 0.235 0.050"/></geometry>
+      <xacro:y2_material name="y2_silver" rgba="0.72 0.76 0.82 1"/>
+    </visual>
+    <visual name="y2_cabin">
+      <origin xyz="0.130 0 0.143" rpy="0 0.03 0"/>
+      <geometry><box size="0.205 0.205 0.073"/></geometry>
+      <xacro:y2_material name="y2_blue" rgba="0.015 0.16 0.78 1"/>
+    </visual>
+    <visual name="y2_windshield">
+      <origin xyz="0.229 0 0.151" rpy="0 -0.33 0"/>
+      <geometry><box size="0.012 0.180 0.062"/></geometry>
+      <xacro:y2_material name="y2_glass" rgba="0.04 0.10 0.16 0.75"/>
+    </visual>
+    <visual name="y2_roof_panel">
+      <origin xyz="0.120 0 0.179"/>
+      <geometry><box size="0.155 0.190 0.012"/></geometry>
+      <xacro:y2_material name="y2_silver" rgba="0.72 0.76 0.82 1"/>
+    </visual>
+    <visual name="y2_front_bumper">
+      <origin xyz="0.472 0 0.072"/>
+      <geometry><box size="0.018 0.285 0.026"/></geometry>
+      <xacro:y2_material name="y2_dark" rgba="0.025 0.03 0.04 1"/>
+    </visual>
+    <visual name="y2_rear_bumper">
+      <origin xyz="-0.132 0 0.072"/>
+      <geometry><box size="0.016 0.275 0.026"/></geometry>
+      <xacro:y2_material name="y2_dark" rgba="0.025 0.03 0.04 1"/>
+    </visual>
+    <visual name="y2_left_headlight">
+      <origin xyz="0.475 0.078 0.112"/>
+      <geometry><box size="0.008 0.058 0.026"/></geometry>
+      <xacro:y2_material name="y2_white" rgba="0.95 0.95 0.78 1"/>
+    </visual>
+    <visual name="y2_right_headlight">
+      <origin xyz="0.475 -0.078 0.112"/>
+      <geometry><box size="0.008 0.058 0.026"/></geometry>
+      <xacro:y2_material name="y2_white" rgba="0.95 0.95 0.78 1"/>
+    </visual>
+    <visual name="y2_left_tail_light">
+      <origin xyz="-0.138 0.078 0.108"/>
+      <geometry><box size="0.006 0.052 0.022"/></geometry>
+      <xacro:y2_material name="y2_red" rgba="0.85 0.02 0.02 1"/>
+    </visual>
+    <visual name="y2_right_tail_light">
+      <origin xyz="-0.138 -0.078 0.108"/>
+      <geometry><box size="0.006 0.052 0.022"/></geometry>
+      <xacro:y2_material name="y2_red" rgba="0.85 0.02 0.02 1"/>
+    </visual>
+    <visual name="y2_rollbar_front_left">
+      <origin xyz="0.205 0.092 0.145"/>
+      <geometry><cylinder radius="0.005" length="0.075"/></geometry>
+      <xacro:y2_material name="y2_dark" rgba="0.025 0.03 0.04 1"/>
+    </visual>
+    <visual name="y2_rollbar_front_right">
+      <origin xyz="0.205 -0.092 0.145"/>
+      <geometry><cylinder radius="0.005" length="0.075"/></geometry>
+      <xacro:y2_material name="y2_dark" rgba="0.025 0.03 0.04 1"/>
+    </visual>
+    <visual name="y2_rollbar_rear_left">
+      <origin xyz="0.035 0.092 0.145"/>
+      <geometry><cylinder radius="0.005" length="0.075"/></geometry>
+      <xacro:y2_material name="y2_dark" rgba="0.025 0.03 0.04 1"/>
+    </visual>
+    <visual name="y2_rollbar_rear_right">
+      <origin xyz="0.035 -0.092 0.145"/>
+      <geometry><cylinder radius="0.005" length="0.075"/></geometry>
+      <xacro:y2_material name="y2_dark" rgba="0.025 0.03 0.04 1"/>
+    </visual>
+    <visual name="y2_left_roof_rail">
+      <origin xyz="0.120 0.092 0.182" rpy="0 1.570796327 0"/>
+      <geometry><cylinder radius="0.005" length="0.175"/></geometry>
+      <xacro:y2_material name="y2_dark" rgba="0.025 0.03 0.04 1"/>
+    </visual>
+    <visual name="y2_right_roof_rail">
+      <origin xyz="0.120 -0.092 0.182" rpy="0 1.570796327 0"/>
+      <geometry><cylinder radius="0.005" length="0.175"/></geometry>
+      <xacro:y2_material name="y2_dark" rgba="0.025 0.03 0.04 1"/>
+    </visual>
+    <visual name="y2_front_left_spring">
+      <origin xyz="0.350 0.105 0.115"/>
+      <geometry><cylinder radius="0.007" length="0.065"/></geometry>
+      <xacro:y2_material name="y2_red" rgba="0.85 0.02 0.02 1"/>
+    </visual>
+    <visual name="y2_front_right_spring">
+      <origin xyz="0.350 -0.105 0.115"/>
+      <geometry><cylinder radius="0.007" length="0.065"/></geometry>
+      <xacro:y2_material name="y2_red" rgba="0.85 0.02 0.02 1"/>
+    </visual>
+    <visual name="y2_rear_left_spring">
+      <origin xyz="0.000 0.110 0.115"/>
+      <geometry><cylinder radius="0.007" length="0.065"/></geometry>
+      <xacro:y2_material name="y2_red" rgba="0.85 0.02 0.02 1"/>
+    </visual>
+    <visual name="y2_rear_right_spring">
+      <origin xyz="0.000 -0.110 0.115"/>
+      <geometry><cylinder radius="0.007" length="0.065"/></geometry>
+      <xacro:y2_material name="y2_red" rgba="0.85 0.02 0.02 1"/>
+    </visual>
+    <collision>
+      <origin xyz="${body_center_x} 0 ${body_center_z}"/>
+      <geometry><box size="${vehicle_length} ${vehicle_width} ${body_height}"/></geometry>
+    </collision>
+  </link>
+
+  <xacro:wheel_link name="rear_left_wheel" radius="${rear_wheel_radius}"/>
+  <xacro:wheel_link name="rear_right_wheel" radius="${rear_wheel_radius}"/>
+  <joint name="rear_left_wheel_joint" type="continuous">
+    <origin xyz="0 ${rear_track * 0.5} ${rear_wheel_radius}"/>
+    <parent link="base_link"/><child link="rear_left_wheel"/><axis xyz="0 1 0"/>
+  </joint>
+  <joint name="rear_right_wheel_joint" type="continuous">
+    <origin xyz="0 ${-rear_track * 0.5} ${rear_wheel_radius}"/>
+    <parent link="base_link"/><child link="rear_right_wheel"/><axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="front_left_steering_link"><xacro:small_inertial/></link>
+  <link name="front_right_steering_link"><xacro:small_inertial/></link>
+  <joint name="front_left_steering_joint" type="revolute">
+    <origin xyz="${wheelbase} ${front_track * 0.5} ${front_wheel_radius}"/>
+    <parent link="base_link"/><child link="front_left_steering_link"/><axis xyz="0 0 1"/>
+    <limit lower="-$(arg gazebo_steering_limit_rad)" upper="$(arg gazebo_steering_limit_rad)"
+           effort="12.0" velocity="$(arg steering_joint_velocity_rad_s)"/>
+  </joint>
+  <joint name="front_right_steering_joint" type="revolute">
+    <origin xyz="${wheelbase} ${-front_track * 0.5} ${front_wheel_radius}"/>
+    <parent link="base_link"/><child link="front_right_steering_link"/><axis xyz="0 0 1"/>
+    <limit lower="-$(arg gazebo_steering_limit_rad)" upper="$(arg gazebo_steering_limit_rad)"
+           effort="12.0" velocity="$(arg steering_joint_velocity_rad_s)"/>
+  </joint>
+
+  <xacro:wheel_link name="front_left_wheel" radius="${front_wheel_radius}"/>
+  <xacro:wheel_link name="front_right_wheel" radius="${front_wheel_radius}"/>
+  <joint name="front_left_wheel_joint" type="continuous">
+    <parent link="front_left_steering_link"/><child link="front_left_wheel"/><axis xyz="0 1 0"/>
+  </joint>
+  <joint name="front_right_wheel_joint" type="continuous">
+    <parent link="front_right_steering_link"/><child link="front_right_wheel"/><axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="usb_cam">
+    <xacro:small_inertial/>
+    <visual name="camera_body">
+      <geometry><box size="0.052 0.070 0.034"/></geometry>
+      <xacro:y2_material name="y2_dark" rgba="0.025 0.03 0.04 1"/>
+    </visual>
+    <visual name="camera_lens">
+      <origin xyz="0.032 0 0" rpy="0 1.570796327 0"/>
+      <geometry><cylinder radius="0.012" length="0.014"/></geometry>
+      <xacro:y2_material name="y2_glass" rgba="0.04 0.10 0.16 0.75"/>
+    </visual>
+  </link>
+  <joint name="usb_cam_joint" type="fixed">
+    <origin xyz="$(arg camera_xyz)" rpy="$(arg camera_rpy)"/>
+    <parent link="base_link"/><child link="usb_cam"/>
+  </joint>
+  <link name="laser_frame">
+    <xacro:small_inertial/>
+    <visual name="lidar_base">
+      <origin xyz="0 0 -0.010"/>
+      <geometry><cylinder radius="0.040" length="0.016"/></geometry>
+      <xacro:y2_material name="y2_dark" rgba="0.025 0.03 0.04 1"/>
+    </visual>
+    <visual name="lidar_head">
+      <origin xyz="0 0 0.006"/>
+      <geometry><cylinder radius="0.034" length="0.020"/></geometry>
+      <xacro:y2_material name="y2_lidar" rgba="0.02 0.65 0.85 1"/>
+    </visual>
+  </link>
+  <joint name="laser_frame_joint" type="fixed">
+    <origin xyz="$(arg lidar_xyz)" rpy="$(arg lidar_rpy)"/>
+    <parent link="base_link"/><child link="laser_frame"/>
+  </joint>
+
+  <gazebo reference="usb_cam">
+    <sensor name="xycar_camera" type="camera">
+      <topic>/xycar_sim/image_raw</topic>
+      <update_rate>$(arg camera_update_rate_hz)</update_rate>
+      <always_on>true</always_on>
+      <visualize>false</visualize>
+      <camera>
+        <camera_info_topic>/xycar_sim/camera_info_raw</camera_info_topic>
+        <horizontal_fov>$(arg camera_horizontal_fov_rad)</horizontal_fov>
+        <image><width>640</width><height>480</height><format>R8G8B8</format></image>
+        <clip><near>0.05</near><far>100.0</far></clip>
+        <distortion>
+          <k1>-0.361976</k1><k2>0.11051</k2><k3>0.0</k3>
+          <p1>0.001014</p1><p2>0.000505</p2>
+          <center>0.477489588 0.507788233</center>
+        </distortion>
+        <optical_frame_id>usb_cam</optical_frame_id>
+      </camera>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="laser_frame">
+    <sensor name="xycar_lidar" type="gpu_lidar">
+      <topic>/xycar_sim/scan_raw</topic>
+      <update_rate>$(arg lidar_update_rate_hz)</update_rate>
+      <always_on>true</always_on>
+      <visualize>false</visualize>
+      <lidar>
+        <scan><horizontal>
+          <samples>$(arg lidar_samples)</samples><resolution>1</resolution>
+          <min_angle>$(arg lidar_min_angle_rad)</min_angle>
+          <max_angle>$(arg lidar_max_angle_rad)</max_angle>
+        </horizontal></scan>
+        <range>
+          <min>$(arg lidar_min_range_m)</min><max>$(arg lidar_max_range_m)</max>
+          <resolution>$(arg lidar_range_resolution_m)</resolution>
+        </range>
+      </lidar>
+    </sensor>
+  </gazebo>
+
+  <gazebo>
+    <!-- Native Gazebo Sim Harmonic system; Gazebo Classic plugins are not used.
+         Only rear wheel joints are actuated, while both front wheel joints roll passively. -->
+    <plugin filename="gz-sim-ackermann-steering-system" name="gz::sim::systems::AckermannSteering">
+      <left_joint>rear_left_wheel_joint</left_joint>
+      <right_joint>rear_right_wheel_joint</right_joint>
+      <left_steering_joint>front_left_steering_joint</left_steering_joint>
+      <right_steering_joint>front_right_steering_joint</right_steering_joint>
+      <kingpin_width>${front_track}</kingpin_width>
+      <wheel_separation>${rear_track}</wheel_separation>
+      <wheel_base>${wheelbase}</wheel_base>
+      <wheel_radius>${effective_wheel_radius}</wheel_radius>
+      <steering_limit>$(arg gazebo_steering_limit_rad)</steering_limit>
+      <steer_p_gain>12.0</steer_p_gain>
+      <min_velocity>-2.5</min_velocity><max_velocity>2.5</max_velocity>
+      <min_acceleration>$(arg max_deceleration_mps2)</min_acceleration>
+      <max_acceleration>$(arg max_acceleration_mps2)</max_acceleration>
+      <min_jerk>$(arg min_jerk_mps3)</min_jerk><max_jerk>$(arg max_jerk_mps3)</max_jerk>
+      <odom_publish_frequency>50</odom_publish_frequency>
+      <topic>/model/xycar/cmd_vel</topic>
+      <odom_topic>/model/xycar/odometry</odom_topic>
+      <tf_topic>/model/xycar/tf</tf_topic>
+      <frame_id>odom</frame_id><child_frame_id>base_link</child_frame_id>
+    </plugin>
+    <plugin filename="gz-sim-wheel-slip-system" name="gz::sim::systems::WheelSlip">
+      <wheel link_name="front_left_wheel">
+        <wheel_radius>${front_wheel_radius}</wheel_radius>
+        <slip_compliance_lateral>$(arg lateral_slip)</slip_compliance_lateral>
+        <slip_compliance_longitudinal>$(arg longitudinal_slip)</slip_compliance_longitudinal>
+        <wheel_normal_force>$(arg wheel_normal_force_n)</wheel_normal_force>
+      </wheel>
+      <wheel link_name="front_right_wheel">
+        <wheel_radius>${front_wheel_radius}</wheel_radius>
+        <slip_compliance_lateral>$(arg lateral_slip)</slip_compliance_lateral>
+        <slip_compliance_longitudinal>$(arg longitudinal_slip)</slip_compliance_longitudinal>
+        <wheel_normal_force>$(arg wheel_normal_force_n)</wheel_normal_force>
+      </wheel>
+      <wheel link_name="rear_left_wheel">
+        <wheel_radius>${rear_wheel_radius}</wheel_radius>
+        <slip_compliance_lateral>$(arg lateral_slip)</slip_compliance_lateral>
+        <slip_compliance_longitudinal>$(arg longitudinal_slip)</slip_compliance_longitudinal>
+        <wheel_normal_force>$(arg wheel_normal_force_n)</wheel_normal_force>
+      </wheel>
+      <wheel link_name="rear_right_wheel">
+        <wheel_radius>${rear_wheel_radius}</wheel_radius>
+        <slip_compliance_lateral>$(arg lateral_slip)</slip_compliance_lateral>
+        <slip_compliance_longitudinal>$(arg longitudinal_slip)</slip_compliance_longitudinal>
+        <wheel_normal_force>$(arg wheel_normal_force_n)</wheel_normal_force>
+      </wheel>
+    </plugin>
+  </gazebo>
+</robot>

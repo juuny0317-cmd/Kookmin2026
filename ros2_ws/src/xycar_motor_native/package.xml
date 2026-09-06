@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://download.ros.org/schema/package_format3.xsd"?>
+<package format="3">
+  <name>xycar_motor_native</name>
+  <version>1.0.0</version>
+  <description>Native ROS 2 Xycar motor adapter and safe VESC launch for Jetson.</description>
+  <maintainer email="xytron@example.com">xytron</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <depend>rclpy</depend>
+  <depend>std_msgs</depend>
+  <depend>ackermann_msgs</depend>
+  <depend>vesc_msgs</depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>vesc_driver</exec_depend>
+  <exec_depend>vesc_ackermann</exec_depend>
+
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

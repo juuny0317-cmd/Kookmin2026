@@ -1,0 +1,48 @@
+# xacro에도 동일한 기본값이 있으며 launch가 아래 값을 xacro 인자로 전달한다.
+vehicle_model:
+  wheelbase: 0.355
+  front_track: 0.250
+  rear_track: 0.266
+  front_wheel_radius: 0.050
+  rear_wheel_radius: 0.050
+  effective_wheel_radius: 0.050
+  wheel_width: 0.045
+  front_overhang: 0.125
+  rear_overhang: 0.140
+  vehicle_length: 0.620
+  vehicle_height: 0.187
+  total_mass: 4.1
+  vehicle_width: 0.320  # 추정값 — 실측 필요
+
+  # 미측정값 — 실측 후 조정 필요. 센서 mount는 인터페이스 재현용 임시 위치다.
+  camera_xyz: "0.400 0 0.140"
+  camera_rpy: "0 0 0"
+  lidar_xyz: "0.180 0 0.180"
+  lidar_rpy: "0 0 0"
+
+  # 미측정값 — rosbag 센서 데이터로 추정하지 않은 초기 튜닝값.
+  tire_friction_mu: 1.0
+  tire_friction_mu2: 1.0
+  longitudinal_slip: 0.0
+  lateral_slip: 0.0
+  wheel_normal_force_n: 10.05  # 미측정값 — 4.1 kg 균등 정하중 가정, 실제 축중 측정 필요
+  max_acceleration_mps2: 1.5
+  max_deceleration_mps2: -2.0
+  max_jerk_mps3: 10.0
+  min_jerk_mps3: -10.0
+  steering_joint_velocity_rad_s: 1.2
+
+  measured_nominal_max_front_wheel_rad: 0.523599  # 약 30 deg
+  # raw +40 반경 0.5525 m의 순수 Ackermann 안쪽 바퀴는 약 39.7 deg가 필요하다.
+  gazebo_steering_limit_rad: 0.72
+
+sensor_model:
+  camera_update_rate_hz: 30.0
+  camera_horizontal_fov_rad: 1.260227895
+  lidar_update_rate_hz: 9.66
+  lidar_samples: 500
+  lidar_min_angle_rad: -3.141592654
+  lidar_max_angle_rad: 3.141592654
+  lidar_min_range_m: 0.1
+  lidar_max_range_m: 16.0
+  lidar_range_resolution_m: 0.01

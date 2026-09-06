@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="360" viewBox="0 0 1280 360" role="img" aria-labelledby="title desc">
+  <title id="title">Kookmin 2026 Autonomous Driving</title>
+  <desc id="desc">A dark technical banner showing an orange autonomous vehicle path.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#070707"/>
+      <stop offset="1" stop-color="#16100a"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#ff7a00" stroke-opacity=".07"/>
+    </pattern>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1280" height="360" rx="24" fill="url(#bg)"/>
+  <rect width="1280" height="360" rx="24" fill="url(#grid)"/>
+  <path d="M-20 283C142 223 250 305 387 250S652 153 836 184s260 89 464 28" fill="none" stroke="#4b2a10" stroke-width="54" opacity=".9"/>
+  <path d="M-20 283C142 223 250 305 387 250S652 153 836 184s260 89 464 28" fill="none" stroke="#ff7a00" stroke-width="4" filter="url(#glow)"/>
+  <path d="M-20 300C142 240 250 322 387 267S652 170 836 201s260 89 464 28" fill="none" stroke="#ffb05a" stroke-width="2" stroke-dasharray="18 18" opacity=".45"/>
+  <g fill="#ff7a00">
+    <circle cx="970" cy="74" r="5"/><circle cx="1050" cy="104" r="5"/><circle cx="1165" cy="104" r="5"/>
+  </g>
+  <path d="M970 74h80l30 30h85" fill="none" stroke="#ff7a00" stroke-width="2" opacity=".55"/>
+  <g transform="translate(958 190)" fill="none" stroke="#ff7a00" stroke-width="5" stroke-linejoin="round" filter="url(#glow)">
+    <path d="M8 39h142l-17-34H49L29 19z"/><path d="M49 5 68-16h48l17 21"/>
+    <circle cx="38" cy="42" r="18" fill="#0d0b08"/><circle cx="124" cy="42" r="18" fill="#0d0b08"/>
+    <path d="M69-16 79 5h44"/>
+  </g>
+  <text x="76" y="88" fill="#ff7a00" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" font-weight="700" letter-spacing="5">KOOKMIN UNIVERSITY</text>
+  <text x="72" y="153" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="56" font-weight="800">Autonomous Driving 2026</text>
+  <text x="76" y="193" fill="#bdb7b0" font-family="Inter, Arial, sans-serif" font-size="20">ROS 2 · Camera/LiDAR Fusion · Sim-to-Real</text>
+  <rect x="0.75" y="0.75" width="1278.5" height="358.5" rx="23" fill="none" stroke="#ff7a00" stroke-opacity=".65" stroke-width="1.5"/>
+</svg>
+

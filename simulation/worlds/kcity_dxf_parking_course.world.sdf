@@ -1,0 +1,4268 @@
+<?xml version="1.0" ?>
+<sdf version="1.9">
+  <!--
+    Generated from ChatGPT-Image-2026년-8월-1일-오후-09_30_17.dxf.
+    Overall DXF-outline size: 20.150 m x 11.541 m.
+    x points east; y points north; all road markings are visual-only.
+  -->
+  <world name="kcity_dxf_parking_course">
+    <gravity>0 0 -9.80665</gravity>
+    <physics name="default_physics" type="dart">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.48 0.48 0.48 1</ambient>
+      <background>0.68 0.72 0.76 1</background>
+      <shadows>true</shadows>
+    </scene>
+    <light name="sun" type="directional">
+      <pose>0 0 30 0 0 0</pose>
+      <direction>-0.45 0.25 -0.86</direction>
+      <diffuse>0.85 0.85 0.85 1</diffuse>
+      <specular>0.15 0.15 0.15 1</specular>
+    </light>
+
+    <model name="level_ground">
+      <static>true</static>
+      <link name="ground_link">
+        <collision name="ground_collision">
+          <geometry><plane><normal>0 0 1</normal><size>30 22</size></plane></geometry>
+        </collision>
+        <visual name="concrete_surround">
+          <geometry><plane><normal>0 0 1</normal><size>30 22</size></plane></geometry>
+          <material>
+              <ambient>0.34 0.35 0.36 1</ambient>
+              <diffuse>0.34 0.35 0.36 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="dxf_course_surface_and_markings">
+      <static>true</static>
+      <link name="course_link">
+          <visual name="dxf_asphalt_outline">
+            <pose>0 0 0.000000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.004000</height>
+                <point>-8.028244 -5.753529</point>
+                <point>-8.383991 -5.668183</point>
+                <point>-8.716851 -5.528993</point>
+                <point>-9.026290 -5.335441</point>
+                <point>-9.312305 -5.088237</point>
+                <point>-9.605517 -4.737426</point>
+                <point>-9.830423 -4.341845</point>
+                <point>-9.982385 -3.908606</point>
+                <point>-10.058972 -3.445977</point>
+                <point>-10.073678 -3.082389</point>
+                <point>-10.075000 -0.000969</point>
+                <point>-10.074711 3.101219</point>
+                <point>-10.059995 3.416846</point>
+                <point>-10.027889 3.649470</point>
+                <point>-9.975661 3.874702</point>
+                <point>-9.903307 4.092247</point>
+                <point>-9.810988 4.301872</point>
+                <point>-9.449665 4.839505</point>
+                <point>-8.953586 5.282498</point>
+                <point>-8.365493 5.595208</point>
+                <point>-7.733666 5.749819</point>
+                <point>-7.590602 5.757982</point>
+                <point>-5.720348 5.762782</point>
+                <point>-3.299265 5.766783</point>
+                <point>0.303041 5.769155</point>
+                <point>5.225915 5.770623</point>
+                <point>7.073509 5.768121</point>
+                <point>8.150933 5.763389</point>
+                <point>8.358639 5.745907</point>
+                <point>8.611795 5.691391</point>
+                <point>8.859975 5.611552</point>
+                <point>9.091461 5.510716</point>
+                <point>9.294517 5.393306</point>
+                <point>9.478355 5.247287</point>
+                <point>9.655593 5.058127</point>
+                <point>9.807833 4.848291</point>
+                <point>9.916499 4.640094</point>
+                <point>9.990745 4.433827</point>
+                <point>10.039634 4.229828</point>
+                <point>10.065340 4.015834</point>
+                <point>10.069957 3.779404</point>
+                <point>10.029820 3.438130</point>
+                <point>9.927349 3.131989</point>
+                <point>9.747254 2.827919</point>
+                <point>9.470376 2.490646</point>
+                <point>9.187122 2.176551</point>
+                <point>9.078212 2.035805</point>
+                <point>9.032536 1.934026</point>
+                <point>9.023519 1.823619</point>
+                <point>9.047178 1.720890</point>
+                <point>9.097758 1.626599</point>
+                <point>9.195880 1.508375</point>
+                <point>9.396591 1.303725</point>
+                <point>9.590866 1.106578</point>
+                <point>9.708507 0.975338</point>
+                <point>9.796510 0.858001</point>
+                <point>9.884831 0.716739</point>
+                <point>10.019789 0.395337</point>
+                <point>10.075000 0.040700</point>
+                <point>10.047215 -0.322537</point>
+                <point>9.937702 -0.669223</point>
+                <point>9.860760 -0.814867</point>
+                <point>9.762477 -0.956136</point>
+                <point>9.622462 -1.120263</point>
+                <point>9.409047 -1.343696</point>
+                <point>9.245109 -1.512291</point>
+                <point>9.149697 -1.616479</point>
+                <point>9.090286 -1.690302</point>
+                <point>9.055789 -1.748686</point>
+                <point>9.030211 -1.855412</point>
+                <point>9.052311 -1.950669</point>
+                <point>9.138333 -2.072181</point>
+                <point>9.361196 -2.311648</point>
+                <point>9.531420 -2.492885</point>
+                <point>9.648780 -2.627218</point>
+                <point>9.739069 -2.744053</point>
+                <point>9.820868 -2.866361</point>
+                <point>9.885059 -2.979429</point>
+                <point>9.940001 -3.096631</point>
+                <point>9.987142 -3.221438</point>
+                <point>10.027940 -3.357346</point>
+                <point>10.048849 -3.446674</point>
+                <point>10.060078 -3.522120</point>
+                <point>10.065396 -3.613456</point>
+                <point>10.067198 -3.766339</point>
+                <point>10.066106 -3.900132</point>
+                <point>10.061683 -4.003990</point>
+                <point>10.053365 -4.091629</point>
+                <point>10.040294 -4.174217</point>
+                <point>9.964708 -4.463834</point>
+                <point>9.855057 -4.726735</point>
+                <point>9.711116 -4.962639</point>
+                <point>9.533289 -5.171760</point>
+                <point>9.409450 -5.288252</point>
+                <point>9.292357 -5.382229</point>
+                <point>9.169193 -5.463331</point>
+                <point>9.027097 -5.540727</point>
+                <point>8.894314 -5.602672</point>
+                <point>8.768530 -5.652480</point>
+                <point>8.636882 -5.694856</point>
+                <point>8.486195 -5.734359</point>
+                <point>8.347300 -5.767424</point>
+                <point>0.219954 -5.770031</point>
+                <point>-4.007970 -5.770623</point>
+                <point>-6.301471 -5.768282</point>
+                <point>-7.889273 -5.764629</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.055 0.055 0.060 1</ambient>
+              <diffuse>0.055 0.055 0.060 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_continuous_edge_line">
+            <pose>0 0 0.004000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.002000</height>
+                <point>8.453161 -5.629203</point>
+                <point>8.750878 -5.539033</point>
+                <point>9.018121 -5.418028</point>
+                <point>9.254460 -5.266165</point>
+                <point>9.459917 -5.083871</point>
+                <point>9.554804 -4.979052</point>
+                <point>9.631049 -4.881340</point>
+                <point>9.697615 -4.778545</point>
+                <point>9.763030 -4.658372</point>
+                <point>9.884907 -4.343102</point>
+                <point>9.951739 -3.992156</point>
+                <point>9.959162 -3.640888</point>
+                <point>9.903903 -3.324835</point>
+                <point>9.817426 -3.092070</point>
+                <point>9.701106 -2.884347</point>
+                <point>9.527590 -2.658831</point>
+                <point>9.255609 -2.362200</point>
+                <point>9.088907 -2.182691</point>
+                <point>8.994667 -2.063047</point>
+                <point>8.942352 -1.966874</point>
+                <point>8.918307 -1.872024</point>
+                <point>8.915509 -1.821970</point>
+                <point>8.919340 -1.784988</point>
+                <point>8.931751 -1.746273</point>
+                <point>8.958525 -1.688095</point>
+                <point>8.997561 -1.622889</point>
+                <point>9.053843 -1.551861</point>
+                <point>9.143729 -1.454756</point>
+                <point>9.305523 -1.291481</point>
+                <point>9.555683 -1.030598</point>
+                <point>9.713299 -0.834880</point>
+                <point>9.819585 -0.653493</point>
+                <point>9.901473 -0.445951</point>
+                <point>9.950983 -0.231246</point>
+                <point>9.966522 -0.010213</point>
+                <point>9.947724 0.210179</point>
+                <point>9.895060 0.422977</point>
+                <point>9.814393 0.617350</point>
+                <point>9.710158 0.788879</point>
+                <point>9.555168 0.977253</point>
+                <point>9.306552 1.233943</point>
+                <point>9.149331 1.391777</point>
+                <point>9.065444 1.482638</point>
+                <point>9.012807 1.550826</point>
+                <point>8.973022 1.619039</point>
+                <point>8.943981 1.683110</point>
+                <point>8.929749 1.728325</point>
+                <point>8.923534 1.776748</point>
+                <point>8.922198 1.853191</point>
+                <point>8.937916 1.986843</point>
+                <point>8.982774 2.095813</point>
+                <point>9.080819 2.227920</point>
+                <point>9.311192 2.482717</point>
+                <point>9.488099 2.679213</point>
+                <point>9.612081 2.830638</point>
+                <point>9.706272 2.965175</point>
+                <point>9.787757 3.105795</point>
+                <point>9.934834 3.530352</point>
+                <point>9.960642 3.999136</point>
+                <point>9.864405 4.465002</point>
+                <point>9.653904 4.880933</point>
+                <point>9.567393 4.990628</point>
+                <point>9.448828 5.114081</point>
+                <point>9.320871 5.230125</point>
+                <point>9.204971 5.317179</point>
+                <point>9.027081 5.419174</point>
+                <point>8.821117 5.507350</point>
+                <point>8.594577 5.579010</point>
+                <point>8.354854 5.631437</point>
+                <point>8.129131 5.651873</point>
+                <point>7.192075 5.657586</point>
+                <point>5.499024 5.660670</point>
+                <point>0.296260 5.660398</point>
+                <point>-4.137891 5.659015</point>
+                <point>-6.225445 5.655526</point>
+                <point>-7.556039 5.650735</point>
+                <point>-7.755852 5.637260</point>
+                <point>-8.435884 5.446377</point>
+                <point>-9.049875 5.068376</point>
+                <point>-9.537170 4.543422</point>
+                <point>-9.846909 3.922916</point>
+                <point>-9.889718 3.778401</point>
+                <point>-9.919338 3.648963</point>
+                <point>-9.939378 3.516818</point>
+                <point>-9.952998 3.363972</point>
+                <point>-9.961921 3.084283</point>
+                <point>-9.959872 -0.029206</point>
+                <point>-9.956935 -3.115726</point>
+                <point>-9.947611 -3.456653</point>
+                <point>-9.924619 -3.658566</point>
+                <point>-9.875767 -3.881999</point>
+                <point>-9.806436 -4.107373</point>
+                <point>-9.721620 -4.315444</point>
+                <point>-9.496114 -4.700375</point>
+                <point>-9.198351 -5.042583</point>
+                <point>-8.848121 -5.321195</point>
+                <point>-8.466972 -5.517460</point>
+                <point>-8.347318 -5.562134</point>
+                <point>-8.257702 -5.590867</point>
+                <point>-8.165269 -5.613898</point>
+                <point>-8.035798 -5.639993</point>
+                <point>-7.847987 -5.658077</point>
+                <point>-6.759412 -5.662806</point>
+                <point>-4.892524 -5.665466</point>
+                <point>0.212401 -5.664356</point>
+                <point>8.317087 -5.661677</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_inner_asphalt">
+            <pose>0 0 0.007000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.002000</height>
+                <point>-7.967818 -5.572329</point>
+                <point>-8.301550 -5.493112</point>
+                <point>-8.612989 -5.364785</point>
+                <point>-8.901844 -5.186789</point>
+                <point>-9.168328 -4.959673</point>
+                <point>-9.404084 -4.688903</point>
+                <point>-9.593011 -4.389215</point>
+                <point>-9.736432 -4.056878</point>
+                <point>-9.836480 -3.688714</point>
+                <point>-9.871249 -3.517080</point>
+                <point>-9.871249 -0.004797</point>
+                <point>-9.870218 2.686193</point>
+                <point>-9.861126 3.304736</point>
+                <point>-9.830472 3.637988</point>
+                <point>-9.758549 3.930566</point>
+                <point>-9.558085 4.365322</point>
+                <point>-9.269489 4.754691</point>
+                <point>-8.903240 5.084236</point>
+                <point>-8.472885 5.341821</point>
+                <point>-8.277075 5.425881</point>
+                <point>-8.083905 5.489932</point>
+                <point>-7.883441 5.536782</point>
+                <point>-7.665686 5.569201</point>
+                <point>-7.536104 5.576539</point>
+                <point>-5.568296 5.580535</point>
+                <point>-3.114395 5.583535</point>
+                <point>0.325701 5.584479</point>
+                <point>6.176746 5.583723</point>
+                <point>7.562171 5.576472</point>
+                <point>8.250956 5.556524</point>
+                <point>8.610210 5.500021</point>
+                <point>9.012849 5.341864</point>
+                <point>9.354037 5.104396</point>
+                <point>9.618268 4.797825</point>
+                <point>9.794603 4.436259</point>
+                <point>9.838466 4.288990</point>
+                <point>9.865341 4.158332</point>
+                <point>9.879436 4.019830</point>
+                <point>9.883950 3.847383</point>
+                <point>9.882474 3.714623</point>
+                <point>9.877231 3.628943</point>
+                <point>9.866137 3.555290</point>
+                <point>9.845899 3.467923</point>
+                <point>9.805986 3.337560</point>
+                <point>9.756444 3.214311</point>
+                <point>9.695060 3.093337</point>
+                <point>9.619601 2.969771</point>
+                <point>9.553854 2.877546</point>
+                <point>9.475526 2.781055</point>
+                <point>9.354089 2.643437</point>
+                <point>9.115517 2.381916</point>
+                <point>8.989874 2.234811</point>
+                <point>8.909304 2.114540</point>
+                <point>8.862340 2.004400</point>
+                <point>8.841527 1.890525</point>
+                <point>8.854865 1.725362</point>
+                <point>8.914791 1.571446</point>
+                <point>9.033727 1.406728</point>
+                <point>9.232327 1.203727</point>
+                <point>9.395043 1.045170</point>
+                <point>9.519478 0.911248</point>
+                <point>9.617873 0.788832</point>
+                <point>9.699986 0.666368</point>
+                <point>9.819050 0.407280</point>
+                <point>9.881012 0.121547</point>
+                <point>9.882252 -0.170417</point>
+                <point>9.821895 -0.447919</point>
+                <point>9.741656 -0.640405</point>
+                <point>9.640531 -0.807881</point>
+                <point>9.491789 -0.989688</point>
+                <point>9.254049 -1.235985</point>
+                <point>9.066511 -1.425933</point>
+                <point>8.964827 -1.540646</point>
+                <point>8.903684 -1.629210</point>
+                <point>8.863272 -1.718310</point>
+                <point>8.845174 -1.787950</point>
+                <point>8.839605 -1.851966</point>
+                <point>8.846583 -1.914898</point>
+                <point>8.866131 -1.981243</point>
+                <point>8.907177 -2.066410</point>
+                <point>8.965608 -2.151619</point>
+                <point>9.059997 -2.262306</point>
+                <point>9.230984 -2.444512</point>
+                <point>9.423316 -2.652037</point>
+                <point>9.553382 -2.808352</point>
+                <point>9.649161 -2.946880</point>
+                <point>9.730315 -3.094095</point>
+                <point>9.812512 -3.292465</point>
+                <point>9.863386 -3.485526</point>
+                <point>9.885273 -3.685943</point>
+                <point>9.880463 -3.906457</point>
+                <point>9.856935 -4.100707</point>
+                <point>9.817547 -4.287063</point>
+                <point>9.763314 -4.461460</point>
+                <point>9.695302 -4.619861</point>
+                <point>9.481909 -4.947259</point>
+                <point>9.200346 -5.214849</point>
+                <point>8.854019 -5.417326</point>
+                <point>8.449177 -5.552138</point>
+                <point>8.301981 -5.586156</point>
+                <point>0.227508 -5.588764</point>
+                <point>-3.963385 -5.589352</point>
+                <point>-6.246075 -5.587015</point>
+                <point>-7.829181 -5.583367</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.055 0.055 0.060 1</ambient>
+              <diffuse>0.055 0.055 0.060 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_000">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-7.280468 -5.239231</point>
+                <point>-7.280468 -5.201465</point>
+                <point>-7.431534 -5.201465</point>
+                <point>-7.582600 -5.201465</point>
+                <point>-7.582600 -5.239231</point>
+                <point>-7.582600 -5.276998</point>
+                <point>-7.431534 -5.276998</point>
+                <point>-7.280468 -5.276998</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_001">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-6.709191 -5.235455</point>
+                <point>-6.711840 -5.219800</point>
+                <point>-6.715895 -5.207224</point>
+                <point>-6.720613 -5.199130</point>
+                <point>-6.725301 -5.197688</point>
+                <point>-6.733752 -5.199202</point>
+                <point>-6.773241 -5.200355</point>
+                <point>-6.819671 -5.201191</point>
+                <point>-6.872590 -5.201465</point>
+                <point>-6.962255 -5.202130</point>
+                <point>-6.991177 -5.206290</point>
+                <point>-7.003926 -5.217314</point>
+                <point>-7.008550 -5.239231</point>
+                <point>-7.008550 -5.276998</point>
+                <point>-6.856480 -5.276998</point>
+                <point>-6.704411 -5.276998</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_002">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-6.132367 -5.239231</point>
+                <point>-6.136991 -5.217314</point>
+                <point>-6.149740 -5.206290</point>
+                <point>-6.178662 -5.202130</point>
+                <point>-6.268327 -5.201465</point>
+                <point>-6.321246 -5.201431</point>
+                <point>-6.367676 -5.201327</point>
+                <point>-6.407325 -5.201184</point>
+                <point>-6.415616 -5.200995</point>
+                <point>-6.420303 -5.203332</point>
+                <point>-6.425022 -5.211895</point>
+                <point>-6.429070 -5.224148</point>
+                <point>-6.431726 -5.238762</point>
+                <point>-6.436506 -5.276998</point>
+                <point>-6.284437 -5.276998</point>
+                <point>-6.132367 -5.276998</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_003">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-5.561043 -5.235455</point>
+                <point>-5.561961 -5.216353</point>
+                <point>-5.570779 -5.206376</point>
+                <point>-5.592284 -5.202157</point>
+                <point>-5.651682 -5.201298</point>
+                <point>-5.692271 -5.200567</point>
+                <point>-5.735287 -5.198505</point>
+                <point>-5.774556 -5.195542</point>
+                <point>-5.802234 -5.192023</point>
+                <point>-5.832714 -5.188205</point>
+                <point>-5.849221 -5.190276</point>
+                <point>-5.859643 -5.198401</point>
+                <point>-5.867412 -5.214714</point>
+                <point>-5.869572 -5.247884</point>
+                <point>-5.853787 -5.266911</point>
+                <point>-5.811752 -5.274806</point>
+                <point>-5.711939 -5.273753</point>
+                <point>-5.620944 -5.270303</point>
+                <point>-5.586282 -5.265155</point>
+                <point>-5.569486 -5.254539</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_004">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-4.984266 -5.239231</point>
+                <point>-4.984266 -5.201465</point>
+                <point>-5.135332 -5.201465</point>
+                <point>-5.286398 -5.201465</point>
+                <point>-5.286398 -5.239231</point>
+                <point>-5.286398 -5.276998</point>
+                <point>-5.135332 -5.276998</point>
+                <point>-4.984266 -5.276998</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_005">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-4.413080 -5.236513</point>
+                <point>-4.416245 -5.218044</point>
+                <point>-4.429347 -5.207521</point>
+                <point>-4.461373 -5.202491</point>
+                <point>-4.553153 -5.198746</point>
+                <point>-4.662844 -5.195883</point>
+                <point>-4.702636 -5.199093</point>
+                <point>-4.720440 -5.209906</point>
+                <point>-4.727454 -5.230419</point>
+                <point>-4.720147 -5.256080</point>
+                <point>-4.701066 -5.270170</point>
+                <point>-4.660208 -5.275359</point>
+                <point>-4.562030 -5.273732</point>
+                <point>-4.473361 -5.270315</point>
+                <point>-4.438513 -5.265187</point>
+                <point>-4.421524 -5.254843</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_006">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-3.859668 -5.263254</point>
+                <point>-3.857065 -5.256270</point>
+                <point>-3.856377 -5.246491</point>
+                <point>-3.857494 -5.235696</point>
+                <point>-3.860392 -5.225488</point>
+                <point>-3.871855 -5.213255</point>
+                <point>-3.895356 -5.206126</point>
+                <point>-3.936159 -5.202395</point>
+                <point>-4.011507 -5.201465</point>
+                <point>-4.105479 -5.202116</point>
+                <point>-4.135437 -5.206247</point>
+                <point>-4.148588 -5.217306</point>
+                <point>-4.153404 -5.239231</point>
+                <point>-4.148565 -5.261157</point>
+                <point>-4.135365 -5.272221</point>
+                <point>-4.105280 -5.276348</point>
+                <point>-4.010783 -5.276998</point>
+                <point>-3.955512 -5.276002</point>
+                <point>-3.907561 -5.272961</point>
+                <point>-3.868191 -5.268723</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_007">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-3.307435 -5.239231</point>
+                <point>-3.312274 -5.217305</point>
+                <point>-3.325473 -5.206241</point>
+                <point>-3.355559 -5.202115</point>
+                <point>-3.450056 -5.201465</point>
+                <point>-3.543780 -5.203137</point>
+                <point>-3.585563 -5.210862</point>
+                <point>-3.601304 -5.227079</point>
+                <point>-3.600446 -5.252975</point>
+                <point>-3.588984 -5.265207</point>
+                <point>-3.565483 -5.272336</point>
+                <point>-3.524679 -5.276067</point>
+                <point>-3.449331 -5.276998</point>
+                <point>-3.355360 -5.276346</point>
+                <point>-3.325401 -5.272216</point>
+                <point>-3.312250 -5.261156</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_008">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-2.733384 -5.239231</point>
+                <point>-2.733384 -5.201465</point>
+                <point>-2.884450 -5.201465</point>
+                <point>-3.035516 -5.201465</point>
+                <point>-3.035516 -5.239231</point>
+                <point>-3.035516 -5.276998</point>
+                <point>-2.884450 -5.276998</point>
+                <point>-2.733384 -5.276998</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_009">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-2.174440 -5.239231</point>
+                <point>-2.174440 -5.201465</point>
+                <point>-2.325506 -5.201465</point>
+                <point>-2.476572 -5.201465</point>
+                <point>-2.476572 -5.239231</point>
+                <point>-2.476572 -5.276998</point>
+                <point>-2.325506 -5.276998</point>
+                <point>-2.174440 -5.276998</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_010">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-1.615496 -5.239231</point>
+                <point>-1.615496 -5.201465</point>
+                <point>-1.766562 -5.201465</point>
+                <point>-1.855816 -5.202214</point>
+                <point>-1.893252 -5.205934</point>
+                <point>-1.910859 -5.214370</point>
+                <point>-1.917628 -5.229160</point>
+                <point>-1.916886 -5.240502</point>
+                <point>-1.914670 -5.251678</point>
+                <point>-1.911433 -5.261157</point>
+                <point>-1.907557 -5.266927</point>
+                <point>-1.898941 -5.270948</point>
+                <point>-1.859027 -5.274039</point>
+                <point>-1.811251 -5.276268</point>
+                <point>-1.756491 -5.276998</point>
+                <point>-1.663174 -5.276344</point>
+                <point>-1.633373 -5.272209</point>
+                <point>-1.620283 -5.261155</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_011">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-0.965913 -5.239231</point>
+                <point>-0.965913 -5.201465</point>
+                <point>-1.162299 -5.201465</point>
+                <point>-1.238174 -5.202452</point>
+                <point>-1.301438 -5.205508</point>
+                <point>-1.353543 -5.209708</point>
+                <point>-1.358684 -5.215336</point>
+                <point>-1.350115 -5.249043</point>
+                <point>-1.327292 -5.267581</point>
+                <point>-1.277795 -5.275467</point>
+                <point>-1.153129 -5.276998</point>
+                <point>-0.965913 -5.276998</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_012">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-0.316330 -5.239231</point>
+                <point>-0.316330 -5.201465</point>
+                <point>-0.482502 -5.201465</point>
+                <point>-0.648675 -5.201465</point>
+                <point>-0.648675 -5.239231</point>
+                <point>-0.648675 -5.276998</point>
+                <point>-0.482502 -5.276998</point>
+                <point>-0.316330 -5.276998</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_013">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>0.303041 -5.240303</point>
+                <point>0.298162 -5.219216</point>
+                <point>0.284947 -5.207901</point>
+                <point>0.255217 -5.202601</point>
+                <point>0.168782 -5.198760</point>
+                <point>0.056678 -5.195857</point>
+                <point>0.013283 -5.200381</point>
+                <point>-0.006542 -5.214278</point>
+                <point>-0.014198 -5.240339</point>
+                <point>-0.008657 -5.261444</point>
+                <point>0.005920 -5.272348</point>
+                <point>0.039370 -5.276367</point>
+                <point>0.144421 -5.276998</point>
+                <point>0.249508 -5.276367</point>
+                <point>0.282939 -5.272347</point>
+                <point>0.297506 -5.261435</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_014">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>0.934791 -5.235455</point>
+                <point>0.931246 -5.216278</point>
+                <point>0.917168 -5.205900</point>
+                <point>0.882045 -5.202068</point>
+                <point>0.772396 -5.201465</point>
+                <point>0.605172 -5.201465</point>
+                <point>0.605172 -5.239742</point>
+                <point>0.605172 -5.278020</point>
+                <point>0.767568 -5.273732</point>
+                <point>0.869947 -5.270300</point>
+                <point>0.907726 -5.265252</point>
+                <point>0.925807 -5.254644</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_015">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>1.571994 -5.239231</point>
+                <point>1.571994 -5.201465</point>
+                <point>1.405822 -5.201465</point>
+                <point>1.239649 -5.201465</point>
+                <point>1.239649 -5.239231</point>
+                <point>1.239649 -5.276998</point>
+                <point>1.405822 -5.276998</point>
+                <point>1.571994 -5.276998</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_016">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>2.206471 -5.239231</point>
+                <point>2.206471 -5.201465</point>
+                <point>2.047852 -5.201465</point>
+                <point>1.889233 -5.201465</point>
+                <point>1.889233 -5.239231</point>
+                <point>1.889233 -5.276998</point>
+                <point>2.047852 -5.276998</point>
+                <point>2.206471 -5.276998</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_017">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>2.810735 -5.239231</point>
+                <point>2.810735 -5.201465</point>
+                <point>2.659669 -5.201465</point>
+                <point>2.508603 -5.201465</point>
+                <point>2.508603 -5.239231</point>
+                <point>2.508603 -5.276998</point>
+                <point>2.659669 -5.276998</point>
+                <point>2.810735 -5.276998</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_018">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>3.369679 -5.239231</point>
+                <point>3.369679 -5.201465</point>
+                <point>3.218613 -5.201465</point>
+                <point>3.129359 -5.202214</point>
+                <point>3.091923 -5.205934</point>
+                <point>3.074316 -5.214370</point>
+                <point>3.067547 -5.229160</point>
+                <point>3.068290 -5.240502</point>
+                <point>3.070505 -5.251678</point>
+                <point>3.073742 -5.261157</point>
+                <point>3.077618 -5.266927</point>
+                <point>3.086234 -5.270948</point>
+                <point>3.126148 -5.274039</point>
+                <point>3.173924 -5.276268</point>
+                <point>3.228684 -5.276998</point>
+                <point>3.322001 -5.276344</point>
+                <point>3.351803 -5.272209</point>
+                <point>3.364892 -5.261155</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_019">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>3.943729 -5.239231</point>
+                <point>3.939106 -5.217314</point>
+                <point>3.926357 -5.206290</point>
+                <point>3.897434 -5.202130</point>
+                <point>3.807770 -5.201465</point>
+                <point>3.754850 -5.201431</point>
+                <point>3.708420 -5.201327</point>
+                <point>3.668772 -5.201184</point>
+                <point>3.660481 -5.200995</point>
+                <point>3.655794 -5.203332</point>
+                <point>3.651075 -5.211895</point>
+                <point>3.647026 -5.224148</point>
+                <point>3.644371 -5.238762</point>
+                <point>3.639590 -5.276998</point>
+                <point>3.791660 -5.276998</point>
+                <point>3.943729 -5.276998</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_020">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>4.515054 -5.235455</point>
+                <point>4.512052 -5.216288</point>
+                <point>4.499100 -5.205965</point>
+                <point>4.466842 -5.202086</point>
+                <point>4.367764 -5.201465</point>
+                <point>4.215648 -5.201465</point>
+                <point>4.215648 -5.239778</point>
+                <point>4.215648 -5.278092</point>
+                <point>4.362937 -5.273768</point>
+                <point>4.454778 -5.270309</point>
+                <point>4.489675 -5.265165</point>
+                <point>4.506569 -5.254547</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_021">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>5.076723 -5.239231</point>
+                <point>5.076723 -5.201465</point>
+                <point>4.925658 -5.201465</point>
+                <point>4.774592 -5.201465</point>
+                <point>4.774592 -5.239231</point>
+                <point>4.774592 -5.276998</point>
+                <point>4.925658 -5.276998</point>
+                <point>5.076723 -5.276998</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_022">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>5.635667 -5.239231</point>
+                <point>5.630828 -5.217305</point>
+                <point>5.617629 -5.206241</point>
+                <point>5.587543 -5.202115</point>
+                <point>5.493046 -5.201465</point>
+                <point>5.399322 -5.203137</point>
+                <point>5.357539 -5.210862</point>
+                <point>5.341798 -5.227079</point>
+                <point>5.342656 -5.252975</point>
+                <point>5.354118 -5.265207</point>
+                <point>5.377619 -5.272336</point>
+                <point>5.418423 -5.276067</point>
+                <point>5.493771 -5.276998</point>
+                <point>5.587742 -5.276346</point>
+                <point>5.617701 -5.272216</point>
+                <point>5.630852 -5.261156</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_023">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>6.209718 -5.239231</point>
+                <point>6.209718 -5.201465</point>
+                <point>6.058652 -5.201465</point>
+                <point>5.907586 -5.201465</point>
+                <point>5.907586 -5.239231</point>
+                <point>5.907586 -5.276998</point>
+                <point>6.058652 -5.276998</point>
+                <point>6.209718 -5.276998</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_024">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>6.768662 -5.239231</point>
+                <point>6.764038 -5.217314</point>
+                <point>6.751289 -5.206290</point>
+                <point>6.722367 -5.202130</point>
+                <point>6.632702 -5.201465</point>
+                <point>6.579783 -5.201431</point>
+                <point>6.533353 -5.201327</point>
+                <point>6.493704 -5.201184</point>
+                <point>6.485413 -5.200995</point>
+                <point>6.480726 -5.203332</point>
+                <point>6.476007 -5.211895</point>
+                <point>6.471958 -5.224148</point>
+                <point>6.469303 -5.238762</point>
+                <point>6.464523 -5.276998</point>
+                <point>6.616592 -5.276998</point>
+                <point>6.768662 -5.276998</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_025">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>7.327606 -5.240268</point>
+                <point>7.322368 -5.219112</point>
+                <point>7.308376 -5.207757</point>
+                <point>7.276657 -5.202543</point>
+                <point>7.182132 -5.198725</point>
+                <point>7.084932 -5.197407</point>
+                <point>7.042987 -5.205005</point>
+                <point>7.027814 -5.223314</point>
+                <point>7.030937 -5.254338</point>
+                <point>7.042187 -5.265711</point>
+                <point>7.067091 -5.272399</point>
+                <point>7.109288 -5.276053</point>
+                <point>7.183619 -5.276998</point>
+                <point>7.278224 -5.276341</point>
+                <point>7.309024 -5.272258</point>
+                <point>7.322559 -5.261404</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_026">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>7.883776 -5.235455</point>
+                <point>7.881127 -5.219800</point>
+                <point>7.877072 -5.207224</point>
+                <point>7.872354 -5.199130</point>
+                <point>7.867666 -5.197688</point>
+                <point>7.859215 -5.199202</point>
+                <point>7.819726 -5.200355</point>
+                <point>7.773296 -5.201191</point>
+                <point>7.720377 -5.201465</point>
+                <point>7.630712 -5.202130</point>
+                <point>7.601790 -5.206290</point>
+                <point>7.589041 -5.217314</point>
+                <point>7.584418 -5.239231</point>
+                <point>7.584418 -5.276998</point>
+                <point>7.736487 -5.276998</point>
+                <point>7.888556 -5.276998</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_027">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>8.336857 -5.244473</point>
+                <point>8.381993 -5.234779</point>
+                <point>8.402367 -5.226152</point>
+                <point>8.411157 -5.214367</point>
+                <point>8.412374 -5.196433</point>
+                <point>8.402838 -5.176775</point>
+                <point>8.384310 -5.167994</point>
+                <point>8.345331 -5.168836</point>
+                <point>8.234001 -5.182882</point>
+                <point>8.184391 -5.190624</point>
+                <point>8.162947 -5.198742</point>
+                <point>8.151886 -5.212104</point>
+                <point>8.146049 -5.236343</point>
+                <point>8.149000 -5.262183</point>
+                <point>8.163198 -5.272664</point>
+                <point>8.199282 -5.270168</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_028">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-7.854519 -5.224809</point>
+                <point>-7.857099 -5.205093</point>
+                <point>-7.864977 -5.192920</point>
+                <point>-7.880723 -5.185018</point>
+                <point>-7.911168 -5.178773</point>
+                <point>-7.938642 -5.173832</point>
+                <point>-7.975369 -5.166080</point>
+                <point>-8.014497 -5.157095</point>
+                <point>-8.050175 -5.148137</point>
+                <point>-8.106295 -5.135963</point>
+                <point>-8.135568 -5.138775</point>
+                <point>-8.151019 -5.155006</point>
+                <point>-8.156419 -5.188295</point>
+                <point>-8.150542 -5.201254</point>
+                <point>-8.132586 -5.212500</point>
+                <point>-8.100526 -5.223416</point>
+                <point>-8.047128 -5.235704</point>
+                <point>-7.937824 -5.256908</point>
+                <point>-7.888108 -5.259929</point>
+                <point>-7.864244 -5.248961</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_029">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>8.836315 -5.072340</point>
+                <point>8.909131 -5.030369</point>
+                <point>8.936454 -5.009783</point>
+                <point>8.944568 -4.993029</point>
+                <point>8.940056 -4.974147</point>
+                <point>8.922351 -4.953086</point>
+                <point>8.905106 -4.947832</point>
+                <point>8.879299 -4.956068</point>
+                <point>8.811599 -4.992185</point>
+                <point>8.707664 -5.049935</point>
+                <point>8.676681 -5.071598</point>
+                <point>8.667709 -5.089319</point>
+                <point>8.672368 -5.111341</point>
+                <point>8.679404 -5.122708</point>
+                <point>8.687396 -5.132315</point>
+                <point>8.695158 -5.139063</point>
+                <point>8.701208 -5.141038</point>
+                <point>8.710062 -5.138974</point>
+                <point>8.746235 -5.120858</point>
+                <point>8.788565 -5.098664</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_030">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-8.398193 -5.065201</point>
+                <point>-8.391517 -5.047825</point>
+                <point>-8.393125 -5.035460</point>
+                <point>-8.403583 -5.024079</point>
+                <point>-8.429208 -5.008552</point>
+                <point>-8.452721 -4.995200</point>
+                <point>-8.485552 -4.975830</point>
+                <point>-8.521207 -4.954364</point>
+                <point>-8.554532 -4.933855</point>
+                <point>-8.601269 -4.905749</point>
+                <point>-8.623137 -4.896960</point>
+                <point>-8.637839 -4.898782</point>
+                <point>-8.651391 -4.910306</point>
+                <point>-8.666145 -4.933755</point>
+                <point>-8.667638 -4.949499</point>
+                <point>-8.657808 -4.964517</point>
+                <point>-8.628731 -4.986895</point>
+                <point>-8.582358 -5.016504</point>
+                <point>-8.514329 -5.054353</point>
+                <point>-8.444331 -5.091135</point>
+                <point>-8.425444 -5.095719</point>
+                <point>-8.420192 -5.093802</point>
+                <point>-8.412935 -5.086754</point>
+                <point>-8.405247 -5.076886</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_031">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-1.056553 -4.672734</point>
+                <point>-1.056553 -4.521668</point>
+                <point>-1.101872 -4.521668</point>
+                <point>-1.147192 -4.521668</point>
+                <point>-1.147192 -4.662663</point>
+                <point>-1.146462 -4.717423</point>
+                <point>-1.144234 -4.765199</point>
+                <point>-1.141143 -4.805113</point>
+                <point>-1.137121 -4.813729</point>
+                <point>-1.130939 -4.817618</point>
+                <point>-1.119654 -4.820842</point>
+                <point>-1.106034 -4.823059</point>
+                <point>-1.091801 -4.823800</point>
+                <point>-1.071758 -4.818274</point>
+                <point>-1.061210 -4.803838</point>
+                <point>-1.057210 -4.771016</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_032">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>9.268062 -4.710900</point>
+                <point>9.300180 -4.669401</point>
+                <point>9.327265 -4.631903</point>
+                <point>9.348891 -4.599901</point>
+                <point>9.351889 -4.589905</point>
+                <point>9.349908 -4.582646</point>
+                <point>9.343407 -4.573556</point>
+                <point>9.334064 -4.564279</point>
+                <point>9.323015 -4.556224</point>
+                <point>9.304016 -4.551592</point>
+                <point>9.285619 -4.559069</point>
+                <point>9.261326 -4.584095</point>
+                <point>9.213492 -4.647006</point>
+                <point>9.182213 -4.689558</point>
+                <point>9.155005 -4.727333</point>
+                <point>9.132184 -4.759599</point>
+                <point>9.127638 -4.767658</point>
+                <point>9.128092 -4.781926</point>
+                <point>9.141507 -4.802016</point>
+                <point>9.158823 -4.818460</point>
+                <point>9.172136 -4.820526</point>
+                <point>9.179561 -4.815567</point>
+                <point>9.205305 -4.786558</point>
+                <point>9.235063 -4.751578</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_033">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-8.873871 -4.752797</point>
+                <point>-8.868757 -4.734269</point>
+                <point>-8.875871 -4.712379</point>
+                <point>-8.899210 -4.679922</point>
+                <point>-8.953794 -4.618133</point>
+                <point>-9.010608 -4.556920</point>
+                <point>-9.040263 -4.531008</point>
+                <point>-9.061178 -4.522544</point>
+                <point>-9.080431 -4.526597</point>
+                <point>-9.091121 -4.534370</point>
+                <point>-9.100160 -4.543286</point>
+                <point>-9.106456 -4.551997</point>
+                <point>-9.108366 -4.558913</point>
+                <point>-9.101700 -4.575734</point>
+                <point>-9.008680 -4.673965</point>
+                <point>-8.914739 -4.771782</point>
+                <point>-8.898944 -4.778480</point>
+                <point>-8.895527 -4.777181</point>
+                <point>-8.888983 -4.770936</point>
+                <point>-8.881523 -4.762635</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_034">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-9.216784 -4.285651</point>
+                <point>-9.215744 -4.282513</point>
+                <point>-9.231538 -4.245496</point>
+                <point>-9.250457 -4.202953</point>
+                <point>-9.273864 -4.152970</point>
+                <point>-9.314499 -4.072162</point>
+                <point>-9.340161 -4.037561</point>
+                <point>-9.364027 -4.027725</point>
+                <point>-9.391998 -4.035841</point>
+                <point>-9.401134 -4.051713</point>
+                <point>-9.397203 -4.077576</point>
+                <point>-9.377312 -4.124232</point>
+                <point>-9.322378 -4.232043</point>
+                <point>-9.292917 -4.287012</point>
+                <point>-9.276897 -4.308403</point>
+                <point>-9.263074 -4.313813</point>
+                <point>-9.247290 -4.308074</point>
+                <point>-9.237120 -4.300373</point>
+                <point>-9.227759 -4.293418</point>
+                <point>-9.219864 -4.287661</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_035">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>9.502254 -4.268633</point>
+                <point>9.521029 -4.195182</point>
+                <point>9.537476 -4.117551</point>
+                <point>9.551118 -4.043803</point>
+                <point>9.547434 -4.032999</point>
+                <point>9.542990 -4.030060</point>
+                <point>9.532951 -4.025702</point>
+                <point>9.520747 -4.021065</point>
+                <point>9.507558 -4.016718</point>
+                <point>9.489165 -4.013525</point>
+                <point>9.478393 -4.018010</point>
+                <point>9.471297 -4.031524</point>
+                <point>9.464779 -4.063938</point>
+                <point>9.459510 -4.091707</point>
+                <point>9.451313 -4.128667</point>
+                <point>9.441844 -4.167955</point>
+                <point>9.432438 -4.203680</point>
+                <point>9.419436 -4.253852</point>
+                <point>9.417187 -4.276561</point>
+                <point>9.422415 -4.291515</point>
+                <point>9.436560 -4.305650</point>
+                <point>9.462754 -4.321718</point>
+                <point>9.478024 -4.321381</point>
+                <point>9.489598 -4.307786</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_036">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-1.056553 -4.091130</point>
+                <point>-1.056553 -3.932511</point>
+                <point>-1.101872 -3.932511</point>
+                <point>-1.147192 -3.932511</point>
+                <point>-1.147192 -4.091130</point>
+                <point>-1.147192 -4.249750</point>
+                <point>-1.101872 -4.249750</point>
+                <point>-1.056553 -4.249750</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_037">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-9.428975 -3.759021</point>
+                <point>-9.427640 -3.755504</point>
+                <point>-9.433601 -3.713726</point>
+                <point>-9.441005 -3.665918</point>
+                <point>-9.450596 -3.609832</point>
+                <point>-9.467444 -3.519577</point>
+                <point>-9.478054 -3.485396</point>
+                <point>-9.491885 -3.469956</point>
+                <point>-9.513580 -3.464207</point>
+                <point>-9.535185 -3.467109</point>
+                <point>-9.544573 -3.476219</point>
+                <point>-9.546728 -3.496033</point>
+                <point>-9.541297 -3.554750</point>
+                <point>-9.536418 -3.594418</point>
+                <point>-9.529547 -3.638816</point>
+                <point>-9.521876 -3.681117</point>
+                <point>-9.514587 -3.713785</point>
+                <point>-9.503799 -3.752269</point>
+                <point>-9.494784 -3.768784</point>
+                <point>-9.483058 -3.774623</point>
+                <point>-9.465249 -3.772431</point>
+                <point>-9.452652 -3.768400</point>
+                <point>-9.441356 -3.764430</point>
+                <point>-9.432030 -3.760859</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_038">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>9.573033 -3.694582</point>
+                <point>9.569294 -3.667043</point>
+                <point>9.564674 -3.630129</point>
+                <point>9.559989 -3.590722</point>
+                <point>9.555967 -3.554716</point>
+                <point>9.546816 -3.487675</point>
+                <point>9.535216 -3.456140</point>
+                <point>9.517228 -3.443461</point>
+                <point>9.489625 -3.444258</point>
+                <point>9.471313 -3.451095</point>
+                <point>9.462647 -3.460096</point>
+                <point>9.460408 -3.474223</point>
+                <point>9.464522 -3.500340</point>
+                <point>9.468890 -3.525094</point>
+                <point>9.474077 -3.563454</point>
+                <point>9.479132 -3.606779</point>
+                <point>9.483279 -3.649263</point>
+                <point>9.489954 -3.715634</point>
+                <point>9.496826 -3.738032</point>
+                <point>9.509857 -3.748130</point>
+                <point>9.536687 -3.751232</point>
+                <point>9.563557 -3.749714</point>
+                <point>9.573813 -3.743332</point>
+                <point>9.577096 -3.730044</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_039">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-1.056553 -3.517080</point>
+                <point>-1.056553 -3.358461</point>
+                <point>-1.101872 -3.358461</point>
+                <point>-1.147192 -3.358461</point>
+                <point>-1.147192 -3.507009</point>
+                <point>-1.146463 -3.564664</point>
+                <point>-1.144234 -3.614879</point>
+                <point>-1.141148 -3.656945</point>
+                <point>-1.137121 -3.665628</point>
+                <point>-1.130939 -3.669517</point>
+                <point>-1.119654 -3.672741</point>
+                <point>-1.106034 -3.674958</point>
+                <point>-1.091801 -3.675699</point>
+                <point>-1.071740 -3.669919</point>
+                <point>-1.061168 -3.654927</point>
+                <point>-1.057197 -3.620711</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_040">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>9.396426 -3.185678</point>
+                <point>9.402588 -3.170700</point>
+                <point>9.400375 -3.152301</point>
+                <point>9.388353 -3.126198</point>
+                <point>9.361816 -3.083708</point>
+                <point>9.339078 -3.049970</point>
+                <point>9.314276 -3.014959</point>
+                <point>9.291027 -2.983595</point>
+                <point>9.273886 -2.962363</point>
+                <point>9.252574 -2.939232</point>
+                <point>9.239671 -2.931444</point>
+                <point>9.227243 -2.932404</point>
+                <point>9.209969 -2.942965</point>
+                <point>9.194851 -2.956046</point>
+                <point>9.189849 -2.965879</point>
+                <point>9.191772 -2.976710</point>
+                <point>9.202415 -2.993478</point>
+                <point>9.214381 -3.010077</point>
+                <point>9.236319 -3.041017</point>
+                <point>9.261908 -3.077299</point>
+                <point>9.288249 -3.114845</point>
+                <point>9.334170 -3.178218</point>
+                <point>9.357370 -3.199984</point>
+                <point>9.376024 -3.201359</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_041">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-9.486030 -3.018562</point>
+                <point>-9.486030 -2.859943</point>
+                <point>-9.523797 -2.859943</point>
+                <point>-9.561563 -2.859943</point>
+                <point>-9.561563 -3.018562</point>
+                <point>-9.561563 -3.177182</point>
+                <point>-9.523797 -3.177182</point>
+                <point>-9.486030 -3.177182</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_042">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-1.056553 -2.926919</point>
+                <point>-1.056553 -2.767297</point>
+                <point>-1.098096 -2.772077</point>
+                <point>-1.139639 -2.776857</point>
+                <point>-1.143944 -2.931699</point>
+                <point>-1.148249 -3.086542</point>
+                <point>-1.102401 -3.086542</point>
+                <point>-1.056553 -3.086542</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_043">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>8.947525 -2.608965</point>
+                <point>8.879779 -2.535231</point>
+                <point>8.855420 -2.515216</point>
+                <point>8.837365 -2.513706</point>
+                <point>8.816387 -2.527655</point>
+                <point>8.802145 -2.548790</point>
+                <point>8.803081 -2.567238</point>
+                <point>8.821749 -2.592606</point>
+                <point>8.890774 -2.663191</point>
+                <point>8.955238 -2.726923</point>
+                <point>8.983562 -2.749022</point>
+                <point>9.003012 -2.753225</point>
+                <point>9.021912 -2.744501</point>
+                <point>9.032377 -2.726696</point>
+                <point>9.029739 -2.707591</point>
+                <point>9.009414 -2.678519</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_044">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-9.489279 -2.433182</point>
+                <point>-9.492635 -2.339142</point>
+                <point>-9.497544 -2.302009</point>
+                <point>-9.507209 -2.284955</point>
+                <point>-9.523797 -2.278339</point>
+                <point>-9.540385 -2.284955</point>
+                <point>-9.550050 -2.302009</point>
+                <point>-9.554959 -2.339142</point>
+                <point>-9.558315 -2.433182</point>
+                <point>-9.562620 -2.588024</point>
+                <point>-9.523797 -2.588024</point>
+                <point>-9.484974 -2.588024</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_045">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-1.051914 -2.448289</point>
+                <point>-1.049216 -2.417010</point>
+                <point>-1.048439 -2.374980</point>
+                <point>-1.049410 -2.330034</point>
+                <point>-1.052183 -2.288884</point>
+                <point>-1.058643 -2.228641</point>
+                <point>-1.065284 -2.207516</point>
+                <point>-1.077299 -2.198846</point>
+                <point>-1.100354 -2.198244</point>
+                <point>-1.123356 -2.206112</point>
+                <point>-1.135216 -2.221808</point>
+                <point>-1.140408 -2.255241</point>
+                <point>-1.143944 -2.357649</point>
+                <point>-1.148249 -2.512492</point>
+                <point>-1.104390 -2.512492</point>
+                <point>-1.079221 -2.510216</point>
+                <point>-1.066046 -2.502445</point>
+                <point>-1.058263 -2.486023</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_046">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>8.651545 -2.315504</point>
+                <point>8.655667 -2.301860</point>
+                <point>8.647456 -2.271437</point>
+                <point>8.630141 -2.227930</point>
+                <point>8.600615 -2.166134</point>
+                <point>8.563845 -2.094838</point>
+                <point>8.541114 -2.059359</point>
+                <point>8.522935 -2.042822</point>
+                <point>8.504842 -2.040092</point>
+                <point>8.493701 -2.044424</point>
+                <point>8.484265 -2.051070</point>
+                <point>8.477873 -2.058911</point>
+                <point>8.475706 -2.066764</point>
+                <point>8.487177 -2.119303</point>
+                <point>8.536299 -2.218197</point>
+                <point>8.591682 -2.316492</point>
+                <point>8.617489 -2.331212</point>
+                <point>8.625657 -2.330077</point>
+                <point>8.635061 -2.326598</point>
+                <point>8.644183 -2.321517</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_047">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-9.486030 -1.855355</point>
+                <point>-9.486030 -1.696736</point>
+                <point>-9.523797 -1.696736</point>
+                <point>-9.561563 -1.696736</point>
+                <point>-9.561563 -1.855355</point>
+                <point>-9.561563 -2.013974</point>
+                <point>-9.523797 -2.013974</point>
+                <point>-9.486030 -2.013974</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_048">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-1.052556 -1.927111</point>
+                <point>-1.050480 -1.918337</point>
+                <point>-1.051020 -1.874734</point>
+                <point>-1.052540 -1.823426</point>
+                <point>-1.055441 -1.764715</point>
+                <point>-1.061794 -1.666122</point>
+                <point>-1.067911 -1.633399</point>
+                <point>-1.079906 -1.619012</point>
+                <point>-1.101872 -1.613649</point>
+                <point>-1.123841 -1.619248</point>
+                <point>-1.135424 -1.634094</point>
+                <point>-1.140436 -1.668214</point>
+                <point>-1.143927 -1.776045</point>
+                <point>-1.148214 -1.938441</point>
+                <point>-1.103275 -1.938441</point>
+                <point>-1.085644 -1.937612</point>
+                <point>-1.069839 -1.935113</point>
+                <point>-1.057523 -1.931507</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_049">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>8.536626 -1.729834</point>
+                <point>8.541093 -1.695183</point>
+                <point>8.557036 -1.637635</point>
+                <point>8.578419 -1.573906</point>
+                <point>8.602390 -1.514371</point>
+                <point>8.604679 -1.502720</point>
+                <point>8.601410 -1.492273</point>
+                <point>8.591952 -1.482741</point>
+                <point>8.575761 -1.473734</point>
+                <point>8.553606 -1.465818</point>
+                <point>8.540936 -1.467869</point>
+                <point>8.530788 -1.479542</point>
+                <point>8.516422 -1.512586</point>
+                <point>8.494239 -1.573295</point>
+                <point>8.470283 -1.649465</point>
+                <point>8.449323 -1.722850</point>
+                <point>8.445493 -1.751300</point>
+                <point>8.452738 -1.764035</point>
+                <point>8.476498 -1.774611</point>
+                <point>8.504146 -1.779845</point>
+                <point>8.524803 -1.775928</point>
+                <point>8.529220 -1.771273</point>
+                <point>8.532950 -1.760143</point>
+                <point>8.535607 -1.745798</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_050">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-9.486030 -1.264256</point>
+                <point>-9.486644 -1.160516</point>
+                <point>-9.490501 -1.126994</point>
+                <point>-9.500850 -1.113547</point>
+                <point>-9.520020 -1.110305</point>
+                <point>-9.539155 -1.119000</point>
+                <point>-9.549768 -1.136390</point>
+                <point>-9.554865 -1.172496</point>
+                <point>-9.558302 -1.268768</point>
+                <point>-9.560022 -1.358298</point>
+                <point>-9.557429 -1.398014</point>
+                <point>-9.549877 -1.418478</point>
+                <point>-9.535642 -1.428506</point>
+                <point>-9.524492 -1.430415</point>
+                <point>-9.513279 -1.431115</point>
+                <point>-9.503521 -1.430647</point>
+                <point>-9.497360 -1.428821</point>
+                <point>-9.492814 -1.422080</point>
+                <point>-9.489359 -1.378093</point>
+                <point>-9.486849 -1.325534</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_051">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-1.056553 -1.189661</point>
+                <point>-1.056553 -1.030039</point>
+                <point>-1.098096 -1.034819</point>
+                <point>-1.139639 -1.039599</point>
+                <point>-1.143944 -1.194441</point>
+                <point>-1.148249 -1.349284</point>
+                <point>-1.102401 -1.349284</point>
+                <point>-1.056553 -1.349284</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_052">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>8.864295 -1.179771</point>
+                <point>8.927890 -1.114428</point>
+                <point>8.951513 -1.080356</point>
+                <point>8.953084 -1.055771</point>
+                <point>8.937010 -1.032504</point>
+                <point>8.920845 -1.028219</point>
+                <point>8.900321 -1.036434</point>
+                <point>8.869933 -1.060616</point>
+                <point>8.816157 -1.112901</point>
+                <point>8.778316 -1.151679</point>
+                <point>8.746418 -1.186436</point>
+                <point>8.720426 -1.216385</point>
+                <point>8.717412 -1.224571</point>
+                <point>8.721214 -1.237072</point>
+                <point>8.734736 -1.254457</point>
+                <point>8.750405 -1.269664</point>
+                <point>8.761570 -1.273751</point>
+                <point>8.766777 -1.271753</point>
+                <point>8.795005 -1.246144</point>
+                <point>8.827378 -1.215794</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_053">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>9.275017 -0.765495</point>
+                <point>9.310267 -0.726225</point>
+                <point>9.339977 -0.691351</point>
+                <point>9.364462 -0.661255</point>
+                <point>9.366995 -0.654046</point>
+                <point>9.361662 -0.640265</point>
+                <point>9.343784 -0.624141</point>
+                <point>9.323262 -0.611912</point>
+                <point>9.309188 -0.611409</point>
+                <point>9.300890 -0.616933</point>
+                <point>9.274213 -0.645197</point>
+                <point>9.243246 -0.679468</point>
+                <point>9.209085 -0.719122</point>
+                <point>9.163623 -0.774588</point>
+                <point>9.142616 -0.806212</point>
+                <point>9.135938 -0.827419</point>
+                <point>9.140843 -0.843752</point>
+                <point>9.148748 -0.852218</point>
+                <point>9.157311 -0.859375</point>
+                <point>9.165310 -0.864411</point>
+                <point>9.171121 -0.865873</point>
+                <point>9.178593 -0.862930</point>
+                <point>9.206557 -0.836387</point>
+                <point>9.238905 -0.803964</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_054">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-9.486030 -0.692147</point>
+                <point>-9.486030 -0.533528</point>
+                <point>-9.523797 -0.533528</point>
+                <point>-9.561563 -0.533528</point>
+                <point>-9.561563 -0.692147</point>
+                <point>-9.561563 -0.850766</point>
+                <point>-9.523797 -0.850766</point>
+                <point>-9.486030 -0.850766</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_055">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-1.056553 -0.608058</point>
+                <point>-1.056553 -0.440882</point>
+                <point>-1.098096 -0.445662</point>
+                <point>-1.139639 -0.450442</point>
+                <point>-1.144017 -0.592821</point>
+                <point>-1.145135 -0.648818</point>
+                <point>-1.144853 -0.699256</point>
+                <point>-1.143572 -0.741370</point>
+                <point>-1.140715 -0.755217</point>
+                <point>-1.134999 -0.762887</point>
+                <point>-1.124057 -0.769354</point>
+                <point>-1.109991 -0.773749</point>
+                <point>-1.094793 -0.775234</point>
+                <point>-1.056553 -0.775234</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_056">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>9.547309 -0.264876</point>
+                <point>9.570458 -0.127259</point>
+                <point>9.571734 -0.097357</point>
+                <point>9.561411 -0.084548</point>
+                <point>9.532790 -0.080330</point>
+                <point>9.508097 -0.081867</point>
+                <point>9.495692 -0.087617</point>
+                <point>9.489473 -0.099213</point>
+                <point>9.487625 -0.121873</point>
+                <point>9.486081 -0.144134</point>
+                <point>9.480687 -0.179979</point>
+                <point>9.473173 -0.220804</point>
+                <point>9.464322 -0.261342</point>
+                <point>9.451109 -0.320774</point>
+                <point>9.448689 -0.347236</point>
+                <point>9.453688 -0.363809</point>
+                <point>9.467082 -0.378162</point>
+                <point>9.493568 -0.386405</point>
+                <point>9.514949 -0.374967</point>
+                <point>9.532097 -0.337545</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_057">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-9.486030 -0.101940</point>
+                <point>-9.486643 0.002424</point>
+                <point>-9.490497 0.036115</point>
+                <point>-9.500849 0.049628</point>
+                <point>-9.520020 0.052903</point>
+                <point>-9.539163 0.044167</point>
+                <point>-9.549777 0.026681</point>
+                <point>-9.554870 -0.009658</point>
+                <point>-9.558315 -0.106767</point>
+                <point>-9.562620 -0.261609</point>
+                <point>-9.524325 -0.261609</point>
+                <point>-9.486030 -0.261609</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_058">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-1.056553 -0.027457</point>
+                <point>-1.056553 0.131162</point>
+                <point>-1.101872 0.131162</point>
+                <point>-1.147192 0.131162</point>
+                <point>-1.147192 -0.027457</point>
+                <point>-1.147192 -0.186076</point>
+                <point>-1.101872 -0.186076</point>
+                <point>-1.056553 -0.186076</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_059">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>9.546918 0.200921</point>
+                <point>9.550366 0.212694</point>
+                <point>9.533839 0.269828</point>
+                <point>9.512617 0.333139</point>
+                <point>9.487479 0.396387</point>
+                <point>9.463852 0.442491</point>
+                <point>9.439935 0.468251</point>
+                <point>9.415677 0.474810</point>
+                <point>9.391074 0.464684</point>
+                <point>9.382131 0.452303</point>
+                <point>9.380473 0.437334</point>
+                <point>9.386797 0.415227</point>
+                <point>9.404714 0.375867</point>
+                <point>9.419327 0.343815</point>
+                <point>9.434725 0.306513</point>
+                <point>9.448614 0.269884</point>
+                <point>9.458438 0.240184</point>
+                <point>9.470133 0.205142</point>
+                <point>9.479879 0.189297</point>
+                <point>9.491872 0.183627</point>
+                <point>9.509193 0.185675</point>
+                <point>9.521719 0.189785</point>
+                <point>9.533280 0.194141</point>
+                <point>9.542787 0.198217</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_060">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-9.486030 0.471060</point>
+                <point>-9.486030 0.629679</point>
+                <point>-9.523797 0.629679</point>
+                <point>-9.561563 0.629679</point>
+                <point>-9.561563 0.471060</point>
+                <point>-9.561563 0.312441</point>
+                <point>-9.523797 0.312441</point>
+                <point>-9.486030 0.312441</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_061">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-1.056553 0.561700</point>
+                <point>-1.056553 0.720319</point>
+                <point>-1.101872 0.720319</point>
+                <point>-1.147192 0.720319</point>
+                <point>-1.147192 0.561700</point>
+                <point>-1.147192 0.403081</point>
+                <point>-1.101872 0.403081</point>
+                <point>-1.056553 0.403081</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_062">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>9.246957 0.698641</point>
+                <point>9.251938 0.716090</point>
+                <point>9.243846 0.737321</point>
+                <point>9.218179 0.769269</point>
+                <point>9.158372 0.830489</point>
+                <point>9.090214 0.897491</point>
+                <point>9.062006 0.919302</point>
+                <point>9.042829 0.922657</point>
+                <point>9.023997 0.912526</point>
+                <point>9.013702 0.893796</point>
+                <point>9.016739 0.874882</point>
+                <point>9.037795 0.847244</point>
+                <point>9.102697 0.780678</point>
+                <point>9.143606 0.740173</point>
+                <point>9.179664 0.706042</point>
+                <point>9.211011 0.677475</point>
+                <point>9.217451 0.674999</point>
+                <point>9.222491 0.676455</point>
+                <point>9.230196 0.681944</point>
+                <point>9.238720 0.689590</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_063">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-9.486030 1.061268</point>
+                <point>-9.486643 1.165632</point>
+                <point>-9.490497 1.199322</point>
+                <point>-9.500849 1.212836</point>
+                <point>-9.520020 1.216111</point>
+                <point>-9.539163 1.207375</point>
+                <point>-9.549777 1.189888</point>
+                <point>-9.554870 1.153550</point>
+                <point>-9.558315 1.056441</point>
+                <point>-9.562620 0.901598</point>
+                <point>-9.524325 0.901598</point>
+                <point>-9.486030 0.901598</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_064">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-1.049996 1.052664</point>
+                <point>-1.050325 1.085428</point>
+                <point>-1.051121 1.128704</point>
+                <point>-1.052198 1.174559</point>
+                <point>-1.053419 1.216063</point>
+                <point>-1.056227 1.278638</point>
+                <point>-1.061486 1.298614</point>
+                <point>-1.073046 1.306735</point>
+                <point>-1.098096 1.306703</point>
+                <point>-1.139639 1.301923</point>
+                <point>-1.144017 1.159543</point>
+                <point>-1.145993 1.047385</point>
+                <point>-1.139705 1.003182</point>
+                <point>-1.122558 0.984218</point>
+                <point>-1.090982 0.979896</point>
+                <point>-1.067483 0.985015</point>
+                <point>-1.056067 0.994355</point>
+                <point>-1.050959 1.011970</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_065">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>8.836363 1.103246</point>
+                <point>8.840512 1.117798</point>
+                <point>8.834058 1.137301</point>
+                <point>8.815263 1.165321</point>
+                <point>8.777944 1.209691</point>
+                <point>8.747940 1.244825</point>
+                <point>8.720076 1.279209</point>
+                <point>8.697208 1.308997</point>
+                <point>8.686722 1.325474</point>
+                <point>8.677261 1.339905</point>
+                <point>8.668111 1.346150</point>
+                <point>8.657056 1.346064</point>
+                <point>8.641245 1.339350</point>
+                <point>8.629926 1.332136</point>
+                <point>8.620355 1.323569</point>
+                <point>8.613718 1.314977</point>
+                <point>8.611666 1.307857</point>
+                <point>8.621392 1.280368</point>
+                <point>8.699075 1.186381</point>
+                <point>8.779461 1.092941</point>
+                <point>8.801661 1.082877</point>
+                <point>8.809697 1.084334</point>
+                <point>8.819196 1.088860</point>
+                <point>8.828580 1.095452</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_066">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-9.486030 1.634268</point>
+                <point>-9.486030 1.792887</point>
+                <point>-9.523797 1.792887</point>
+                <point>-9.561563 1.792887</point>
+                <point>-9.561563 1.634268</point>
+                <point>-9.561563 1.475649</point>
+                <point>-9.523797 1.475649</point>
+                <point>-9.486030 1.475649</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_067">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-1.056553 1.724907</point>
+                <point>-1.056553 1.883527</point>
+                <point>-1.101872 1.883527</point>
+                <point>-1.147192 1.883527</point>
+                <point>-1.147192 1.724907</point>
+                <point>-1.147192 1.566288</point>
+                <point>-1.101872 1.566288</point>
+                <point>-1.056553 1.566288</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_068">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>8.549402 1.590246</point>
+                <point>8.551073 1.594677</point>
+                <point>8.548431 1.613732</point>
+                <point>8.544191 1.636726</point>
+                <point>8.538072 1.663038</point>
+                <point>8.531533 1.694464</point>
+                <point>8.526033 1.733289</point>
+                <point>8.522258 1.772957</point>
+                <point>8.521026 1.807130</point>
+                <point>8.520086 1.853672</point>
+                <point>8.515383 1.872110</point>
+                <point>8.504728 1.880781</point>
+                <point>8.483260 1.883527</point>
+                <point>8.461681 1.880603</point>
+                <point>8.451002 1.871516</point>
+                <point>8.446384 1.852016</point>
+                <point>8.445493 1.801184</point>
+                <point>8.446681 1.764079</point>
+                <point>8.450335 1.720452</point>
+                <point>8.455654 1.677358</point>
+                <point>8.461976 1.641983</point>
+                <point>8.472528 1.597412</point>
+                <point>8.481103 1.579364</point>
+                <point>8.492745 1.572989</point>
+                <point>8.511073 1.575137</point>
+                <point>8.523979 1.579343</point>
+                <point>8.535785 1.583705</point>
+                <point>8.545483 1.587734</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_069">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-9.486030 2.223425</point>
+                <point>-9.486030 2.382044</point>
+                <point>-9.523797 2.382044</point>
+                <point>-9.561563 2.382044</point>
+                <point>-9.561563 2.223425</point>
+                <point>-9.561563 2.064806</point>
+                <point>-9.523797 2.064806</point>
+                <point>-9.486030 2.064806</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_070">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-1.069859 2.154289</point>
+                <point>-1.057456 2.166321</point>
+                <point>-1.050375 2.225516</point>
+                <point>-1.047692 2.296591</point>
+                <point>-1.051459 2.370714</point>
+                <point>-1.058396 2.436400</point>
+                <point>-1.065364 2.459157</point>
+                <point>-1.078272 2.469438</point>
+                <point>-1.104042 2.472684</point>
+                <point>-1.147192 2.472684</point>
+                <point>-1.147192 2.316582</point>
+                <point>-1.146571 2.256134</point>
+                <point>-1.144671 2.203814</point>
+                <point>-1.142057 2.159504</point>
+                <point>-1.138609 2.151897</point>
+                <point>-1.133564 2.148932</point>
+                <point>-1.125084 2.147278</point>
+                <point>-1.114975 2.146979</point>
+                <point>-1.104619 2.148224</point>
+                <point>-1.094206 2.150188</point>
+                <point>-1.083928 2.152031</point>
+                <point>-1.075034 2.153542</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_071">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>8.586763 2.174328</point>
+                <point>8.593352 2.192921</point>
+                <point>8.608901 2.224959</point>
+                <point>8.628491 2.261764</point>
+                <point>8.650071 2.298958</point>
+                <point>8.675066 2.342761</point>
+                <point>8.688958 2.373983</point>
+                <point>8.694162 2.396684</point>
+                <point>8.690573 2.412257</point>
+                <point>8.668367 2.429553</point>
+                <point>8.643920 2.425466</point>
+                <point>8.613527 2.392996</point>
+                <point>8.570123 2.321755</point>
+                <point>8.518731 2.226225</point>
+                <point>8.508157 2.183033</point>
+                <point>8.523147 2.157819</point>
+                <point>8.568485 2.142091</point>
+                <point>8.572786 2.143621</point>
+                <point>8.577852 2.150838</point>
+                <point>8.582769 2.161433</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_072">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>8.987131 2.713103</point>
+                <point>9.022706 2.754186</point>
+                <point>9.052699 2.791150</point>
+                <point>9.076890 2.822837</point>
+                <point>9.079970 2.832106</point>
+                <point>9.078514 2.838905</point>
+                <point>9.073809 2.847490</point>
+                <point>9.067023 2.856321</point>
+                <point>9.058997 2.864055</point>
+                <point>9.043605 2.867513</point>
+                <point>9.022996 2.858008</point>
+                <point>8.992715 2.832821</point>
+                <point>8.941921 2.781627</point>
+                <point>8.904723 2.742330</point>
+                <point>8.872519 2.706883</point>
+                <point>8.845968 2.676528</point>
+                <point>8.840613 2.667370</point>
+                <point>8.841189 2.652760</point>
+                <point>8.853246 2.632011</point>
+                <point>8.869296 2.614050</point>
+                <point>8.883235 2.608643</point>
+                <point>8.890191 2.611474</point>
+                <point>8.918316 2.639328</point>
+                <point>8.950750 2.673068</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_073">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-9.489279 2.808805</point>
+                <point>-9.492724 2.905914</point>
+                <point>-9.497817 2.942253</point>
+                <point>-9.508431 2.959739</point>
+                <point>-9.527574 2.968475</point>
+                <point>-9.546745 2.965200</point>
+                <point>-9.557097 2.951687</point>
+                <point>-9.560951 2.917996</point>
+                <point>-9.561563 2.813633</point>
+                <point>-9.561563 2.653963</point>
+                <point>-9.523268 2.653963</point>
+                <point>-9.484974 2.653963</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_074">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-1.050510 2.755932</point>
+                <point>-1.051196 2.768894</point>
+                <point>-1.052242 2.811425</point>
+                <point>-1.053309 2.861978</point>
+                <point>-1.054287 2.918328</point>
+                <point>-1.056553 3.061841</point>
+                <point>-1.101872 3.061841</point>
+                <point>-1.147192 3.061841</point>
+                <point>-1.147192 2.905739</point>
+                <point>-1.146412 2.845139</point>
+                <point>-1.144030 2.792330</point>
+                <point>-1.140730 2.748131</point>
+                <point>-1.136428 2.738873</point>
+                <point>-1.117631 2.730665</point>
+                <point>-1.086310 2.733143</point>
+                <point>-1.058323 2.742407</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_075">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>9.365903 3.161299</point>
+                <point>9.395264 3.206164</point>
+                <point>9.420019 3.246120</point>
+                <point>9.440140 3.280280</point>
+                <point>9.442528 3.289174</point>
+                <point>9.440540 3.295368</point>
+                <point>9.433805 3.303242</point>
+                <point>9.424198 3.311314</point>
+                <point>9.412831 3.318377</point>
+                <point>9.396596 3.324968</point>
+                <point>9.384745 3.324581</point>
+                <point>9.374161 3.317168</point>
+                <point>9.361774 3.300025</point>
+                <point>9.350057 3.281273</point>
+                <point>9.330348 3.249805</point>
+                <point>9.307650 3.213596</point>
+                <point>9.284785 3.177154</point>
+                <point>9.251673 3.118834</point>
+                <point>9.239271 3.079165</point>
+                <point>9.245970 3.056512</point>
+                <point>9.267236 3.046734</point>
+                <point>9.279384 3.051905</point>
+                <point>9.305311 3.080388</point>
+                <point>9.334944 3.117406</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_076">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-9.484026 3.342662</point>
+                <point>-9.479625 3.386901</point>
+                <point>-9.474310 3.431552</point>
+                <point>-9.468887 3.470769</point>
+                <point>-9.464373 3.495367</point>
+                <point>-9.460128 3.520825</point>
+                <point>-9.462253 3.534720</point>
+                <point>-9.470772 3.543610</point>
+                <point>-9.488777 3.550347</point>
+                <point>-9.502762 3.553001</point>
+                <point>-9.516258 3.553536</point>
+                <point>-9.527459 3.552094</point>
+                <point>-9.533885 3.548533</point>
+                <point>-9.544922 3.524683</point>
+                <point>-9.554883 3.405105</point>
+                <point>-9.562110 3.288459</point>
+                <point>-9.556053 3.250549</point>
+                <point>-9.550420 3.241472</point>
+                <point>-9.541561 3.234545</point>
+                <point>-9.530899 3.230784</point>
+                <point>-9.520066 3.230849</point>
+                <point>-9.506468 3.238945</point>
+                <point>-9.496985 3.256352</point>
+                <point>-9.490057 3.287354</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_077">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-1.056553 3.485829</point>
+                <point>-1.056553 3.653005</point>
+                <point>-1.098096 3.648224</point>
+                <point>-1.139639 3.643444</point>
+                <point>-1.143927 3.481049</point>
+                <point>-1.148214 3.318653</point>
+                <point>-1.102383 3.318653</point>
+                <point>-1.056553 3.318653</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_078">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>9.565324 3.712987</point>
+                <point>9.574123 3.805866</point>
+                <point>9.571646 3.848739</point>
+                <point>9.558354 3.869477</point>
+                <point>9.533168 3.877597</point>
+                <point>9.510165 3.870994</point>
+                <point>9.496946 3.853673</point>
+                <point>9.489722 3.814999</point>
+                <point>9.482358 3.708601</point>
+                <point>9.478579 3.633605</point>
+                <point>9.480111 3.598844</point>
+                <point>9.486846 3.580621</point>
+                <point>9.499981 3.571473</point>
+                <point>9.525731 3.573253</point>
+                <point>9.542764 3.589159</point>
+                <point>9.554178 3.627400</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_079">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-9.363998 3.858512</point>
+                <point>-9.354418 3.885431</point>
+                <point>-9.340634 3.920409</point>
+                <point>-9.325289 3.957115</point>
+                <point>-9.310623 3.989955</point>
+                <point>-9.291258 4.040368</point>
+                <point>-9.288583 4.075467</point>
+                <point>-9.301457 4.096083</point>
+                <point>-9.327597 4.104195</point>
+                <point>-9.350216 4.090371</point>
+                <point>-9.400847 3.987280</point>
+                <point>-9.445407 3.885144</point>
+                <point>-9.455817 3.831485</point>
+                <point>-9.451915 3.823796</point>
+                <point>-9.438869 3.816282</point>
+                <point>-9.418987 3.809423</point>
+                <point>-9.392786 3.803816</point>
+                <point>-9.387865 3.805969</point>
+                <point>-9.380139 3.819160</point>
+                <point>-9.371872 3.837004</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_080">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-1.051198 4.073982</point>
+                <point>-1.053396 4.232601</point>
+                <point>-1.096518 4.232601</point>
+                <point>-1.139639 4.232601</point>
+                <point>-1.143937 4.069210</point>
+                <point>-1.148234 3.905818</point>
+                <point>-1.098617 3.910590</point>
+                <point>-1.048999 3.915363</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_081">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>9.521881 4.153292</point>
+                <point>9.533451 4.169431</point>
+                <point>9.535603 4.191164</point>
+                <point>9.527653 4.228172</point>
+                <point>9.501404 4.311911</point>
+                <point>9.471247 4.399064</point>
+                <point>9.450301 4.436035</point>
+                <point>9.428030 4.446660</point>
+                <point>9.399673 4.438383</point>
+                <point>9.391372 4.425747</point>
+                <point>9.391156 4.403291</point>
+                <point>9.398971 4.366052</point>
+                <point>9.418958 4.298878</point>
+                <point>9.454202 4.186449</point>
+                <point>9.465867 4.153713</point>
+                <point>9.474366 4.139227</point>
+                <point>9.484487 4.134409</point>
+                <point>9.490984 4.135625</point>
+                <point>9.500707 4.139956</point>
+                <point>9.511493 4.146064</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_082">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-9.085474 4.355928</point>
+                <point>-9.071238 4.375859</point>
+                <point>-9.048914 4.403809</point>
+                <point>-9.023353 4.434104</point>
+                <point>-8.998039 4.462420</point>
+                <point>-8.958324 4.506636</point>
+                <point>-8.948422 4.524122</point>
+                <point>-8.950448 4.538558</point>
+                <point>-8.967022 4.558723</point>
+                <point>-8.987240 4.573967</point>
+                <point>-9.002680 4.574008</point>
+                <point>-9.021645 4.558881</point>
+                <point>-9.071737 4.501327</point>
+                <point>-9.152271 4.406285</point>
+                <point>-9.173501 4.376431</point>
+                <point>-9.177285 4.357467</point>
+                <point>-9.168792 4.338348</point>
+                <point>-9.148224 4.320918</point>
+                <point>-9.127926 4.317643</point>
+                <point>-9.107266 4.328936</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_083">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-1.056553 4.658350</point>
+                <point>-1.056553 4.816212</point>
+                <point>-1.098096 4.811432</point>
+                <point>-1.139639 4.806652</point>
+                <point>-1.144017 4.664273</point>
+                <point>-1.145188 4.608409</point>
+                <point>-1.145064 4.558386</point>
+                <point>-1.144022 4.516523</point>
+                <point>-1.141431 4.503744</point>
+                <point>-1.135872 4.497071</point>
+                <point>-1.125452 4.492807</point>
+                <point>-1.111499 4.491354</point>
+                <point>-1.095510 4.493042</point>
+                <point>-1.072775 4.502644</point>
+                <point>-1.061439 4.519357</point>
+                <point>-1.057231 4.553627</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_084">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>9.288205 4.695149</point>
+                <point>9.285370 4.709555</point>
+                <point>9.262623 4.742116</point>
+                <point>9.231694 4.780474</point>
+                <point>9.193789 4.821790</point>
+                <point>9.128736 4.888012</point>
+                <point>9.103725 4.907215</point>
+                <point>9.085230 4.909035</point>
+                <point>9.064138 4.896635</point>
+                <point>9.049862 4.877055</point>
+                <point>9.050549 4.859291</point>
+                <point>9.068912 4.834333</point>
+                <point>9.136044 4.765660</point>
+                <point>9.202525 4.702617</point>
+                <point>9.245844 4.674161</point>
+                <point>9.272362 4.674440</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_085">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-8.617201 4.802193</point>
+                <point>-8.573849 4.832990</point>
+                <point>-8.537325 4.860404</point>
+                <point>-8.506769 4.884413</point>
+                <point>-8.504102 4.889945</point>
+                <point>-8.505203 4.895003</point>
+                <point>-8.509750 4.904114</point>
+                <point>-8.515968 4.914628</point>
+                <point>-8.523329 4.925364</point>
+                <point>-8.538398 4.936292</point>
+                <point>-8.556351 4.935789</point>
+                <point>-8.585087 4.920777</point>
+                <point>-8.650589 4.875790</point>
+                <point>-8.692701 4.845549</point>
+                <point>-8.729825 4.817455</point>
+                <point>-8.760280 4.793227</point>
+                <point>-8.768622 4.783741</point>
+                <point>-8.770540 4.769873</point>
+                <point>-8.761791 4.748370</point>
+                <point>-8.748691 4.729301</point>
+                <point>-8.736204 4.723566</point>
+                <point>-8.732003 4.724820</point>
+                <point>-8.698812 4.746662</point>
+                <point>-8.660981 4.772053</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_086">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-8.100001 5.065468</point>
+                <point>-8.038139 5.087567</point>
+                <point>-8.001969 5.104381</point>
+                <point>-7.981881 5.119462</point>
+                <point>-7.975371 5.135031</point>
+                <point>-7.985414 5.159508</point>
+                <point>-8.009883 5.170200</point>
+                <point>-8.056248 5.164751</point>
+                <point>-8.137243 5.140176</point>
+                <point>-8.240973 5.104363</point>
+                <point>-8.274714 5.086881</point>
+                <point>-8.283503 5.068520</point>
+                <point>-8.275237 5.042789</point>
+                <point>-8.266402 5.030912</point>
+                <point>-8.256529 5.021898</point>
+                <point>-8.247145 5.016837</point>
+                <point>-8.239855 5.016996</point>
+                <point>-8.229201 5.021123</point>
+                <point>-8.192493 5.033909</point>
+                <point>-8.148852 5.048911</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_087">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>8.829917 5.036629</point>
+                <point>8.829490 5.059788</point>
+                <point>8.812973 5.081136</point>
+                <point>8.775526 5.103368</point>
+                <point>8.707601 5.130991</point>
+                <point>8.618408 5.163110</point>
+                <point>8.579071 5.171676</point>
+                <point>8.557486 5.165777</point>
+                <point>8.543731 5.146692</point>
+                <point>8.540136 5.133937</point>
+                <point>8.537931 5.122630</point>
+                <point>8.537032 5.113608</point>
+                <point>8.538530 5.110602</point>
+                <point>8.558311 5.100413</point>
+                <point>8.670126 5.058531</point>
+                <point>8.782751 5.016853</point>
+                <point>8.802659 5.012290</point>
+                <point>8.810005 5.013571</point>
+                <point>8.817788 5.018739</point>
+                <point>8.824811 5.026798</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_088">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-1.056553 5.176877</point>
+                <point>-1.056553 5.264397</point>
+                <point>-1.196289 5.270714</point>
+                <point>-1.291326 5.272146</point>
+                <point>-1.344264 5.263500</point>
+                <point>-1.367083 5.244376</point>
+                <point>-1.368778 5.215701</point>
+                <point>-1.358723 5.204041</point>
+                <point>-1.339473 5.196819</point>
+                <point>-1.307444 5.192917</point>
+                <point>-1.253412 5.191870</point>
+                <point>-1.147192 5.191870</point>
+                <point>-1.147192 5.140105</point>
+                <point>-1.145758 5.115721</point>
+                <point>-1.141058 5.098987</point>
+                <point>-1.132805 5.088311</point>
+                <point>-1.120756 5.082466</point>
+                <point>-1.087948 5.080384</point>
+                <point>-1.068807 5.091669</point>
+                <point>-1.058974 5.119404</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_089">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-7.373881 5.227083</point>
+                <point>-7.373667 5.251204</point>
+                <point>-7.381278 5.262086</point>
+                <point>-7.399898 5.266599</point>
+                <point>-7.456967 5.267272</point>
+                <point>-7.496372 5.266534</point>
+                <point>-7.542320 5.264381</point>
+                <point>-7.587451 5.261279</point>
+                <point>-7.624143 5.257614</point>
+                <point>-7.670021 5.251016</point>
+                <point>-7.690405 5.243702</point>
+                <point>-7.700122 5.231902</point>
+                <point>-7.703453 5.211898</point>
+                <point>-7.703453 5.175709</point>
+                <point>-7.541057 5.181236</point>
+                <point>-7.378661 5.186762</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_090">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-6.799830 5.225860</point>
+                <point>-6.795050 5.267403</point>
+                <point>-6.947120 5.267403</point>
+                <point>-7.046112 5.266748</point>
+                <point>-7.079119 5.262751</point>
+                <point>-7.093629 5.252200</point>
+                <point>-7.099189 5.232154</point>
+                <point>-7.098409 5.217883</point>
+                <point>-7.096076 5.204147</point>
+                <point>-7.092681 5.192718</point>
+                <point>-7.088591 5.186308</point>
+                <point>-7.079632 5.182234</point>
+                <point>-7.040954 5.180087</point>
+                <point>-6.994449 5.179133</point>
+                <point>-6.941302 5.180013</point>
+                <point>-6.850621 5.183590</point>
+                <point>-6.821104 5.188973</point>
+                <point>-6.807024 5.201209</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_091">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-6.223163 5.225860</point>
+                <point>-6.223007 5.267403</point>
+                <point>-6.374073 5.267403</point>
+                <point>-6.473559 5.266758</point>
+                <point>-6.505734 5.262714</point>
+                <point>-6.519822 5.251876</point>
+                <point>-6.525139 5.230895</point>
+                <point>-6.517923 5.202676</point>
+                <point>-6.498744 5.187304</point>
+                <point>-6.457419 5.181296</point>
+                <point>-6.355346 5.181859</point>
+                <point>-6.223319 5.184317</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_092">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-5.735819 5.191704</point>
+                <point>-5.681760 5.192668</point>
+                <point>-5.661436 5.197272</point>
+                <point>-5.652023 5.207997</point>
+                <point>-5.648956 5.229636</point>
+                <point>-5.648956 5.267403</point>
+                <point>-5.800022 5.267403</point>
+                <point>-5.898304 5.266746</point>
+                <point>-5.931126 5.262745</point>
+                <point>-5.945562 5.252198</point>
+                <point>-5.951088 5.232154</point>
+                <point>-5.947510 5.201487</point>
+                <point>-5.936042 5.185159</point>
+                <point>-5.914437 5.179069</point>
+                <point>-5.875555 5.182822</point>
+                <point>-5.849275 5.186188</point>
+                <point>-5.812698 5.189026</point>
+                <point>-5.772950 5.191002</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_093">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-5.194523 5.191870</point>
+                <point>-5.116709 5.192579</point>
+                <point>-5.090644 5.196839</point>
+                <point>-5.079001 5.207757</point>
+                <point>-5.074906 5.229636</point>
+                <point>-5.074906 5.267403</point>
+                <point>-5.225972 5.267403</point>
+                <point>-5.324254 5.266746</point>
+                <point>-5.357075 5.262745</point>
+                <point>-5.371512 5.252198</point>
+                <point>-5.377038 5.232154</point>
+                <point>-5.374570 5.204733</point>
+                <point>-5.366506 5.187933</point>
+                <point>-5.353187 5.181219</point>
+                <point>-5.335048 5.183847</point>
+                <point>-5.321201 5.187004</point>
+                <point>-5.285144 5.189513</point>
+                <point>-5.241861 5.191284</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_094">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-4.620473 5.191870</point>
+                <point>-4.542308 5.192575</point>
+                <point>-4.516429 5.196856</point>
+                <point>-4.504879 5.207871</point>
+                <point>-4.500855 5.230165</point>
+                <point>-4.500855 5.268460</point>
+                <point>-4.655698 5.264155</point>
+                <point>-4.737117 5.261013</point>
+                <point>-4.780233 5.256235</point>
+                <point>-4.803661 5.248898</point>
+                <point>-4.811467 5.237190</point>
+                <point>-4.807990 5.213781</point>
+                <point>-4.796160 5.194175</point>
+                <point>-4.779297 5.183278</point>
+                <point>-4.761565 5.183629</point>
+                <point>-4.747422 5.186870</point>
+                <point>-4.711261 5.189449</point>
+                <point>-4.667851 5.191268</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_095">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>8.276402 5.216834</point>
+                <point>8.276083 5.234019</point>
+                <point>8.269494 5.244893</point>
+                <point>8.254377 5.252059</point>
+                <point>8.223529 5.257869</point>
+                <point>8.172078 5.263864</point>
+                <point>8.107650 5.268299</point>
+                <point>8.045480 5.270591</point>
+                <point>8.003625 5.269432</point>
+                <point>7.992224 5.266098</point>
+                <point>7.983865 5.258552</point>
+                <point>7.978834 5.246588</point>
+                <point>7.977189 5.230327</point>
+                <point>7.980993 5.209179</point>
+                <point>7.991924 5.197797</point>
+                <point>8.015816 5.191973</point>
+                <point>8.079158 5.187637</point>
+                <point>8.193377 5.182410</point>
+                <point>8.241279 5.185059</point>
+                <point>8.264966 5.195908</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_096">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-3.926805 5.229636</point>
+                <point>-3.926805 5.267403</point>
+                <point>-4.077871 5.267403</point>
+                <point>-4.228937 5.267403</point>
+                <point>-4.228937 5.229636</point>
+                <point>-4.228937 5.191870</point>
+                <point>-4.077871 5.191870</point>
+                <point>-3.926805 5.191870</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_097">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-3.358102 5.225860</point>
+                <point>-3.366976 5.244989</point>
+                <point>-3.384483 5.255599</point>
+                <point>-3.420644 5.260708</point>
+                <point>-3.516626 5.264155</point>
+                <point>-3.669993 5.268460</point>
+                <point>-3.669993 5.230165</point>
+                <point>-3.669993 5.191870</point>
+                <point>-3.511468 5.191870</point>
+                <point>-3.407813 5.192481</point>
+                <point>-3.374439 5.196334</point>
+                <point>-3.361145 5.206687</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_098">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-2.790418 5.200298</point>
+                <point>-2.787679 5.205500</point>
+                <point>-2.786719 5.214868</point>
+                <point>-2.787346 5.226215</point>
+                <point>-2.789662 5.238065</point>
+                <point>-2.800237 5.253900</point>
+                <point>-2.820086 5.262690</point>
+                <point>-2.858383 5.266593</point>
+                <point>-2.946638 5.267403</point>
+                <point>-3.045984 5.266766</point>
+                <point>-3.077235 5.262671</point>
+                <point>-3.090887 5.251569</point>
+                <point>-3.095942 5.229636</point>
+                <point>-3.090911 5.207704</point>
+                <point>-3.077311 5.196607</point>
+                <point>-3.046191 5.192508</point>
+                <point>-2.947394 5.191870</point>
+                <point>-2.889853 5.192480</point>
+                <point>-2.840006 5.194346</point>
+                <point>-2.797859 5.196915</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_099">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-2.212207 5.229636</point>
+                <point>-2.218823 5.246225</point>
+                <point>-2.235877 5.255889</point>
+                <point>-2.273010 5.260798</point>
+                <point>-2.367049 5.264155</point>
+                <point>-2.521892 5.268460</point>
+                <point>-2.521892 5.229636</point>
+                <point>-2.521892 5.190813</point>
+                <point>-2.367049 5.195118</point>
+                <point>-2.273010 5.198474</point>
+                <point>-2.235877 5.203384</point>
+                <point>-2.218823 5.213048</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_100">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-1.630603 5.229636</point>
+                <point>-1.635687 5.251570</point>
+                <point>-1.649397 5.262677</point>
+                <point>-1.680801 5.266768</point>
+                <point>-1.780777 5.267403</point>
+                <point>-1.878022 5.265506</point>
+                <point>-1.923952 5.257154</point>
+                <point>-1.941947 5.240160</point>
+                <point>-1.942101 5.213806</point>
+                <point>-1.930786 5.202827</point>
+                <point>-1.904107 5.196403</point>
+                <point>-1.859465 5.192810</point>
+                <point>-1.782143 5.191870</point>
+                <point>-1.630603 5.191870</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_101">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>-0.482502 5.229636</point>
+                <point>-0.482502 5.267403</point>
+                <point>-0.633568 5.267403</point>
+                <point>-0.722822 5.266654</point>
+                <point>-0.760257 5.262934</point>
+                <point>-0.777865 5.254497</point>
+                <point>-0.784634 5.239708</point>
+                <point>-0.783891 5.228366</point>
+                <point>-0.781676 5.217189</point>
+                <point>-0.778439 5.207711</point>
+                <point>-0.774563 5.201941</point>
+                <point>-0.765947 5.197919</point>
+                <point>-0.726033 5.194828</point>
+                <point>-0.678257 5.192600</point>
+                <point>-0.623497 5.191870</point>
+                <point>-0.530180 5.192524</point>
+                <point>-0.500378 5.196658</point>
+                <point>-0.487289 5.207713</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_102">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>0.112588 5.204355</point>
+                <point>0.115042 5.211140</point>
+                <point>0.115800 5.221729</point>
+                <point>0.115033 5.233901</point>
+                <point>0.112687 5.245969</point>
+                <point>0.102065 5.261683</point>
+                <point>0.081912 5.270508</point>
+                <point>0.043133 5.274631</point>
+                <point>-0.045204 5.275950</point>
+                <point>-0.195477 5.276802</point>
+                <point>-0.195477 5.234336</point>
+                <point>-0.195477 5.191870</point>
+                <point>-0.045303 5.191870</point>
+                <point>0.012811 5.192773</point>
+                <point>0.063025 5.195537</point>
+                <point>0.104650 5.199368</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_103">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>0.703365 5.237190</point>
+                <point>0.698230 5.259127</point>
+                <point>0.684367 5.270715</point>
+                <point>0.652798 5.275952</point>
+                <point>0.556023 5.279831</point>
+                <point>0.475928 5.281611</point>
+                <point>0.434502 5.279357</point>
+                <point>0.411114 5.273010</point>
+                <point>0.399564 5.260948</point>
+                <point>0.396723 5.250154</point>
+                <point>0.395742 5.237351</point>
+                <point>0.396607 5.224601</point>
+                <point>0.399354 5.213980</point>
+                <point>0.410814 5.202263</point>
+                <point>0.434771 5.196035</point>
+                <point>0.476725 5.193660</point>
+                <point>0.555813 5.195096</point>
+                <point>0.652869 5.198615</point>
+                <point>0.684401 5.203721</point>
+                <point>0.698239 5.215254</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_104">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>1.284969 5.237737</point>
+                <point>1.284969 5.283604</point>
+                <point>1.137680 5.279280</point>
+                <point>0.990391 5.274956</point>
+                <point>0.985610 5.233413</point>
+                <point>0.980830 5.191870</point>
+                <point>1.132900 5.191870</point>
+                <point>1.284969 5.191870</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_105">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>1.874126 5.237190</point>
+                <point>1.874126 5.282510</point>
+                <point>1.723060 5.282510</point>
+                <point>1.571994 5.282510</point>
+                <point>1.571994 5.237190</point>
+                <point>1.571994 5.191870</point>
+                <point>1.723060 5.191870</point>
+                <point>1.874126 5.191870</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_106">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>2.455730 5.237190</point>
+                <point>2.455730 5.274956</point>
+                <point>2.304664 5.274956</point>
+                <point>2.153598 5.274956</point>
+                <point>2.148766 5.232873</point>
+                <point>2.143934 5.190790</point>
+                <point>2.299832 5.195106</point>
+                <point>2.402943 5.198617</point>
+                <point>2.435932 5.203671</point>
+                <point>2.450337 5.215234</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_107">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>3.034560 5.233413</point>
+                <point>3.029780 5.274956</point>
+                <point>2.882491 5.279280</point>
+                <point>2.735202 5.283604</point>
+                <point>2.735202 5.237737</point>
+                <point>2.735202 5.191870</point>
+                <point>2.887271 5.191870</point>
+                <point>3.039340 5.191870</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_108">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>3.617317 5.204355</point>
+                <point>3.619725 5.211346</point>
+                <point>3.620244 5.222818</point>
+                <point>3.619165 5.236188</point>
+                <point>3.616447 5.249675</point>
+                <point>3.605752 5.267898</point>
+                <point>3.587185 5.277685</point>
+                <point>3.550805 5.281736</point>
+                <point>3.458556 5.282510</point>
+                <point>3.309252 5.282510</point>
+                <point>3.309252 5.237190</point>
+                <point>3.309252 5.191870</point>
+                <point>3.459427 5.191870</point>
+                <point>3.517540 5.192773</point>
+                <point>3.567754 5.195537</point>
+                <point>3.609379 5.199368</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_109">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>4.192988 5.237190</point>
+                <point>4.187861 5.259126</point>
+                <point>4.174023 5.270658</point>
+                <point>4.142491 5.275764</point>
+                <point>4.045436 5.279283</point>
+                <point>3.966348 5.280720</point>
+                <point>3.924394 5.278345</point>
+                <point>3.900437 5.272117</point>
+                <point>3.888977 5.260400</point>
+                <point>3.886215 5.249817</point>
+                <point>3.885303 5.237190</point>
+                <point>3.886215 5.224562</point>
+                <point>3.888977 5.213980</point>
+                <point>3.900437 5.202263</point>
+                <point>3.924394 5.196035</point>
+                <point>3.966348 5.193660</point>
+                <point>4.045436 5.195096</point>
+                <point>4.142491 5.198615</point>
+                <point>4.174023 5.203721</point>
+                <point>4.187861 5.215254</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_110">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>4.782145 5.237190</point>
+                <point>4.782145 5.274956</point>
+                <point>4.631079 5.274956</point>
+                <point>4.480013 5.274956</point>
+                <point>4.475181 5.232873</point>
+                <point>4.470349 5.190790</point>
+                <point>4.626247 5.195106</point>
+                <point>4.729358 5.198617</point>
+                <point>4.762347 5.203671</point>
+                <point>4.776752 5.215234</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_111">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>5.363749 5.237190</point>
+                <point>5.363749 5.282510</point>
+                <point>5.212683 5.282510</point>
+                <point>5.061617 5.282510</point>
+                <point>5.061617 5.237190</point>
+                <point>5.061617 5.191870</point>
+                <point>5.212683 5.191870</point>
+                <point>5.363749 5.191870</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_112">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>5.950132 5.233413</point>
+                <point>5.945352 5.274956</point>
+                <point>5.797800 5.279283</point>
+                <point>5.718712 5.280720</point>
+                <point>5.676758 5.278345</point>
+                <point>5.652801 5.272117</point>
+                <point>5.641341 5.260400</point>
+                <point>5.637591 5.225599</point>
+                <point>5.654056 5.204385</point>
+                <point>5.699429 5.194102</point>
+                <point>5.802369 5.191870</point>
+                <point>5.954913 5.191870</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_113">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>6.534593 5.207112</point>
+                <point>6.537535 5.215105</point>
+                <point>6.538392 5.226868</point>
+                <point>6.537319 5.240126</point>
+                <point>6.534298 5.252964</point>
+                <point>6.522966 5.269592</point>
+                <point>6.503802 5.278254</point>
+                <point>6.467183 5.281103</point>
+                <point>6.378480 5.279266</point>
+                <point>6.232378 5.274956</point>
+                <point>6.227598 5.233413</point>
+                <point>6.222818 5.191870</point>
+                <point>6.373995 5.191870</point>
+                <point>6.433677 5.192948</point>
+                <point>6.484318 5.196263</point>
+                <point>6.525054 5.200926</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_114">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>7.108560 5.237190</point>
+                <point>7.103433 5.259126</point>
+                <point>7.089595 5.270658</point>
+                <point>7.058063 5.275764</point>
+                <point>6.961008 5.279283</point>
+                <point>6.881920 5.280720</point>
+                <point>6.839966 5.278345</point>
+                <point>6.816009 5.272117</point>
+                <point>6.804549 5.260400</point>
+                <point>6.801787 5.249817</point>
+                <point>6.800875 5.237190</point>
+                <point>6.801787 5.224562</point>
+                <point>6.804549 5.213980</point>
+                <point>6.816009 5.202263</point>
+                <point>6.839966 5.196035</point>
+                <point>6.881920 5.193660</point>
+                <point>6.961008 5.195096</point>
+                <point>7.058063 5.198615</point>
+                <point>7.089595 5.203721</point>
+                <point>7.103433 5.215254</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="dxf_dash_115">
+            <pose>0 0 0.010000 0 0 0</pose>
+            <geometry>
+              <polyline>
+                <height>0.001000</height>
+                <point>7.690164 5.237190</point>
+                <point>7.690164 5.282510</point>
+                <point>7.540860 5.282510</point>
+                <point>7.448611 5.281736</point>
+                <point>7.412231 5.277685</point>
+                <point>7.393664 5.267898</point>
+                <point>7.382969 5.249675</point>
+                <point>7.380251 5.236188</point>
+                <point>7.379172 5.222818</point>
+                <point>7.379691 5.211346</point>
+                <point>7.382099 5.204355</point>
+                <point>7.390037 5.199368</point>
+                <point>7.431662 5.195537</point>
+                <point>7.481876 5.192773</point>
+                <point>7.539989 5.191870</point>
+                <point>7.690164 5.191870</point>
+              </polyline>
+            </geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_pavement">
+            <pose>-4.450000 0.000000 0.006000 0 0 0.000000</pose>
+            <geometry><box><size>7.050000 6.550000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.105 0.110 0.115 1</ambient>
+              <diffuse>0.105 0.110 0.115 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_row_0">
+            <pose>-4.450000 -2.750000 0.011000 0 0 0.000000</pose>
+            <geometry><box><size>6.850000 0.055000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_0_0">
+            <pose>-7.450000 -2.270000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_0_1">
+            <pose>-6.690000 -2.270000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_0_2">
+            <pose>-5.930000 -2.270000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_0_3">
+            <pose>-5.170000 -2.270000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_0_4">
+            <pose>-4.410000 -2.270000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_0_5">
+            <pose>-3.650000 -2.270000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_0_6">
+            <pose>-2.890000 -2.270000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_0_7">
+            <pose>-2.130000 -2.270000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_0_8">
+            <pose>-1.370000 -2.270000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_row_1">
+            <pose>-4.450000 -1.650000 0.011000 0 0 0.000000</pose>
+            <geometry><box><size>6.850000 0.055000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_1_0">
+            <pose>-7.450000 -1.170000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_1_1">
+            <pose>-6.690000 -1.170000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_1_2">
+            <pose>-5.930000 -1.170000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_1_3">
+            <pose>-5.170000 -1.170000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_1_4">
+            <pose>-4.410000 -1.170000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_1_5">
+            <pose>-3.650000 -1.170000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_1_6">
+            <pose>-2.890000 -1.170000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_1_7">
+            <pose>-2.130000 -1.170000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_1_8">
+            <pose>-1.370000 -1.170000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_row_2">
+            <pose>-4.450000 -0.550000 0.011000 0 0 0.000000</pose>
+            <geometry><box><size>6.850000 0.055000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_2_0">
+            <pose>-7.450000 -0.070000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_2_1">
+            <pose>-6.690000 -0.070000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_2_2">
+            <pose>-5.930000 -0.070000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_2_3">
+            <pose>-5.170000 -0.070000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_2_4">
+            <pose>-4.410000 -0.070000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_2_5">
+            <pose>-3.650000 -0.070000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_2_6">
+            <pose>-2.890000 -0.070000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_2_7">
+            <pose>-2.130000 -0.070000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_2_8">
+            <pose>-1.370000 -0.070000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_row_3">
+            <pose>-4.450000 0.550000 0.011000 0 0 0.000000</pose>
+            <geometry><box><size>6.850000 0.055000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_3_0">
+            <pose>-7.450000 1.030000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_3_1">
+            <pose>-6.690000 1.030000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_3_2">
+            <pose>-5.930000 1.030000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_3_3">
+            <pose>-5.170000 1.030000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_3_4">
+            <pose>-4.410000 1.030000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_3_5">
+            <pose>-3.650000 1.030000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_3_6">
+            <pose>-2.890000 1.030000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_3_7">
+            <pose>-2.130000 1.030000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_3_8">
+            <pose>-1.370000 1.030000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_row_4">
+            <pose>-4.450000 1.650000 0.011000 0 0 0.000000</pose>
+            <geometry><box><size>6.850000 0.055000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_4_0">
+            <pose>-7.450000 2.130000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_4_1">
+            <pose>-6.690000 2.130000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_4_2">
+            <pose>-5.930000 2.130000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_4_3">
+            <pose>-5.170000 2.130000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_4_4">
+            <pose>-4.410000 2.130000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_4_5">
+            <pose>-3.650000 2.130000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_4_6">
+            <pose>-2.890000 2.130000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_4_7">
+            <pose>-2.130000 2.130000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_4_8">
+            <pose>-1.370000 2.130000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_row_5">
+            <pose>-4.450000 2.750000 0.011000 0 0 0.000000</pose>
+            <geometry><box><size>6.850000 0.055000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_5_0">
+            <pose>-7.450000 3.230000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_5_1">
+            <pose>-6.690000 3.230000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_5_2">
+            <pose>-5.930000 3.230000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_5_3">
+            <pose>-5.170000 3.230000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_5_4">
+            <pose>-4.410000 3.230000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_5_5">
+            <pose>-3.650000 3.230000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_5_6">
+            <pose>-2.890000 3.230000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_5_7">
+            <pose>-2.130000 3.230000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+          <visual name="parking_stall_5_8">
+            <pose>-1.370000 3.230000 0.011000 0 0 -0.610865</pose>
+            <geometry><box><size>0.045000 0.920000 0.004</size></box></geometry>
+            <material>
+              <ambient>0.95 0.95 0.92 1</ambient>
+              <diffuse>0.95 0.95 0.92 1</diffuse>
+              <specular>0.02 0.02 0.02 1</specular>
+            </material>
+          </visual>
+      </link>
+    </model>
+  </world>
+</sdf>

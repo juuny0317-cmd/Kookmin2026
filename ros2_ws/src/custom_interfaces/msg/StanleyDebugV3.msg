@@ -1,0 +1,12 @@
+# Lightweight geometry-speed-planner diagnostics per fresh source frame.
+custom_interfaces/StanleyDebugV2 control
+string speed_planner_phase
+float32 signed_curvature
+float32 preview_signed_curvature
+float32 filtered_curvature_risk
+float32 curvature_trend
+float32 peak_curvature_risk
+float32 baseline_target_speed
+float32 planner_target_speed
+bool fast_alignment
+bool curve_evidence

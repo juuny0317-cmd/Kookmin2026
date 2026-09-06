@@ -1,0 +1,36 @@
+# ROS 2 and colcon
+build/
+install/
+log/
+**/build/
+**/install/
+**/log/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE and OS
+.idea/
+.vscode/
+*~
+.DS_Store
+
+# Runtime captures and local datasets
+*.bag
+*.db3
+*.mcap
+*.MOV
+*.mp4
+datasets/
+captures/
+
+# Secrets and machine-local configuration
+.env
+.env.*
+*.pem
+*.key
+
