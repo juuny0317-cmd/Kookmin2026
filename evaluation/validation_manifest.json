@@ -1,0 +1,108 @@
+{
+  "method": {
+    "lane_model_image_size": 320,
+    "scene_model_image_size": 640,
+    "confidence_threshold": 0.25,
+    "device": "cpu",
+    "opencv": {
+      "adaptive_threshold": "GAUSSIAN_C, block=13, C=-20",
+      "canny": [
+        50,
+        150
+      ],
+      "hough_lines_p": {
+        "threshold": 20,
+        "min_line_length": 20,
+        "max_line_gap": 5
+      }
+    }
+  },
+  "input_sha256": {
+    "evaluation/perception/frame_0490_t231582ms.jpg": "ced18283b702fe840d537db60a68bf1719e640efda40122870ab397bee8c53e8",
+    "ros2_ws/src/cam/cam/center_line_yolov10n_320_best.pt": "3bf397fdb5b6adf13da9f58664fbf723261dbf8b3246c557e3880cdbee21fc3d",
+    "ros2_ws/src/cam/cam/all_second_yolo_v2_yolov10n_640_best_e46.pt": "80fa0a345164211832fdcc9af4cab6e44fddbf1dbcb8ddcaec296b31f3d9c0b5",
+    "evaluation/s_curve/s_curve_run02_ab.csv": "79d8a1e1ae0493ae12d5de702dcd34a7b5a01048881fff2280f9f69ec240b5a8",
+    "evaluation/s_curve/s_curve_run03_ab.csv": "7836f931e4c0cc3737a64fc1fbcfa4c9cea3086688fcf6d13da5d83ca5664543"
+  },
+  "detections": {
+    "lane": [
+      {
+        "class": "center_line",
+        "confidence": 0.923654,
+        "xyxy": [
+          265.134,
+          337.531,
+          347.031,
+          404.77
+        ]
+      },
+      {
+        "class": "center_line",
+        "confidence": 0.804209,
+        "xyxy": [
+          206.594,
+          269.194,
+          238.623,
+          296.094
+        ]
+      },
+      {
+        "class": "center_line",
+        "confidence": 0.565526,
+        "xyxy": [
+          191.676,
+          247.756,
+          203.753,
+          260.297
+        ]
+      },
+      {
+        "class": "center_line",
+        "confidence": 0.293223,
+        "xyxy": [
+          182.877,
+          237.466,
+          191.284,
+          248.018
+        ]
+      }
+    ],
+    "scene": [
+      {
+        "class": "green",
+        "confidence": 0.924073,
+        "xyxy": [
+          203.057,
+          0.0,
+          399.068,
+          58.084
+        ]
+      }
+    ]
+  },
+  "opencv_result": {
+    "processed_lane_rois": 4,
+    "edge_pixel_count": 574,
+    "hough_segment_count": 9
+  },
+  "s_curve_replay_metrics": {
+    "Run 02": {
+      "samples": 589,
+      "duration_s": 39.459707,
+      "cte_abs_median_px": 120.530719,
+      "cte_abs_p95_px": 307.92338,
+      "heading_abs_p95_deg": 48.598351,
+      "command_to_target_mae": 0.044699,
+      "command_to_target_max_error": 4.799532
+    },
+    "Run 03": {
+      "samples": 492,
+      "duration_s": 32.767905,
+      "cte_abs_median_px": 81.811129,
+      "cte_abs_p95_px": 276.74876,
+      "heading_abs_p95_deg": 57.932735,
+      "command_to_target_mae": 0.028389,
+      "command_to_target_max_error": 2.880049
+    }
+  }
+}
