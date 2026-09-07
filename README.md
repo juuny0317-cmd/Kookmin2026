@@ -10,11 +10,11 @@
 
 ## 주행 기록
 
-| Gazebo 코스 | 실차 트랙 테스트 | 콘 구간 테스트 |
+| 국민대 Gazebo 코스 | 실차 트랙 테스트 | 콘 구간 테스트 |
 |:---:|:---:|:---:|
-| ![Gazebo course](media/simulation/kookmin_course_map.png) | ![Xycar track test](media/real/xycar_track_test.jpg) | ![Cone course test](media/real/cone_course_test.jpg) |
+| ![Kookmin DXF course running in Gazebo Sim](media/simulation/kookmin_gazebo_course.jpg) | ![Xycar track test](media/real/xycar_track_test.jpg) | ![Cone course test](media/real/cone_course_test.jpg) |
 
-촬영 영상에서 저장소 소개용 프레임만 추출했으며 위치·시간 메타데이터는 제거했습니다.
+Gazebo 이미지는 국민대 공식 도면으로 생성한 `kookmin_dxf_track` world를 직접 실행해 캡처했습니다. 실차 이미지는 촬영 영상에서 저장소 소개용 프레임만 추출했으며 위치·시간 메타데이터는 제거했습니다.
 
 ## 실차 주행 영상
 
