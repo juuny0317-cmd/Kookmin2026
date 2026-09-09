@@ -1,0 +1,12 @@
+command,distance_m,time_s,evidence_class,source
+4,5.0,12.54,C,user-supplied real-vehicle measurement
+5,5.0,9.84,C,user-supplied real-vehicle measurement
+6,5.0,8.27,C,user-supplied real-vehicle measurement
+7,5.0,7.20,C,user-supplied real-vehicle measurement
+8,5.0,6.57,C,user-supplied real-vehicle measurement
+9,5.0,5.07,C,user-supplied real-vehicle measurement
+10,5.0,4.90,C,user-supplied real-vehicle measurement
+12,5.0,4.01,C,user-supplied real-vehicle measurement
+15,5.0,3.31,C,user-supplied real-vehicle measurement
+20,5.0,2.58,C,user-supplied real-vehicle measurement
+25,5.0,2.25,C,user-supplied real-vehicle measurement

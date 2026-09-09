@@ -16,7 +16,7 @@ Xycar의 어안 카메라는 OpenCV fisheye 모델로 왜곡을 보정합니다.
 4. 검출점을 2차 또는 3차 다항식으로 근사해 경로 중심, heading과 curvature를 구합니다.
 5. 양쪽 외곽선의 관계와 이전 프레임을 함께 사용해 한 프레임의 잘못된 차선 역할 전환을 억제합니다.
 
-차선 YOLO 입력은 320 px, scene YOLO 입력은 640 px입니다. 기본 상한은 각각 15 Hz와 10 Hz로, 조향에 필요한 차선 지연과 여러 class를 구분해야 하는 장면 인지 해상도 사이의 균형을 잡았습니다.
+차선 YOLO 입력은 320 px, scene YOLO 입력은 640 px입니다. 최종 대회 launcher의 상한은 각각 15 Hz와 10 Hz로, 조향에 필요한 차선 지연과 여러 class를 구분해야 하는 장면 인지 해상도 사이의 균형을 잡았습니다. 재현용 node default는 lane 12 Hz, scene 4 Hz이며 [architecture 문서](ARCHITECTURE.md#perception-rates-default와-최종-운용값)를 함께 봐야 합니다.
 
 ### 신호·콘·장애물 인지
 
