@@ -1,0 +1,4 @@
+test_case,physical_raw,direction,real_value,sim_value,unit,evidence_class,source
+turn_p40,40,right,0.5525,0.5474,m,D,simulation/xycar_gz_sim/README.md
+turn_m40,-40,left,0.8200,0.8042,m,D,simulation/xycar_gz_sim/README.md
+speed_15,15,straight,3.310,3.999,s,D,simulation/xycar_gz_sim/README.md

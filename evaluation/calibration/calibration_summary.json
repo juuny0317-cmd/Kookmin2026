@@ -1,0 +1,133 @@
+{
+  "provenance": {
+    "A": "value read directly from repository code or configuration",
+    "B": "value read from repository evaluation data",
+    "C": "user-supplied real-vehicle measurement",
+    "D": "derived mathematically from A-C inputs",
+    "E": "not currently quantifiable"
+  },
+  "speed_5m": [
+    {
+      "command": 4,
+      "distance_m": 5.0,
+      "time_s": 12.54,
+      "speed_mps": 0.39872408293460926
+    },
+    {
+      "command": 5,
+      "distance_m": 5.0,
+      "time_s": 9.84,
+      "speed_mps": 0.508130081300813
+    },
+    {
+      "command": 6,
+      "distance_m": 5.0,
+      "time_s": 8.27,
+      "speed_mps": 0.6045949214026602
+    },
+    {
+      "command": 7,
+      "distance_m": 5.0,
+      "time_s": 7.2,
+      "speed_mps": 0.6944444444444444
+    },
+    {
+      "command": 8,
+      "distance_m": 5.0,
+      "time_s": 6.57,
+      "speed_mps": 0.76103500761035
+    },
+    {
+      "command": 9,
+      "distance_m": 5.0,
+      "time_s": 5.07,
+      "speed_mps": 0.9861932938856015
+    },
+    {
+      "command": 10,
+      "distance_m": 5.0,
+      "time_s": 4.9,
+      "speed_mps": 1.0204081632653061
+    },
+    {
+      "command": 12,
+      "distance_m": 5.0,
+      "time_s": 4.01,
+      "speed_mps": 1.2468827930174564
+    },
+    {
+      "command": 15,
+      "distance_m": 5.0,
+      "time_s": 3.31,
+      "speed_mps": 1.5105740181268883
+    },
+    {
+      "command": 20,
+      "distance_m": 5.0,
+      "time_s": 2.58,
+      "speed_mps": 1.937984496124031
+    },
+    {
+      "command": 25,
+      "distance_m": 5.0,
+      "time_s": 2.25,
+      "speed_mps": 2.2222222222222223
+    }
+  ],
+  "speed_range": {
+    "command_4_to_25_time_reduction_pct": 82.05741626794259,
+    "command_4_to_25_speed_ratio": 5.573333333333333
+  },
+  "steering_asymmetry": [
+    {
+      "command_magnitude": 20,
+      "right_radius_m": 1.15,
+      "left_radius_m": 2.415,
+      "left_to_right_ratio": 2.1,
+      "left_radius_larger_pct": 110.00000000000001
+    },
+    {
+      "command_magnitude": 30,
+      "right_radius_m": 0.78,
+      "left_radius_m": 1.315,
+      "left_to_right_ratio": 1.6858974358974357,
+      "left_radius_larger_pct": 68.58974358974358
+    },
+    {
+      "command_magnitude": 40,
+      "right_radius_m": 0.5525,
+      "left_radius_m": 0.82,
+      "left_to_right_ratio": 1.4841628959276016,
+      "left_radius_larger_pct": 48.41628959276017
+    }
+  ],
+  "sim_real_comparison": [
+    {
+      "test_case": "turn_p40",
+      "direction": "right",
+      "real_value": 0.5525,
+      "sim_value": 0.5474,
+      "unit": "m",
+      "absolute_error": 0.005099999999999993,
+      "absolute_error_pct": 0.9230769230769219
+    },
+    {
+      "test_case": "turn_m40",
+      "direction": "left",
+      "real_value": 0.82,
+      "sim_value": 0.8042,
+      "unit": "m",
+      "absolute_error": 0.015799999999999925,
+      "absolute_error_pct": 1.926829268292674
+    },
+    {
+      "test_case": "speed_15",
+      "direction": "straight",
+      "real_value": 3.31,
+      "sim_value": 3.999,
+      "unit": "s",
+      "absolute_error": 0.6890000000000001,
+      "absolute_error_pct": 20.81570996978852
+    }
+  ]
+}

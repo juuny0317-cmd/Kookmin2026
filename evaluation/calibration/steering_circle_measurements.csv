@@ -1,0 +1,7 @@
+physical_raw,direction,diameter_m,radius_m,evidence_class,source
+20,right,2.300,1.1500,C,user-supplied real-vehicle measurement
+30,right,1.560,0.7800,C,user-supplied real-vehicle measurement
+40,right,1.105,0.5525,C,user-supplied real-vehicle measurement
+-20,left,4.830,2.4150,C,user-supplied real-vehicle measurement
+-30,left,2.630,1.3150,C,user-supplied real-vehicle measurement
+-40,left,1.640,0.8200,C,user-supplied real-vehicle measurement

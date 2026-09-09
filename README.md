@@ -4,145 +4,221 @@
 
 # Kookmin 2026 Autonomous Driving
 
-국민대학교 제9회 자율주행 경진대회를 준비하며 개발한 Xycar 기반 ROS 2 자율주행 시스템입니다. 최종 주행 코드, 센서 드라이버, Gazebo 환경, 실차 보정값과 분석 도구를 한 저장소에 정리했습니다.
+국민대학교 제9회 자율주행 경진대회를 위해 개발한 Xycar 기반 ROS 2 자율주행 시스템입니다. Camera/LiDAR perception, mission arbitration, Stanley/Pure Pursuit control, VESC safety boundary와 실측 기반 Gazebo 환경을 하나의 stack으로 통합했습니다.
 
-카메라와 LiDAR를 함께 사용해 차선·신호·콘·장애물을 인지하고, 유한상태기계가 현재 미션과 안전 우선순위를 결정합니다. 일반 차선에서는 Stanley 제어기, 콘 구간에서는 DBSCAN으로 만든 중앙 경로와 Pure Pursuit 제어기를 사용합니다.
-
-## 주행 기록
-
-| 국민대 Gazebo 코스 | 실차 트랙 테스트 | 콘 구간 테스트 |
-|:---:|:---:|:---:|
-| ![Kookmin DXF course running in Gazebo Sim](media/simulation/kookmin_gazebo_course.jpg) | ![Xycar track test](media/real/xycar_track_test.jpg) | ![Cone course test](media/real/cone_course_test.jpg) |
-
-Gazebo 이미지는 국민대 공식 도면으로 생성한 `kookmin_dxf_track` world를 직접 실행해 캡처했습니다. 실차 이미지는 촬영 영상에서 저장소 소개용 프레임만 추출했으며 위치·시간 메타데이터는 제거했습니다.
-
-## 실차 주행 영상
+## Competition Run / 실제 대회 주행
 
 <p align="center">
-  <a href="media/video/cone_course_run.mp4">
-    <img src="media/real/cone_course_vehicle.jpg" width="820" alt="Play the cone-course vehicle test">
+  <a href="https://youtu.be/CcfXS3UFL0A?t=17805">
+    <img src="media/competition/team-sve-vehicle.jpg" width="820" alt="Team SVE Xycar on the Kookmin University competition course">
   </a>
 </p>
 
 <p align="center">
-  <strong><a href="media/video/cone_course_run.mp4">▶ 콘 구간 실차 주행 16초 영상 재생</a></strong>
+  <strong><a href="https://youtu.be/CcfXS3UFL0A?t=17805">▶ 공식 방송 4:56:45부터 보기</a></strong><br>
+  전체 팀 구간 4:56:22–4:59:46 · 차량 출발과 초반 차선/장애물 구간 4:56:45–4:57:25
 </p>
 
-HEVC 원본을 GitHub와 브라우저에서 확인하기 쉬운 H.264 960×540 영상으로 변환했습니다. 음성과 메타데이터를 제거했으며 인코딩 정보와 SHA-256은 [영상 기록](media/video/README.md)에 남겼습니다.
+저장소에서 바로 확인할 수 있는 팀 소유 영상: [콘 구간 실차 16 s](media/video/cone_course_run.mp4). 공식 방송은 재배포하지 않고 timestamp link와 사용자가 제공한 screenshot만 사용했습니다.
 
-## 인지 및 추종 검증
+## Project Overview
 
-| 최종 YOLO 체크포인트 출력 | YOLO ROI의 OpenCV 후처리 |
-|:---:|:---:|
-| ![Lane and scene YOLO detections](media/perception/yolo_lane_scene.jpg) | ![OpenCV lane ROI processing](media/perception/opencv_lane_roi.jpg) |
+| 항목 | 내용 |
+|---|---|
+| Competition | 제9회 국민대학교 자율주행 경진대회, Team SVE |
+| Vehicle | 1/10-scale Xycar, fisheye camera, 2D LiDAR, VESC |
+| Runtime | Ubuntu 22.04, ROS 2 Humble, Fast DDS |
+| Goal | lane, traffic light, dynamic/static obstacle, shortcut left-turn, cone mission의 end-to-end 통합 |
+| Project type | 팀 프로젝트; 아래 contribution은 사용자가 직접 담당·주도한 영역을 코드와 연결해 기록 |
 
-![S-curve replay tracking plot](media/validation/s_curve_tracking.png)
+## My Contribution
 
-실차 카메라 기록에 최종 Lane YOLO(320)와 Scene YOLO(640)를 다시 실행해 중앙선 후보 4개와 녹색 신호 1개를 기록했습니다. Lane YOLO가 잡은 영역에는 실제 중앙선 추적과 같은 Adaptive Threshold → Canny → Hough 단계를 적용했습니다.
+| 담당 영역 | 수행 내용 | 관련 코드 |
+|---|---|---|
+| Camera Perception | Lane/Scene YOLO 분리, confidence·input size·실행 주기 tuning | [`yolo_node.py`](ros2_ws/src/cam/cam/yolo_node.py), [`frame_router.py`](ros2_ws/src/cam/cam/frame_router.py) |
+| Lane Geometry & Control | YOLO+OpenCV lane geometry, Stanley 설계, gain/speed tuning | [`Lane_Detector.py`](ros2_ws/src/cam/cam/Lane_Detector.py), [`Integrated_Stanley_Controller.py`](ros2_ws/src/cam/cam/Integrated_Stanley_Controller.py) |
+| Mission Integration | `STOP/PAUSED/LANE/OVERTAKE/CONE` arbitration, freshness와 VESC fail-safe 통합 | [`mission_manager_node.py`](ros2_ws/src/mission_cone_drive/mission_cone_drive/mission_manager_node.py) |
+| Obstacle Perception | dynamic/static YOLO와 LiDAR association, 목표 차선·speed/event parameter tuning | [`target_lane_planner.py`](ros2_ws/src/cam/cam/target_lane_planner.py), [`obstacle_lidar_fusion.py`](ros2_ws/src/cam/cam/obstacle_lidar_fusion.py) |
+| Shortcut Left Turn | left signal 인식과 진입/회전/이탈 FSM 통합 | [`traffic_light_node.py`](ros2_ws/src/cam/cam/traffic_light_node.py), [`shortcut_left_turn_logic.py`](ros2_ws/src/cam/cam/shortcut_left_turn_logic.py) |
+| Sim-to-Real | 차량 치수·조향·속도 실측, 좌우 LUT와 Gazebo interface calibration | [`simulation/xycar_gz_sim/`](simulation/xycar_gz_sim/), [실차 calibration](docs/REAL_VEHICLE_CALIBRATION.md) |
 
-S자 리플레이 2회에서는 10/12/16 속도 정책의 목표와 출력 명령을 비교했습니다. 곡선 이탈 hold를 적용한 정책은 기존 정책에서 각각 7회, 3회 발생하던 검증되지 않은 10→16 직접 가속을 두 기록 모두 0회로 줄였습니다. 왼쪽의 `cte_px`는 영상에서 본 차선 중심 오차이며 실제 차량 pose 오차는 아닙니다. 입력 체크섬, 수치와 해석 범위는 [인지 및 추종 검증 자료](docs/VALIDATION_EVIDENCE.md)에 있습니다.
+팀 전체 구현을 혼자 했다는 의미가 아니라, 위 영역을 담당·주도하고 통합·튜닝했다는 범위다. 공개 Git history는 개발 중간 이력을 한 commit으로 가져온 형태라 파일별 개인 기여를 commit 통계로 분리할 수 없어 사용자 제공 역할 정보를 기준으로 작성했다.
 
-## 시스템 구성
+## Validation & Results
+
+검증 가능한 A-D class 수치만 사용했다. 원시 입력과 계산식은 링크된 문서/CSV에 있다.
+
+| Result | Value | Evidence |
+|---|---:|---|
+| Final perception configuration | Lane 320 px / 최대 15 Hz, Scene 640 px / 최대 10 Hz | [final start script](scripts/start_integrated_drive_container.sh), [architecture](docs/ARCHITECTURE.md) |
+| Unsafe S-curve 10→16 acceleration | Run 02 **7→0**, Run 03 **3→0**; 두 replay 모두 100% 제거 | [manifest](evaluation/validation_manifest.json), [validation](docs/VALIDATION_EVIDENCE.md) |
+| Measured 5 m speed | command 4: 0.399 m/s, command 25: 2.222 m/s; **5.57×** | [raw CSV](evaluation/calibration/speed_5m_measurements.csv), [calibration](docs/REAL_VEHICLE_CALIBRATION.md) |
+| Steering asymmetry at \|raw\| 40 | right 0.5525 m vs left 0.8200 m; left radius **48.4% larger** | [raw CSV](evaluation/calibration/steering_circle_measurements.csv) |
+| Gazebo max-steer radius replay | right 0.9%, left 1.9% absolute error at ±40 | [comparison](evaluation/calibration/sim_real_comparison.csv), [limits](docs/SIM_TO_REAL.md) |
+| Competition second run | driving 144.65 s + penalty 5.00 s = **149.65 s** | [result image](media/competition/final-result-149-65s.jpg), [retrospective](docs/COMPETITION_RETROSPECTIVE.md) |
+
+`cte_px` replay는 image-plane lane-center proxy이고 실제 vehicle pose error가 아니다. 최대 조향 sim-real 수치도 calibrated LUT knot 재현 결과이며 전체 trajectory accuracy로 일반화하지 않는다.
+
+## System Architecture
 
 ```mermaid
 flowchart LR
-    CAM[어안 카메라] --> ROUTER[Frame Router]
-    ROUTER --> LYOLO[Lane YOLOv10n]
-    ROUTER --> SYOLO[Scene YOLOv10n]
-    LYOLO --> LANE[BEV + Hough + 차선 추적]
-    SYOLO --> FSM[Mission Manager]
-    LIDAR[2D LiDAR] --> CLUSTER[회전 보정 + DBSCAN]
-    CLUSTER --> FUSION[Camera/LiDAR Fusion]
-    FUSION --> FSM
-    CLUSTER --> PATH[콘 중앙 경로 + Cubic Spline]
-    LANE --> STANLEY[Stanley Controller]
-    PATH --> PP[Pure Pursuit]
-    FSM --> SELECT[명령 선택·속도 제한·Fail-safe]
-    STANLEY --> SELECT
-    PP --> SELECT
-    SELECT --> VESC[VESC Motor Adapter]
+    CAM[Camera] --> ROUTER[Latest-frame Router]
+    ROUTER --> LANE[Lane YOLO 320<br/>max 15 Hz]
+    ROUTER --> SCENE[Scene YOLO 640<br/>max 10 Hz]
+    LANE --> GEOM[OpenCV lane geometry]
+    GEOM --> STANLEY[Scheduled Stanley]
+    SCENE --> FSM[Traffic · Obstacle · Shortcut]
+    LIDAR[LiDAR] --> DBSCAN[DBSCAN + Fusion]
+    DBSCAN --> PP[Cone path + Pure Pursuit]
+    STANLEY --> MM[Mission Manager<br/>Safety Arbitration]
+    FSM --> MM
+    PP --> MM
+    MM -->|/xycar_motor| VESC[VESC Adapter + Watchdog]
+    VESC --> CAR[Physical Xycar]
 ```
 
-| 구분 | 적용한 방법 | 역할 |
-|---|---|---|
-| 인지 | YOLOv10n 2개, 어안 보정, BEV, Canny/Hough, LiDAR DBSCAN, 카메라-LiDAR 투영 | 중앙선, 신호등, 지름 0.30 m 이하 콘 후보, 정적·동적 장애물 검출 |
-| 판단 | `LANE`/`CONE` 상태기계, N-of-M 확인, 신호 적색 래치, 장애물 추적, 지름길 단계 전이 | 순간 오검출을 걸러 미션 모드·목표 차선·속도 상한 결정 |
-| 제어 | 속도별 이득을 쓰는 Stanley, Pure Pursuit, 곡률별 속도 정책, 조향·속도 변화율 제한 | 차선 및 콘 중앙 경로 추종, 급격한 명령 억제 |
-| 안전 | 메시지 freshness, VESC 준비 확인, pause/stop/reset 서비스 | 센서나 명령이 오래되거나 구동기가 준비되지 않으면 정지 명령 출력 |
+[Detailed Architecture → `docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
 
-구현과 파라미터의 근거는 [알고리즘 문서](docs/ALGORITHMS.md), 노드 연결은 [아키텍처 문서](docs/ARCHITECTURE.md)에 자세히 적었습니다.
+## Perception
+
+- **Dual YOLO:** center-line 전용 320 px branch와 cone/dynamic/green/left/red/static 640 px branch를 분리했다.
+- **Latest-frame routing:** worker가 바쁜 동안 오래된 FIFO를 쌓지 않고 pending frame을 최신 입력으로 교체한다.
+- **YOLO + OpenCV hybrid:** YOLO ROI 안에서 adaptive threshold, Canny, Hough와 polynomial fit으로 lane geometry를 만든다.
+- **LiDAR:** rotated scan을 DBSCAN으로 묶고 최대 지름 0.30 m 등의 조건으로 cone 후보를 만든다.
+- **Camera-LiDAR fusion:** fisheye projection으로 obstacle/cone image box와 LiDAR cluster를 연결한다.
+
+Single→dual pipeline의 동등 조건 FPS log는 저장소에 없어 “N% 빨라졌다”고 쓰지 않았다. 최종 운용값과 code default의 차이는 [Dual YOLO 문서](ros2_ws/src/mission_cone_drive/DUAL_YOLO_PIPELINES.md)에 명시했다.
+
+## Decision & Planning
+
+- Mission Manager는 `STOP`, `PAUSED`, `LANE`, `OVERTAKE`, `CONE` 상태와 `PAUSED > RED/STOP > CONE > LANE/OVERTAKE` 우선순위를 적용한다.
+- Traffic light는 red/green/left class와 latch/confirmation을 사용한다. final red threshold는 0.30, code default는 0.20이다.
+- Dynamic/static obstacle은 같은 obstacle Stanley k를 공유하지만 speed cap, trigger distance, lane-change distance와 event duration이 다르다.
+- Shortcut FSM은 left signal, base lane curve, cross-line/alignment confirmation을 이용해 좌회전 진입과 lane handoff를 관리한다.
+- Cone entry는 YOLO box, LiDAR cluster, 양쪽 cone evidence와 path point 수를 확인한 뒤 mode를 전환한다.
+
+## Control
+
+- **Lane:** Stanley의 CTE gain을 command 4–12에서 scheduling한다. straight `1.00→0.65`, curve `1.20→0.90`, obstacle override `1.80`이다.
+- **Heading:** low-speed 0.30에서 straight 0.18, Hough 0.14, curve 0.30으로 context-aware weight를 사용한다.
+- **Cone:** final launcher는 DBSCAN spline path + Pure Pursuit를 선택한다. cone Stanley/preview 코드는 대안·회귀시험용이다.
+- **Speed:** curvature severity와 S-reversal을 반영하고 command 변화율을 제한한다.
+- **Actuator:** MotorCommandAdapter는 servo/duty conversion, ERPM feed-forward + PI, slew limit를 수행한다.
+
+## Safety
+
+- Camera header를 `LaneControlStateV3 → StampedMotorCommand`까지 보존한다.
+- Final lane source freshness threshold는 **0.30 s**이며 stale state에서는 speed 0을 낸다.
+- Mission Manager가 command/source timestamp와 `/vesc/ready` freshness를 재검사한다.
+- Motor adapter의 **0.30 s watchdog**이 마지막 actuator command의 무기한 유지를 막는다.
+- `start_active:=false`가 기본 final operation이며 start service 전에는 구동하지 않는다.
 
 ## Sim-to-Real
 
-실차와 Gazebo가 동일한 ROS 인터페이스를 사용합니다.
+실측 wheelbase 0.355 m, track 0.250/0.266 m, wheel radius 0.050 m와 mass 4.1 kg을 vehicle model에 반영했다. 좌우 steering 반경이 크게 달라 direction-specific curvature LUT를 사용했고 5 m timing으로 speed LUT를 만들었다.
 
-- 입력: `/image_raw`, `/camera_info`, `/scan`
-- 출력: `/cmd/speed`, `/cmd/steer`
-- 구동기 경계: `/xycar_motor` 배열 `[steer, speed]`
-- 차량 모델: rear axle 중심 `base_link`, 전륜 Ackermann 조향, 후륜 구동
-- 보정: 좌·우 비대칭 raw steering↔curvature LUT와 speed command↔m/s LUT
+![Measured speed-command calibration curve](media/calibration/speed-command-curve.svg)
 
-알고리즘을 바꾸지 않고 실행 백엔드와 센서/구동기만 전환하도록 구성했습니다. Gazebo에서 64초 이상 연속 주행과 우회전 구간 통과를 확인했지만, 급한 S자 후반 좌회전은 카메라 pose와 좌회전 조향 반경의 추가 실측 보정이 필요합니다. 검출이 끊기면 계속 진행하지 않고 속도 0을 발행합니다. 상세 내용은 [Sim-to-Real 기록](docs/SIM_TO_REAL.md)에 있습니다.
+Gazebo에서 64 s 이상 주행과 right turn을 확인했지만 sharp S-curve 후반 left에서 lane loss 후 safety stop했다. camera pose, tire model, steering/motor delay와 영상 domain gap이 남아 있어 완전한 digital twin으로 표현하지 않는다. [측정표와 계산](docs/REAL_VEHICLE_CALIBRATION.md) · [Sim-to-Real 한계](docs/SIM_TO_REAL.md)
 
-## 저장소 구조
+## Engineering Iterations
+
+| Problem | Engineering change | Verified result / honest limit |
+|---|---|---|
+| Camera backlog와 stale control | latest-frame worker + stamped contract + 0.30 s stop | backlog 방지 구조와 timeout 확인; latency 개선 %는 데이터 없음 |
+| Single multi-class YOLO trade-off | Lane 320/15와 Scene 640/10 분리 | final configuration 확인; single-model FPS comparison 없음 |
+| target point만으로 부족 | curvature/confidence/S-reversal/timestamp로 interface 확장 | V1→V3 nested message와 stamped command 확인 |
+| Fixed Stanley gain trade-off | speed/context gain scheduling | final values 확인; tracking-error before/after 없음 |
+| S-curve 조기 가속 | 3-speed policy + 0.5 s exit hold | Run 02 7→0, Run 03 3→0 |
+| Unseen broadcast red light | threshold/confirmation 재검토, context gating 요구 도출 | 경기 실패 공개; current config만으로 완전 해결 주장 안 함 |
+
+[전체 Problem → Measurement → Change → Validation → Result → Limitation 기록](docs/ENGINEERING_ITERATIONS.md)
+
+## Competition Result & Failure Analysis
+
+| Team SVE operation | Second-run result |
+|:---:|:---:|
+| ![Operator during Team SVE competition run](media/competition/team-sve-operation.jpg) | ![Final result 149.65 seconds](media/competition/final-result-149-65s.jpg) |
+
+본선 2차 주행은 144.65 s, penalty 5.00 s, final 149.65 s였다. 사용자 회고상 연습 때 없던 방송 카메라의 red indicator를 신호등으로 오인해 약 45 s STOP했다. 45 s는 동기화 log가 아닌 manual review 근사값이고, 이를 뺀 104.65 s는 공식 기록이 아니라 단순 hypothetical이다.
+
+이 실패는 낮은 confidence의 trade-off, closed-set validation의 한계, ROI/location/geometry gating과 N-of-M temporal confirmation 필요성으로 연결했다. 외부 red source를 가린 현장 조치는 software fix로 서술하지 않았다. [상세 경기 회고](docs/COMPETITION_RETROSPECTIVE.md)
+
+## Robotics Stack
+
+| Layer | Stack |
+|---|---|
+| Language | Python, Bash |
+| Robotics | ROS 2 Humble, DDS/Fast DDS, Topics/Services, `custom_interfaces` |
+| Perception | OpenCV, Ultralytics YOLOv10n, Camera-LiDAR Fusion, DBSCAN |
+| Planning / Control | FSM, Stanley, Pure Pursuit, gain scheduling, speed planning, PI motor control |
+| Simulation | Gazebo, Ackermann vehicle model, asymmetric steering/speed LUT, Sim-to-Real calibration |
+| Development / Validation | Ubuntu 22.04, Git/GitHub, colcon/ament, rosbag replay, latency/freshness tools |
+
+## Repository Structure
 
 ```text
 Kookmin2026/
-├── ros2_ws/src/
-│   ├── cam/                    # 영상 인지, 차선 추정, Stanley 제어
-│   ├── custom_interfaces/      # 주행 상태·디버그 메시지
-│   ├── mission_cone_drive/     # 미션 FSM, 센서 융합, 콘 경로·제어
-│   ├── xycar_motor_native/     # VESC 명령 변환
-│   └── vendor/                 # usb_cam, VESC, Xycar 장치 드라이버
-├── simulation/                 # Gazebo 차량·코스와 초기 차선주행 코드
-├── scripts/                    # 통합 주행 실행 스크립트
-├── tools/                      # 지연·freshness·주행 로그 분석
-├── media/                      # 시뮬레이션과 실차 기록 이미지
-└── docs/                       # 설계, 알고리즘, 운용 및 출처 문서
+├── docs/                         # 설계·알고리즘·운용·검증 문서
+│   ├── ARCHITECTURE.md           # 전체 node/topic/safety 흐름
+│   ├── ENGINEERING_ITERATIONS.md # 문제 해결 과정과 근거 수준
+│   ├── REAL_VEHICLE_CALIBRATION.md
+│   └── COMPETITION_RETROSPECTIVE.md
+├── evaluation/                   # 인지·제어 성능 평가 데이터와 재현 자료
+│   ├── calibration/              # 실차 측정 원시 CSV와 derived summary
+│   └── s_curve/                  # 속도 정책 A/B replay CSV/JSON
+├── media/                        # 실차·대회·simulation 이미지와 영상
+├── ros2_ws/                      # ROS 2 자율주행 main workspace
+│   └── src/
+│       ├── cam/                  # Camera YOLO·lane geometry·Stanley·obstacle
+│       ├── mission_cone_drive/   # Mission FSM·LiDAR DBSCAN·cone path·Pure Pursuit
+│       ├── custom_interfaces/    # 상태·인지·제어 ROS 2 messages
+│       ├── xycar_motor_native/   # /xycar_motor → VESC actuator interface
+│       └── vendor/               # Camera·LiDAR·VESC device drivers
+├── scripts/                      # 통합 주행 실행과 환경 설정
+├── simulation/                   # Gazebo vehicle·Kookmin course·adapter
+└── tools/                        # latency·freshness·validation 분석/렌더링
 ```
 
-## 빌드와 실행
+## Build / Run
 
-기준 환경은 Ubuntu 22.04, ROS 2 Humble입니다. 실제 차량 실행 전 카메라, LiDAR, VESC 포트와 보정 파일을 차량에 맞게 확인해야 합니다.
+기준 환경은 Ubuntu 22.04 / ROS 2 Humble이다. 실제 차량 실행 전 camera, LiDAR, VESC port와 emergency stop을 확인해야 한다.
 
 ```bash
 cd ros2_ws
 source /opt/ros/humble/setup.bash
 colcon build --symlink-install
 source install/setup.bash
-```
 
-호스트에서 통합 스택을 실행합니다. 안전을 위해 기본값은 `start_active:=false`이며 시작 서비스를 호출하기 전까지 모터 명령을 활성화하지 않습니다.
-
-```bash
+# repository root에서 host backend 실행
 cd ..
 XYCAR_EXECUTION_BACKEND=host ./scripts/start_integrated_drive_container.sh
 ```
 
-팀에서 사용한 컨테이너 이미지가 로컬에 있다면 기본 container 백엔드를 사용할 수 있습니다. 재현 가능한 실행 순서와 서비스 명령은 [운용 문서](docs/OPERATIONS.md)를 참고하십시오.
-
-Gazebo 패키지는 별도 install 경로로 빌드할 수 있습니다.
+팀의 pinned container image가 로컬에 있으면 기본 container backend를 사용할 수 있다. 시작 시 motor는 비활성 상태다.
 
 ```bash
-source /opt/ros/humble/setup.bash
-colcon --log-base simulation/log build --symlink-install \
-  --base-paths simulation/xycar_gz_sim simulation/team_code/track_drive \
-  --build-base simulation/build \
-  --install-base simulation/install
-source simulation/install/setup.bash
-ros2 launch xycar_gz_sim xycar.launch.py use_sim:=true gui:=true
+ros2 service call /start_integrated_drive std_srvs/srv/Trigger '{}'
+ros2 service call /pause_integrated_drive std_srvs/srv/Trigger '{}'
+ros2 service call /stop_integrated_drive std_srvs/srv/Trigger '{}'
 ```
 
-초기 차선주행 코드까지 연결한 비교 실행은 `team_lane_sim.launch.py`를 사용합니다.
+자세한 안전 절차와 backend 조건은 [Operations](docs/OPERATIONS.md), Gazebo build/run은 [Sim-to-Real](docs/SIM_TO_REAL.md)를 따른다.
 
-```bash
-ros2 launch xycar_gz_sim team_lane_sim.launch.py use_sim_time:=true gui:=true
-```
+## Documentation
 
-## 모델과 자료 범위
+- [System Architecture](docs/ARCHITECTURE.md)
+- [Engineering Iterations](docs/ENGINEERING_ITERATIONS.md)
+- [Algorithms](docs/ALGORITHMS.md)
+- [Real Vehicle Calibration](docs/REAL_VEHICLE_CALIBRATION.md)
+- [Sim-to-Real](docs/SIM_TO_REAL.md)
+- [Competition Retrospective](docs/COMPETITION_RETROSPECTIVE.md)
+- [Validation Evidence](docs/VALIDATION_EVIDENCE.md)
+- [Operations](docs/OPERATIONS.md)
+- [Models](docs/MODELS.md)
+- [Sources & Licenses](docs/SOURCE_AND_LICENSES.md)
 
-최종 주행에서 사용한 YOLOv10n 체크포인트는 `ros2_ws/src/cam/cam/`에 포함했으며 역할과 checksum은 [모델 문서](docs/MODELS.md)에 기록했습니다. 대형 범용 YOLO 데모 가중치, 빌드 결과, 캐시, rosbag 원본, 연습 패키지는 저장소에서 제외했습니다. 대회 규정 PDF와 원본 DXF는 재배포 조건이 확인되지 않아 포함하지 않고, 규정에서 필요한 임무 순서만 [대회 요구사항](docs/COMPETITION_REQUIREMENTS.md)에 직접 요약했습니다.
+## Evidence boundary
 
-외부 드라이버의 라이선스와 코드 출처는 [소스 및 라이선스](docs/SOURCE_AND_LICENSES.md)에 구분해 기록했습니다. 이 저장소 전체에 일괄 적용되는 별도 라이선스는 선언하지 않습니다.
-
-정리 후 알고리즘 단위 테스트 283개와 Gazebo 패키지 빌드를 통과했습니다. 현재 PC에서 추가로 필요한 실차 driver dependency까지 포함한 결과는 [검증 기록](docs/VALIDATION.md)에 남겼습니다.
+원본 rosbag과 전체 학습 dataset은 용량·개인정보 때문에 공개 저장소에 없다. 공개 CSV, 선택 frame, checkpoint와 script로 정적 evidence를 재생성할 수 있다. 현재 자료로 정량화할 수 없는 sensor-to-command latency 개선율, Stanley tracking-error 개선율, 전체 trajectory-level sim-real error는 의도적으로 결과 수치에서 제외했다.
