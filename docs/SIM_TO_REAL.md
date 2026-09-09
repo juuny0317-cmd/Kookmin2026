@@ -76,6 +76,9 @@ ros2 launch xycar_gz_sim team_lane_sim.launch.py use_sim_time:=true gui:=true
 
 ## Simulation 미디어
 
-[Kookmin course screenshot](../media/simulation/kookmin_gazebo_course.jpg)
+| 자료 | 용도 | 미리보기 |
+|---|---|:---:|
+| [이전 Gazebo 코스 geometry preview](../media/simulation/kookmin_course_map.png) | square loop, 중앙 교차로와 직선 구간 구조를 검토한 초기 Sim-to-Real 자료 | ![Previous square-loop Gazebo course geometry preview](../media/simulation/kookmin_course_map.png) |
+| [Kookmin course Gazebo 실행 화면](../media/simulation/kookmin_gazebo_course.jpg) | 실제 대회 코스를 반영한 후의 simulation 화면 | ![Kookmin competition course in Gazebo](../media/simulation/kookmin_gazebo_course.jpg) |
 
-위 screenshot과 표의 검증 수치는 서로 다른 증거이며, 이미지만으로 정량 성능을 주장하지 않는다.
+이전 preview는 Gazebo runtime 성능 캡처가 아니라 생성한 코스 geometry를 확인한 자료이다. 두 이미지와 표의 검증 수치는 서로 다른 증거이며, 이미지만으로 정량 성능을 주장하지 않는다.

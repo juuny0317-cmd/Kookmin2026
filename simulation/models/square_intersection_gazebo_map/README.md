@@ -1,8 +1,8 @@
 # square_intersection_gazebo_map
 
-Gazebo / `gz sim`용 중앙 십자 교차로 + 정사각형 외곽 순환도로 맵입니다.
+Gazebo / `gz sim`용 중앙 십자 교차로 + 정사각형 외곽 순환도로 맵이다.
 
-이번 버전은 중앙 교차로 주변 4개의 직선 구간에 참고 이미지와 같은 상세 노면 마킹을 넣었습니다.
+이번 버전은 중앙 교차로 주변 4개의 직선 구간에 참고 이미지와 같은 상세 노면 마킹을 넣었다.
 
 ## 치수
 
@@ -16,7 +16,7 @@ Gazebo / `gz sim`용 중앙 십자 교차로 + 정사각형 외곽 순환도로 
 
 ## 중앙 교차로 주변 4개 직선구간 마킹
 
-각 방향 직선구간에 동일하게 적용했습니다.
+각 방향 직선구간에 동일하게 적용했다.
 
 - 교차로 쪽 끝 횡단보도
 - 흰색 마름모 예고 마킹 4개
@@ -28,8 +28,8 @@ Gazebo / `gz sim`용 중앙 십자 교차로 + 정사각형 외곽 순환도로 
 
 - 아스팔트: collision 있음
 - 노란 중앙선 / 흰 실선 / 횡단보도 / 마름모 / 화살표 / 정지선: visual-only, collision 없음
-- 노면표시는 z-fighting 방지를 위해 아스팔트보다 0.5~1.0 mm 위에 있습니다.
-- 노면표시에는 collision이 없으므로 차량이 선이나 마킹을 밟아도 덜컹거리지 않습니다.
+- 노면표시는 z-fighting 방지를 위해 아스팔트보다 0.5~1.0 mm 위에 있다.
+- 노면표시에는 collision이 없으므로 차량이 선이나 마킹을 밟아도 덜컹거리지 않는다.
 
 ## 설치
 
@@ -39,7 +39,7 @@ cd ~/Competitions/2026/03_Kookmin_Autonomous_9th/gazebo_maps
 unzip ~/Downloads/square_intersection_gazebo_map.zip -d ~/Competitions/2026/03_Kookmin_Autonomous_9th/gazebo_maps
 ```
 
-기존 폴더가 있으면 먼저 삭제하세요.
+기존 폴더가 있으면 먼저 삭제해야 한다.
 
 ```bash
 rm -rf ~/Competitions/2026/03_Kookmin_Autonomous_9th/gazebo_maps/square_intersection_gazebo_map

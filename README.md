@@ -4,22 +4,20 @@
 
 # Kookmin 2026 Autonomous Driving
 
-국민대학교 제9회 자율주행 경진대회를 위해 개발한 Xycar 기반 ROS 2 자율주행 시스템입니다. Camera/LiDAR perception, mission arbitration, Stanley/Pure Pursuit control, VESC safety boundary와 실측 기반 Gazebo 환경을 하나의 stack으로 통합했습니다.
+국민대학교 제9회 자율주행 경진대회를 위해 개발한 Xycar 기반 ROS 2 자율주행 시스템이다. Camera/LiDAR perception, mission arbitration, Stanley/Pure Pursuit control, VESC safety boundary와 실측 기반 Gazebo 환경을 하나의 stack으로 통합했다.
 
 ## Competition Run / 실제 대회 주행
 
 <p align="center">
-  <a href="https://youtu.be/CcfXS3UFL0A?t=17805">
-    <img src="media/competition/team-sve-vehicle.jpg" width="820" alt="Team SVE Xycar on the Kookmin University competition course">
-  </a>
+  <img src="media/video/competition_drive_2x.gif" width="820" alt="Team SVE Xycar driving continuously through the competition course at 2x speed">
 </p>
 
 <p align="center">
-  <strong><a href="https://youtu.be/CcfXS3UFL0A?t=17805">▶ 공식 방송 4:56:45부터 보기</a></strong><br>
-  전체 팀 구간 4:56:22–4:59:46 · 차량 출발과 초반 차선/장애물 구간 4:56:45–4:57:25
+  <strong><a href="media/video/competition_drive_2x.mp4">▶ 본선 연속 주행 2배속 MP4 재생</a></strong><br>
+  원본 4:56:45–4:57:11의 정지 없는 주행 구간을 13 s로 편집 · 720p H.264 · 무음
 </p>
 
-저장소에서 바로 확인할 수 있는 팀 소유 영상: [콘 구간 실차 16 s](media/video/cone_course_run.mp4). 공식 방송은 재배포하지 않고 timestamp link와 사용자가 제공한 screenshot만 사용했습니다.
+저장소에 본선 주행 영상을 직접 포함했다. 전체 방송 맥락은 [공식 영상의 Team SVE 구간](https://youtu.be/CcfXS3UFL0A?t=17782)에서 확인할 수 있으며, 별도의 팀 촬영 자료인 [콘 구간 실차 16 s](media/video/cone_course_run.mp4)도 함께 보존했다.
 
 ## Project Overview
 
@@ -121,6 +119,10 @@ Single→dual pipeline의 동등 조건 FPS log는 저장소에 없어 “N% 빨
 ![Measured speed-command calibration curve](media/calibration/speed-command-curve.svg)
 
 Gazebo에서 64 s 이상 주행과 right turn을 확인했지만 sharp S-curve 후반 left에서 lane loss 후 safety stop했다. camera pose, tire model, steering/motor delay와 영상 domain gap이 남아 있어 완전한 digital twin으로 표현하지 않는다. [측정표와 계산](docs/REAL_VEHICLE_CALIBRATION.md) · [Sim-to-Real 한계](docs/SIM_TO_REAL.md)
+
+| 이전 Gazebo 코스 geometry preview | Kookmin course Gazebo 실행 화면 |
+|:---:|:---:|
+| ![Previous square-loop Gazebo course geometry preview](media/simulation/kookmin_course_map.png) | ![Kookmin competition course in Gazebo](media/simulation/kookmin_gazebo_course.jpg) |
 
 ## Engineering Iterations
 
