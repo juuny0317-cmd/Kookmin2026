@@ -1,10 +1,10 @@
 # xycar_gz_sim
 
-ROS 2 Humble + Gazebo Sim Harmonic용 Xycar 통합 패키지입니다. Gazebo Classic 플러그인은 사용하지 않으며 기존 트랙 월드와 `planningcode`는 수정하지 않습니다.
+ROS 2 Humble + Gazebo Sim Harmonic용 Xycar 통합 패키지이다. Gazebo Classic 플러그인은 사용하지 않으며 기존 트랙 월드와 `planningcode`는 수정하지 않는다.
 
 ## 분석 결과
 
-차량 모델은 팀의 실차 camera/LiDAR/motor rosbag, 주행 코드와 `worlds/kookmin_track_from_dxf.world.sdf`를 분석해 구성했습니다. 원본 bag은 저장소에 포함하지 않습니다.
+차량 모델은 팀의 실차 camera/LiDAR/motor rosbag, 주행 코드와 `worlds/kookmin_track_from_dxf.world.sdf`를 분석해 구성했다. 원본 bag은 저장소에 포함하지 않는다.
 
 ### 팀 명령 인터페이스
 
@@ -13,7 +13,7 @@ ROS 2 Humble + Gazebo Sim Harmonic용 Xycar 통합 패키지입니다. Gazebo Cl
 - `planning_speed`의 속도 출력 주기: 20 Hz
 - 어댑터 출력: `/xycar_motor`, `std_msgs/msg/Float32MultiArray`, 배열 `[steer, speed]`, layout empty
 
-세 bag 모두 직진에서 `/xycar_motor`의 첫 원소가 `-7.0`이었습니다. 사용자 실측 정의 `physical raw +7 = 직진`과 함께 만족시키기 위해 물리 raw와 실차 토픽 경계 부호를 분리했습니다. logical steer 0은 `/xycar/physical_raw_steer=+7`이고, 기본 `motor_topic_steer_sign=-1`을 거쳐 `/xycar_motor=[-7, speed]`가 됩니다. 하드웨어 드라이버 소스가 제공되면 이 경계 부호를 다시 확인해야 합니다.
+세 bag 모두 직진에서 `/xycar_motor`의 첫 원소가 `-7.0`이었다. 사용자 실측 정의 `physical raw +7 = 직진`과 함께 만족시키기 위해 물리 raw와 실차 토픽 경계 부호를 분리했다. logical steer 0은 `/xycar/physical_raw_steer=+7`이고, 기본 `motor_topic_steer_sign=-1`을 거쳐 `/xycar_motor=[-7, speed]`가 된다. 하드웨어 드라이버 소스가 제공되면 이 경계 부호를 다시 확인해야 한다.
 
 ### rosbag 요약
 
@@ -23,7 +23,7 @@ ROS 2 Humble + Gazebo Sim Harmonic용 Xycar 통합 패키지입니다. Gazebo Cl
 | 02, speed 10 | `[-7, 10]` 54회 | 5.282 s | 12.969 s |
 | 03, speed 15 | `[-7, 15]` 35회 | 3.389 s | 9.481 s |
 
-`/xycar_motor`는 약 10 Hz, reliable, volatile입니다. 명령 유지시간은 실측 5 m 시간 9.84/4.90/3.31 s와 각각 +0.432/+0.382/+0.079 s 차이입니다.
+`/xycar_motor`는 약 10 Hz, reliable, volatile이다. 명령 유지시간은 실측 5 m 시간 9.84/4.90/3.31 s와 각각 +0.432/+0.382/+0.079 s 차이이다.
 
 ### 센서 인터페이스
 
@@ -32,9 +32,9 @@ ROS 2 Humble + Gazebo Sim Harmonic용 Xycar 통합 패키지입니다. Gazebo Cl
 - `/scan`: `sensor_msgs/msg/LaserScan`, frame `laser_frame`, 약 9.66 Hz, best_effort/volatile, 500 samples, -π~+π, 0.1~16.0 m
 - IMU는 모델과 bridge에 포함하지 않음
 
-카메라와 LiDAR mount pose는 자료에 없으므로 `추정값 — 실측 필요`로 표시했습니다. 센서 bag을 차량 마찰, slip 또는 가감속 추정에 사용하지 않았습니다.
+카메라와 LiDAR mount pose는 자료에 없으므로 `추정값 — 실측 필요`로 표시했다. 센서 bag을 차량 마찰, slip 또는 가감속 추정에 사용하지 않았다.
 
-차량 형상과 미측정 동역학 초기값은 `config/model.yaml`, ROS 토픽과 보정 LUT는 `config/xycar.yaml`에 분리되어 있습니다.
+차량 형상과 미측정 동역학 초기값은 `config/model.yaml`, ROS 토픽과 보정 LUT는 `config/xycar.yaml`에 분리되어 있다.
 
 ## 차량과 조향
 
@@ -45,11 +45,11 @@ ROS 2 Humble + Gazebo Sim Harmonic용 Xycar 통합 패키지입니다. Gazebo Cl
 - 총 질량 4.1 kg: body 3.50 + wheels 0.56 + knuckle/sensor links 0.04 kg
 - 관성은 body를 직육면체, wheel을 solid cylinder로 보고 xacro 주석의 표준 식으로 계산
 
-raw +40, 반경 0.5525 m와 wheelbase/track을 순수 Ackermann으로 동시에 적용하면 안쪽 바퀴가 약 39.7°여야 합니다. 이는 “최대 앞바퀴각 약 30°”와 동시에 성립하지 않습니다. 현재 모델은 반경 재현 검증을 위해 joint limit 0.72 rad를 사용하고 명목 실측 최대각 0.523599 rad를 별도로 기록합니다.
+raw +40, 반경 0.5525 m와 wheelbase/track을 순수 Ackermann으로 동시에 적용하면 안쪽 바퀴가 약 39.7°여야 한다. 이는 “최대 앞바퀴각 약 30°”와 동시에 성립하지 않는다. 현재 모델은 반경 재현 검증을 위해 joint limit 0.72 rad를 사용하고 명목 실측 최대각 0.523599 rad를 별도로 기록한다.
 
 ## 빌드
 
-저장소 루트에서 빌드합니다.
+저장소 루트에서 빌드한다.
 
 ```bash
 source /opt/ros/humble/setup.bash
@@ -90,25 +90,25 @@ GUI 없이 센서까지 실행:
 ros2 launch xycar_gz_sim xycar.launch.py use_sim:=true gui:=false
 ```
 
-실차 어댑터 모드에서는 Gazebo, bridge, sim 센서를 실행하지 않습니다.
+실차 어댑터 모드에서는 Gazebo, bridge, sim 센서를 실행하지 않는다.
 
 ```bash
 ros2 launch xycar_gz_sim xycar.launch.py use_sim:=false
 ```
 
-기존 알고리즘은 계속 `/cmd/speed`, `/cmd/steer`를 발행하고 `/image_raw`, `/camera_info`, `/scan`을 구독하면 됩니다. remap이나 알고리즘 코드 수정은 필요하지 않습니다.
+기존 알고리즘은 계속 `/cmd/speed`, `/cmd/steer`를 발행하고 `/image_raw`, `/camera_info`, `/scan`을 구독하면 된다. remap이나 알고리즘 코드 수정은 필요하지 않다.
 
 ## 통합 주행 코드 연결
 
 Gazebo와 `ros2_ws`의 통합 주행 스택은 `/image_raw`, `/camera_info`, `/scan`,
-`/cmd/speed`, `/cmd/steer`를 공통으로 사용합니다. 전체 인지·미션 코드를 함께 실행할
-때는 저장소 루트의 `docs/SIM_TO_REAL.md`와 `docs/OPERATIONS.md`를 따릅니다.
+`/cmd/speed`, `/cmd/steer`를 공통으로 사용한다. 전체 인지·미션 코드를 함께 실행할
+때는 저장소 루트의 `docs/SIM_TO_REAL.md`와 `docs/OPERATIONS.md`를 따른다.
 
-기본 시작점에서 64초 이상 연속 주행과 우회전 곡선 통과를 확인했습니다. 오른쪽 S자
+기본 시작점에서 64초 이상 연속 주행과 우회전 곡선 통과를 확인했다. 오른쪽 S자
 후반의 급한 좌회전에서는 차선을 잃고 안전 정지하며, 이 제한과 필요한 실측 보정은
-`docs/SIM_TO_REAL.md`에 기록했습니다.
+`docs/SIM_TO_REAL.md`에 기록했다.
 
-초기 `track_drive` 코드를 Gazebo 차량과 연결해 비교할 때는 다음 launch를 사용합니다.
+초기 `track_drive` 코드를 Gazebo 차량과 연결해 비교할 때는 다음 launch를 사용한다.
 
 ```bash
 ros2 launch xycar_gz_sim team_lane_sim.launch.py use_sim_time:=true gui:=true
@@ -185,8 +185,8 @@ ros2 run xycar_gz_sim keyboard_teleop --ros-args \
 
 ## 검증 launch
 
-각 시험은 독립적으로 실행하며 결과를 출력한 뒤 자동 종료합니다. 5 m 시간은 PC의
-실시간 배율과 분리하기 위해 Gazebo `/clock` 기준으로 측정합니다.
+각 시험은 독립적으로 실행하며 결과를 출력한 뒤 자동 종료한다. 5 m 시간은 PC의
+실시간 배율과 분리하기 위해 Gazebo `/clock` 기준으로 측정한다.
 
 ```bash
 ros2 launch xycar_gz_sim xycar_test.launch.py test_case:=straight_zero
@@ -221,7 +221,7 @@ ros2 topic hz /scan
 - `turn_p40`: Gazebo 0.5474 m, 실차 0.5525 m, -0.0051 m
 - `turn_m40`: Gazebo 0.8042 m, 실차 0.8200 m, -0.0158 m
 
-마지막 두 결과가 동일한 절댓값 raw 40에서도 좌·우 비대칭 반경을 재현함을 확인합니다.
+마지막 두 결과가 동일한 절댓값 raw 40에서도 좌·우 비대칭 반경을 재현함을 확인한다.
 
 ## 추가 실측이 필요한 값
 
