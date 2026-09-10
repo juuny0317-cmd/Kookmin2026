@@ -120,9 +120,7 @@ Single→dual pipeline의 동등 조건 FPS log는 저장소에 없어 “N% 빨
 
 Gazebo에서 64 s 이상 주행과 right turn을 확인했지만 sharp S-curve 후반 left에서 lane loss 후 safety stop했다. camera pose, tire model, steering/motor delay와 영상 domain gap이 남아 있어 완전한 digital twin으로 표현하지 않는다. [측정표와 계산](docs/REAL_VEHICLE_CALIBRATION.md) · [Sim-to-Real 한계](docs/SIM_TO_REAL.md)
 
-| 이전 Gazebo 코스 geometry preview | Kookmin course Gazebo 실행 화면 |
-|:---:|:---:|
-| ![Previous square-loop Gazebo course geometry preview](media/simulation/kookmin_course_map.png) | ![Kookmin competition course in Gazebo](media/simulation/kookmin_gazebo_course.jpg) |
+![Kookmin competition course in Gazebo](media/simulation/kookmin_gazebo_course.jpg)
 
 ## Engineering Iterations
 
