@@ -1,0 +1,9 @@
+metric,value,unit,evidence_type,evidence
+initial_3lap_time,276.00,second,user_provided,development retrospective
+final_best_score,151.32,second,leaderboard_and_user_provided,../media/leaderboard.png
+displayed_3lap_total,149.32,second,leaderboard,../media/leaderboard.png
+absolute_reduction,124.68,second,derived,initial_3lap_time-final_best_score
+relative_reduction,45.173913,percent,derived,absolute_reduction/initial_3lap_time*100
+rank,9,place,leaderboard,../media/leaderboard.png
+total_participants,132,team,user_provided,final result supplied by repository owner
+submissions,11,count,leaderboard,../media/leaderboard.png

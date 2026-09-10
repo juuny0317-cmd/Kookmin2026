@@ -38,3 +38,11 @@
 
 `media/simulation/kookmin_gazebo_course.jpg`는 Kookmin course를 Gazebo에서 실행한 화면이며 simulation 개발 산출물이다.
 
+## 예선 자료
+
+`qualifying_round/media/qualifying_run.mp4`는 사용자가 제공한 팀 보유 원본 `KakaoTalk_20260625_060153117.mp4` 전체를 H.264/720p/BT.709로 변환하고 음성과 원본 메타데이터를 제거한 자료다. 공식 simulator 주행 과정을 보여 주지만 녹화 시작 대기까지 포함하므로 파일 길이를 공식 기록으로 사용하지 않았다.
+
+`qualifying_round/media/leaderboard.png`는 사용자가 제공한 `KakaoTalk_20260626_183655459.png` 원본의 파일명만 정리한 자료다. Team SVE의 9위, best score 2분 31.32초, submissions 11이 표시되어 있다. 전체 참가 규모 132팀은 사용자 제공 최종 정보이며 캡처 한 장만으로 독립 검증할 수 없다는 범위를 예선 문서에 명시했다.
+
+예선 원본 source와 simulator replay는 공개 Git history에 남아 있지 않다. 따라서 `qualifying_round/src/`를 만들거나 본선의 후속 adapter를 예선 원본처럼 재분류하지 않았다. 예선 상세 동작은 사용자 제공 개발 기록, 주행 영상과 leaderboard 캡처를 구분해 문서화했다.
+
