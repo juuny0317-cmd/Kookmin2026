@@ -13,8 +13,7 @@
 </p>
 
 <p align="center">
-  <strong><a href="media/video/competition_drive_2x.mp4">▶ 본선 연속 주행 2배속 MP4 재생</a></strong><br>
-  원본 4:56:45–4:57:11의 정지 없는 주행 구간을 13 s로 편집 · 720p H.264 · 무음
+  <strong><a href="media/video/competition_drive_2x.mp4">▶ 본선 연속 주행 MP4 재생</a></strong><br>
 </p>
 
 저장소에 본선 주행 영상을 직접 포함했다. 전체 방송 맥락은 [공식 영상의 Team SVE 구간](https://youtu.be/CcfXS3UFL0A?t=17782)에서 확인할 수 있으며, 별도의 팀 촬영 자료인 [콘 구간 실차 16 s](media/video/cone_course_run.mp4)도 함께 보존했다.
