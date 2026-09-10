@@ -6,7 +6,7 @@
 
 국민대학교 제9회 자율주행 경진대회에 Team SVE로 참가해 예선 simulator부터 본선 Xycar 실차까지 개발한 과정을 정리한 포트폴리오 저장소다. 예선에서는 rule-based FSM, classical vision, PID를 이용해 3-lap 주행을 완주했고, 본선에서는 YOLO/OpenCV/LiDAR, Stanley/Pure Pursuit, Mission Manager와 VESC safety boundary를 통합했다.
 
-> **Qualifying Round: 132팀 중 9위 · 3-lap 2분 31.32초**
+> **Qualifying Round: 132팀 중 9위 · 3-lap 2분 31.32초**<br>
 > **Main Round: 2차 주행 149.65초 · 실차 통합 자율주행 완주**
 
 ## Competition Journey
