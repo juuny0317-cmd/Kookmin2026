@@ -22,11 +22,13 @@
 
 <p align="center">
   <a href="media/qualifying_run.mp4">
-    <img src="media/qualifying_run_thumbnail.jpg" width="820" alt="Team SVE official simulator qualifying run">
+    <img src="media/qualifying_run_preview_2x.gif" width="820" alt="Team SVE official simulator qualifying driving preview at 2x speed">
   </a>
 </p>
 
 <p align="center"><strong><a href="media/qualifying_run.mp4">▶ 예선 simulator 전체 주행 영상 재생</a></strong></p>
+
+README에서는 30–46초의 연속 주행 구간을 2배속 8초 GIF로 재생한다. GIF를 누르면 2분 47초 전체 MP4가 열린다.
 
 ![Qualifying leaderboard showing Team SVE in ninth place](media/leaderboard.png)
 

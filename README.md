@@ -34,11 +34,13 @@ flowchart LR
 
 <p align="center">
   <a href="qualifying_round/media/qualifying_run.mp4">
-    <img src="qualifying_round/media/qualifying_run_thumbnail.jpg" width="820" alt="Team SVE qualifying simulator three-lap run">
+    <img src="qualifying_round/media/qualifying_run_preview_2x.gif" width="820" alt="Team SVE qualifying simulator driving preview at 2x speed">
   </a>
 </p>
 
 <p align="center"><strong><a href="qualifying_round/media/qualifying_run.mp4">▶ 예선 simulator 전체 주행 영상 재생</a></strong></p>
+
+README에서는 연속 주행 16초를 2배속 8초 GIF로 바로 재생한다. 위 영상을 누르면 2분 47초 전체 MP4가 열린다.
 
 예선에서는 camera ROI와 BEV 변환, HSV 기반 흰색·노란색 차선 분리, sliding-window 추적, lane path 생성, PID 조향을 연결했다. 콘 구간, 신호등과 경찰차 맥락, 좌회전, lap counting, finish 판정을 FSM으로 관리했다. 초기 Pure Pursuit 실험에서 직선 진동을 확인한 뒤 최종 차선 제어를 PID로 전환했고, 전체 pipeline 개선으로 276.00초에서 151.32초까지 124.68초(45.2%)를 줄였다.
 

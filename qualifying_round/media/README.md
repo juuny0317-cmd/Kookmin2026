@@ -5,12 +5,14 @@
 | File | Content | Specification | Size | SHA-256 |
 |---|---|---|---:|---|
 | `qualifying_run.mp4` | 공식 simulator 전체 녹화 | 167.71 s, 1280×720, 24 fps, H.264 | 49,909,634 B | `415b458b600116c0ed9ebc9b8d5dab3e6bae31041049d61ffb09ea8683a0dce6` |
+| `qualifying_run_preview_2x.gif` | README 자동재생 preview | 원본 30–46 s, 8.0 s, 640×360, 12 fps, 2× | 9,984,830 B | `7bbaf4491f4c31ccba72c77b09564501fa20f74e7e2b134b186108f9dacb9aa1` |
 | `qualifying_run_thumbnail.jpg` | README poster frame | 1280×720 JPEG | 272,726 B | `103327ce4d85f41c3516e260000b7221be625864e557884224ffe9d1171d354f` |
 | `leaderboard.png` | Team SVE 예선 leaderboard | 1919×945 PNG | 145,696 B | `2a8102e04094cb70e80b4c994b8e324746239e049274014755e0462d07d8ab6f` |
 
 ## Provenance
 
 - `qualifying_run.mp4`는 사용자가 제공한 팀 보유 원본 `KakaoTalk_20260625_060153117.mp4` 전체를 사용했다. 원본은 1920×1080, 24 fps, HEVC/HLG, 167.76초였으며 공개본은 SDR BT.709 720p로 변환했다.
+- `qualifying_run_preview_2x.gif`는 정지·대기 장면이 아닌 30–46초 연속 주행 구간을 선택해 2배속으로 만들었다. GitHub README에서 자동재생되며 클릭하면 전체 MP4로 이동한다.
 - `qualifying_run_thumbnail.jpg`는 공개본의 주행 장면에서 추출했다.
 - `leaderboard.png`는 사용자가 제공한 원본 `KakaoTalk_20260626_183655459.png`를 파일명만 정리해 복사했다. 화면에는 Team SVE 9위, best score 2분 31.32초, 3-lap total 2분 29.32초, submissions 11, 마지막 업데이트 2026.06.26 18:35:59가 표시되어 있다.
 
