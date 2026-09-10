@@ -6,9 +6,16 @@
 
 | 항목 | 값 |
 |---|---:|
+| Overall participants | 132 teams (사용자 제공) |
+| Main-round finalists | 22 teams (사용자 제공) |
+| Final rank | **7위** |
 | Raw driving time | 144.65 s |
 | Mission penalty | 5.00 s |
 | Final time | **149.65 s** |
+
+전체 132팀 중 예선을 통과한 22팀이 본선에 진출했고 Team SVE는 최종 7위를 기록했다. 최종 순위와 149.65초는 아래 결과 화면에서 확인할 수 있으며, 전체 참가 규모와 본선 진출 규모는 사용자 제공 정보다.
+
+![Final competition ranking showing Team SVE in seventh place with 149.65 seconds](../media/competition/final-ranking-7th.png)
 
 ![Team SVE second-run result: 144.65 s driving, 5.00 s penalty, 149.65 s final](../media/competition/final-result-149-65s.jpg)
 
@@ -50,8 +57,10 @@
 
 [720p H.264 2배속 영상 직접 재생](../media/video/competition_drive_2x.mp4)
 
-| Competition vehicle | Operation | Result |
+| Competition vehicle | Operation | Second-run result |
 |:---:|:---:|:---:|
-| ![Team SVE Xycar on the competition course](../media/competition/team-sve-vehicle.jpg) | ![Team SVE operator during the competition run](../media/competition/team-sve-operation.jpg) | ![Team SVE final result board](../media/competition/final-result-149-65s.jpg) |
+| ![Team SVE Xycar on the competition course](../media/competition/team-sve-vehicle.jpg) | ![Team SVE operator during the competition run](../media/competition/team-sve-operation.jpg) | ![Team SVE second-run result board](../media/competition/final-result-149-65s.jpg) |
 
-본선 영상은 사용자가 저장소 포함 권한을 확인한 뒤 연속 주행 구간만 2배속·무음으로 편집했다. 방송의 전체 맥락과 출처는 공식 영상 링크로 남겼다. 제공된 screenshot은 JPEG로 재인코딩해 EXIF를 제거하고, 점수·차량 영역을 유지한 채 불필요한 검은 여백과 overlay를 줄였다.
+![Final competition ranking: Team SVE placed seventh](../media/competition/final-ranking-7th.png)
+
+본선 영상은 사용자가 저장소 포함 권한을 확인한 뒤 연속 주행 구간만 2배속·무음으로 편집했다. 방송의 전체 맥락과 출처는 공식 영상 링크로 남겼다. 2차 주행 결과 screenshot은 JPEG로 재인코딩해 EXIF를 제거하고 점수·차량 영역을 유지한 채 불필요한 검은 여백과 overlay를 줄였다. 최종 순위 화면은 사용자가 제공한 PNG 원본을 파일명만 정리해 보존했다.

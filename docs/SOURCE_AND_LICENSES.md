@@ -36,6 +36,8 @@
 
 `media/video/competition_drive_2x.mp4`와 README용 GIF는 [국민대학교 공식 방송](https://youtu.be/CcfXS3UFL0A?t=17805)의 4:56:45–4:57:11 구간을 2배속·무음으로 편집한 자료이다. 사용자는 이 편집본을 저장소에 포함할 권한이 있다고 확인했다. 원 방송의 권리와 출처 표기는 원 게시자에게 있으며, 저장소는 선택 구간 외의 방송 전체를 포함하지 않는다. 모든 영상의 구간·규격·checksum은 [`media/video/README.md`](../media/video/README.md)에 기록했다.
 
+`media/competition/final-ranking-7th.png`는 사용자가 제공한 본선 최종 결과 화면을 파일명만 정리해 보존한 자료다. 화면에서 건국대학교 Team SVE의 7위와 총 주행 시간 149.65초를 확인할 수 있다. 전체 참가 132팀과 본선 진출 22팀이라는 규모는 사용자 제공 정보로 구분했다.
+
 `media/simulation/kookmin_gazebo_course.jpg`는 Kookmin course를 Gazebo에서 실행한 화면이며 simulation 개발 산출물이다.
 
 ## 예선 자료

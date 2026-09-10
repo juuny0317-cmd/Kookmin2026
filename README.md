@@ -7,7 +7,7 @@
 국민대학교 제9회 자율주행 경진대회에 Team SVE로 참가해 예선 simulator부터 본선 Xycar 실차까지 개발한 과정을 정리한 포트폴리오 저장소다. 예선에서는 rule-based FSM, classical vision, PID를 이용해 3-lap 주행을 완주했고, 본선에서는 YOLO/OpenCV/LiDAR, Stanley/Pure Pursuit, Mission Manager와 VESC safety boundary를 통합했다.
 
 > **Qualifying Round: 132팀 중 9위 · 3-lap 2분 31.32초**<br>
-> **Main Round: 2차 주행 149.65초 · 실차 통합 자율주행 완주**
+> **Main Round: 전체 132팀 → 본선 22팀 → 최종 7위 · 149.65초**
 
 ## Competition Journey
 
@@ -17,8 +17,8 @@ flowchart LR
     Q1 --> Q2[2026.06.26<br/>3-lap 결과 제출]
     Q2 --> Q3[132팀 중 9위<br/>2:31.32]
     Q3 --> M0[본선 진출<br/>Sim-to-Real 전환]
-    M0 --> M1[2026.08.25<br/>본선 실차 주행]
-    M1 --> M2[2차 주행<br/>149.65 s]
+    M0 --> M1[2026.08.25<br/>본선 22팀 실차 주행]
+    M1 --> M2[최종 7위<br/>149.65 s]
 ```
 
 프로젝트 개발 기간은 2026.05.18–2026.06.26이었다. 공식 일정상 예선 설명회는 2026.05.23, 연장된 제출 마감은 2026.06.26이었다. [대회 공식 일정](https://auto-contest.kookmin.ac.kr/%ED%99%88)에서 별도로 확인할 수 있다.
@@ -26,7 +26,7 @@ flowchart LR
 | Round | Platform | Core approach | Result | Detail |
 |---|---|---|---:|---|
 | Qualifying Round | 국민대학교 공식 simulator | FSM, classical vision, PID lane control | **132팀 중 9위, 2:31.32** | [예선 포트폴리오](qualifying_round/README.md) |
-| Main Round | 1/10-scale Xycar | YOLO/OpenCV/LiDAR, Stanley, Pure Pursuit, Mission Manager | **149.65 s** | [본선 포트폴리오](docs/MAIN_ROUND.md) |
+| Main Round | 1/10-scale Xycar | YOLO/OpenCV/LiDAR, Stanley, Pure Pursuit, Mission Manager | **본선 22팀 중 최종 7위, 149.65 s** | [본선 포트폴리오](docs/MAIN_ROUND.md) |
 
 예선 순위·기록·참가 규모는 사용자가 제공한 최종 결과를 기준으로 적었다. 공개한 leaderboard 캡처에서는 Team SVE의 9위, 2분 31.32초, 제출 11회를 확인할 수 있다. 캡처 화면의 표시 팀 수는 50개 팀이며 전체 참가 규모 132팀은 사용자 제공 정보다.
 
@@ -111,6 +111,7 @@ flowchart LR
 | Steering asymmetry at \|raw\| 40 | right 0.5525 m vs left 0.8200 m; left radius **48.4% larger** | [raw CSV](evaluation/calibration/steering_circle_measurements.csv) |
 | Gazebo max-steer radius replay | right 0.9%, left 1.9% absolute error at ±40 | [comparison](evaluation/calibration/sim_real_comparison.csv), [limits](docs/SIM_TO_REAL.md) |
 | Competition second run | driving 144.65 s + penalty 5.00 s = **149.65 s** | [result image](media/competition/final-result-149-65s.jpg), [retrospective](docs/COMPETITION_RETROSPECTIVE.md) |
+| Final ranking | 전체 132팀 → 본선 22팀 → **최종 7위** | [final ranking](media/competition/final-ranking-7th.png), [retrospective](docs/COMPETITION_RETROSPECTIVE.md) |
 
 `cte_px` replay는 image-plane lane-center proxy이며 실제 vehicle pose error가 아니다. 최대 조향 sim-real 수치도 calibrated LUT knot 재현 결과이며 전체 trajectory accuracy로 일반화하지 않았다.
 
@@ -190,6 +191,12 @@ Gazebo에서 64초 이상 주행과 right turn을 확인했지만 sharp S-curve 
 | Team SVE operation | Second-run result |
 |:---:|:---:|
 | ![Operator during Team SVE competition run](media/competition/team-sve-operation.jpg) | ![Final result 149.65 seconds](media/competition/final-result-149-65s.jpg) |
+
+<p align="center">
+  <img src="media/competition/final-ranking-7th.png" width="820" alt="Final competition ranking showing Team SVE in seventh place with 149.65 seconds">
+</p>
+
+전체 132팀 중 예선을 통과한 22팀이 본선에 진출했고 Team SVE는 최종 7위를 기록했다. 최종 순위 화면에서 건국대학교 Team SVE의 7위와 총 주행 시간 149.65초를 확인할 수 있다. 전체 참가 규모 132팀과 본선 진출 규모 22팀은 사용자 제공 정보로 구분했다.
 
 본선 2차 주행은 144.65초, penalty 5.00초, final 149.65초였다. 사용자 회고상 연습 때 없던 방송 카메라의 red indicator를 신호등으로 오인해 약 45초 STOP했다. 45초는 동기화 log가 아닌 manual review 근사값이며, 이를 뺀 104.65초는 공식 기록이 아니라 단순 hypothetical이다.
 
